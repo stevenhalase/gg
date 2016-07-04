@@ -1,0 +1,76 @@
+
+.match-time {
+  font-size: 12px;
+}
+
+#match-logo {
+}
+
+.chip > img {
+  background-color: black;
+}
+
+.team-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.team-pos {
+  color: #49b34e;
+}
+
+.team-neg {
+  color: #e25025;
+}
+
+.match-info > div {
+}
+
+.match-modal-wrapper {
+  border-top: 2px solid #FF8A00;
+  text-align: center;
+}
+
+.match-modal div {
+}
+
+.match-modal h3 {
+  vertical-align: middle;
+  display: inline;
+  margin-left: 10px;
+}
+
+.match-modal-perc {
+  font-size: 20px;
+  padding: 5px 20px 5px 20px;
+}
+
+.match-modal-content {
+  padding: 100px 20px 100px 20px;
+  background-position: center;
+  background-size: cover;
+}
+
+.match-modal div {
+  background-color: rgba(0,0,0,0.9);
+  border: 2px solid #FF8A00;
+  color: white;
+}
+
+.csgo-lounge-button {
+  background-color: black;
+  border-radius: 4px;
+}
+
+.csgo-lounge-button img {
+  padding: 5px 10px;
+}
+
+.modal.bottom-sheet {
+  background-color: white;
+}
+
+.team-logo {
+  padding: 5px;
+  vertical-align: middle;
+}

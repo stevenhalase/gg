@@ -1,0 +1,40 @@
+.channel-wrapper {
+  background-color: black;
+  height: 100%;
+}
+
+.stream-container {
+  width: 80%;
+  left: 10%;
+  padding: 25%;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+
+}
+
+#channel-logo {
+  position: absolute;
+  z-index: 5;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 100px;
+  border-radius: 50%;
+  border: 2px solid #FF8A00;
+}
+
+#twitch-logo {
+  z-index: 5;
+  margin-left: 50%;
+  transform: translate(-50%);
+  padding: 10px;
+  width: 150px;
+}
+
+#powered {
+  display: inline-block;
+  color: white;
+  font-weight: bolder;
+  margin-left: 50%;
+  transform: translate(-50%);
+}

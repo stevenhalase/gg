@@ -1,0 +1,32 @@
+<div class="streams-wrapper">
+  <div class="row">
+    <div class="col s12 m4" ng-repeat="game in sCtrl.games">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <a class="modal-trigger" href="#/streams#{{game.game._id}}" ng-click="sCtrl.openModal(game.game._id)"><img id="game-logo" ng-src="{{sCtrl.fixLogoUrl(game.game.logo.large)}}"></a>
+          <a class="modal-trigger" href="#/streams#{{game.game._id}}" ng-click="sCtrl.openModal(game.game._id)">
+            <span class="card-title game-title truncate">{{game.game.name}}
+              <span class="game-viewers right"><i class="material-icons right">account_box</i> {{game.viewers}}</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="{{game.game._id}}" class="modal bottom-sheet stream-modal" ng-repeat="game in sCtrl.games">
+  <div class="stream-modal-content modal-content">
+    <div class="row">
+      <div class="col s12 m6 l3" ng-repeat="stream in game.streams">
+        <div class="card stream-card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <a class="modal-trigger" ng-click="sCtrl.changeChannel(stream.channel,game.game._id)"><img id="game-logo" ng-src="{{sCtrl.fixLogoUrl(stream.preview.large)}}"></a>
+            <a class="modal-trigger" ng-click="sCtrl.changeChannel(stream.channel,game.game._id)"><img id="game-logo"><span class="card-title game-title">{{stream.channel.name}}<i class="material-icons right">account_box</i><span class="game-viewers right">{{stream.viewers}}</span></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="home-wrapper grey darken-4">
+  <div class="row">
+      <div class="col s12 m4" ng-repeat="match in mCtrl.matches">
+        <div class="card small">
+          <div class="card-image waves-effect waves-block waves-light">
+            <a class="modal-trigger" href="#/matches#{{match.id}}" ng-click="mCtrl.openModal(match.id)"><img id="match-logo" ng-src="{{match.matchLogo}}"></a>
+          </div>
+          <div class="card-content">
+            <a class="modal-trigger" href="#/matches#{{match.id}}" ng-click="mCtrl.openModal(match.id)"><span class="card-title activator grey-text text-darken-4">{{match.matchname}} <span class="match-time">{{match.time}}</span></span></a>
+            <br/>
+            <div class="chip">
+              <img ng-src="{{match.teamLogos[0]}}">
+              <span class="team-name">{{match.teams[0].name}} <span ng-class="{'team-pos': mCtrl.posOrNeg(match.teams[0].percentage,match.teams[1].percentage), 'team-neg': mCtrl.posOrNeg(match.teams[1].percentage,match.teams[0].percentage)}">{{match.teams[0].percentage}}</span></span>
+            </div>
+            <div class="chip">
+              <img ng-src="{{match.teamLogos[1]}}">
+              <span class="team-name">{{match.teams[1].name}} <span ng-class="{'team-pos': mCtrl.posOrNeg(match.teams[1].percentage,match.teams[0].percentage), 'team-neg': mCtrl.posOrNeg(match.teams[0].percentage,match.teams[1].percentage)}">{{match.teams[1].percentage}}</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="{{match.id}}" class="modal bottom-sheet match-modal-wrapper" ng-repeat="match in mCtrl.matches">
+  <div class="match-modal-content" id="modal-content" ng-style="{'background-image' : 'url({{mCtrl.parseImageUrl(match.matchLogo)}})'}">
+    <div class="row match-modal">
+      <div>
+        <img class="team-logo" ng-src="{{match.teamLogos[0]}}"><h3>{{match.teams[0].name}} <span class="match-modal-perc right" ng-class="{'team-pos': mCtrl.posOrNeg(match.teams[0].percentage,match.teams[1].percentage), 'team-neg': mCtrl.posOrNeg(match.teams[1].percentage,match.teams[0].percentage)}">{{match.teams[0].percentage}}</span></h3>
+      </div>
+      <br/>
+      <div>
+        <img class="team-logo" ng-src="{{match.teamLogos[1]}}"><h3>{{match.teams[1].name}} <span class="match-modal-perc right" ng-class="{'team-pos': mCtrl.posOrNeg(match.teams[1].percentage,match.teams[0].percentage), 'team-neg': mCtrl.posOrNeg(match.teams[0].percentage,match.teams[1].percentage)}">{{match.teams[1].percentage}}</span></h3>
+      </div>
+    </div>
+  </div>
+</div>

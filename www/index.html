@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="ggApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GG - Gaming Central</title>
+    <script src="./lib/jquery/dist/jquery.js" charset="utf-8"></script>
+    <script src="./lib/angular/angular.js" charset="utf-8"></script>
+    <script src="./lib/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>
+    <script src="./lib/angular-cookies/angular-cookies.js" charset="utf-8"></script>
+    <script src="./lib/bootstrap/dist/js/bootstrap.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.css" charset="utf-8">
+    <script src="./lib/Materialize/dist/js/materialize.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="./lib/Materialize/dist/css/materialize.css" charset="utf-8">
+    <link rel="stylesheet" href="./css/materialize-icons.css" charset="utf-8">
+    <script src="app.js" charset="utf-8"></script>
+    <script src="./js/controllers/index-controller.js" charset="utf-8"></script>
+    <script src="./js/controllers/home-controller.js" charset="utf-8"></script>
+    <script src="./js/controllers/matches-controller.js" charset="utf-8"></script>
+    <script src="./js/controllers/news-controller.js" charset="utf-8"></script>
+    <script src="./js/controllers/streams-controller.js" charset="utf-8"></script>
+    <script src="./js/controllers/channel-controller.js" charset="utf-8"></script>
+    <script src="./js/controllers/stream-factory.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="./css/app.css" charset="utf-8">
+    <link rel="stylesheet" href="./css/streams.css" charset="utf-8">
+    <link rel="stylesheet" href="./css/matches.css" charset="utf-8">
+    <link rel="stylesheet" href="./css/channel.css" charset="utf-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
+  </head>
+  <body ng-controller="indexCtrl as iCtrl" class="amber darken-3">
+    <header>
+      <!-- <nav>
+       <div class="nav-wrapper green darken-2">
+         <a href="#" class="brand-logo right">GG - Gaming Central</a>
+         <ul id="nav-mobile" class="left hide-on-med-and-down">
+           <li><a href="sass.html">Home</a></li>
+           <li><a href="badges.html">Streams</a></li>
+           <li><a href="collapsible.html">News</a></li>
+           <li><a href="collapsible.html">Tournaments</a></li>
+           <li><a href="collapsible.html">Statistics</a></li>
+         </ul>
+       </div>
+     </nav> -->
+     <div class="navbar-fixed">
+        <nav>
+         <div class="nav-wrapper amber darken-3">
+           <a ui-sref="home"><i id="logo-icon" class="material-icons">gamepad</i></a>
+           <ul class="right">
+             <li ng-class="{'active': location===''}"><a ui-sref="home" >Home</a></li>
+             <li ng-class="{'active': location==='streams'}"><a ui-sref="streams">Streams</a></li>
+             <li ng-class="{'active': location==='news'}"><a ui-sref="news">News</a></li>
+             <li ng-class="{'active': location==='matches'}"><a ui-sref="matches">Matches</a></li>
+             <li ng-class="{'active': location==='statistics'}"><a ui-sref="statistics">Statistics</a></li>
+           </ul>
+         </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+    <ui-view></ui-view>
+    </main>
+
+    <footer class="page-footer amber darken-3">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Footer Content</h5>
+            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2016 GG
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "gg2",
+  "version": "0.1.0",
+  "description": "A comprehensive gaming center.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "casperjs": "^1.1.1",
+    "cheerio": "^0.20.0",
+    "csgolounge-api": "0.0.8",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.3",
+    "morgan": "^1.7.0",
+    "request": "^2.72.0",
+    "spooky": "^0.2.5"
+  }
+}

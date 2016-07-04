@@ -1,0 +1,25 @@
+{
+  "name": "gg2",
+  "description": "A comprehensive gaming center.",
+  "main": "index.html",
+  "authors": [
+    "Steven Halase <steven.halase@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap": "^3.3.6",
+    "Materialize": "materialize#^0.97.6",
+    "angular-cookies": "^1.5.7"
+  }
+}

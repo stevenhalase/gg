@@ -1,0 +1,39 @@
+.streams-wrapper {
+  background-color: black;
+}
+
+.game-title {
+  color: white;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
+}
+
+.game-viewers {
+  color: #FF8A00;
+  padding: 3px;
+  font-size: 20px;
+}
+
+.game-title i {
+  color: #FF8A00;
+  font-size: 30px;
+  margin-left: 0;
+}
+
+.modal.bottom-sheet.stream-modal {
+  background-color: rgba(0,0,0,0.8);
+  border-top: 2px solid #FF8A00;
+  max-height: 60%;
+}
+
+.stream-modal-content {
+  background-color: rgba(0,0,0,0.8);
+  border-top: 1px solid #333;
+  border-radius: 0;
+}
+
+.stream-card {
+  border-radius: 0;
+  border: 2px solid #FF8A00;
+}
