@@ -31,6 +31,11 @@ function matchesController($http) {
     $('#' + modalID).openModal();
   }
 
+  mCtrl.closeModal = function(modalID) {
+    // console.log('closing modal', modalID);
+    $('#' + modalID).closeModal();
+  }
+
   $http.get('/api/v1/matches')
     .then(function(response) {
       console.log('Internal API response: ', response);
