@@ -1,14 +1,18 @@
 angular.module('ggApp')
   .controller('matchesCtrl', matchesController);
 
-matchesController.$inject = ['$http'];
+matchesController.$inject = ['$http','$sce'];
 
-function matchesController($http) {
+function matchesController($http, $sce) {
   const mCtrl = this;
 
   mCtrl.title = 'Home Controller';
 
   mCtrl.matches = [];
+
+  $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
 
   mCtrl.posOrNeg = function(perc1, perc2) {
     if (perc1 > perc2) {
@@ -19,11 +23,7 @@ function matchesController($http) {
   }
 
   mCtrl.parseImageUrl = function(url) {
-    // console.log('parsingurl')
-    url = url.slice(2);
-    url = 'http://' + url;
-    // console.log(url);
-    return url;
+    return $sce.trustAsResourceUrl(url);
   }
 
   mCtrl.openModal = function(modalID) {

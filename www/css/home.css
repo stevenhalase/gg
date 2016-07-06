@@ -1,1 +1,31 @@
+#home-wrapper {
+  height: 75vh;
+  background-image: url('../images/bg.jpg');
+  background-position: center;
+  background-size: cover;
+  color: #FF8A00;
+}
 
+#home-wrapper h1 {
+  position: absolute;
+  left: 20%;
+  top: 34%;
+  font-size: 91px;
+  font-weight: bolder;
+}
+
+#home-logo-icon {
+  font-size: 400px;
+  top: 0;
+  left: -81px;
+  position: absolute;
+}
+
+#home-wrapper p {
+  color: white;
+  position: absolute;
+  left: 20%;
+  top: 52%;
+  font-weight: bold;
+  font-size: 20px;
+}

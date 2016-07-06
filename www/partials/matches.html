@@ -2,21 +2,13 @@
   <div class="row">
       <div class="col s12 m4" ng-repeat="match in mCtrl.matches">
         <div class="card small">
-          <div class="card-image waves-effect waves-block waves-light">
-            <a class="modal-trigger" href="#/matches#{{match.id}}" ng-click="mCtrl.openModal(match.id)"><img id="match-logo" ng-src="{{match.teams[0].teamLogoUrl}}"></a>
-            <a class="modal-trigger" href="#/matches#{{match.id}}" ng-click="mCtrl.openModal(match.id)"><img id="match-logo" ng-src="{{match.teams[1].teamLogoUrl}}"></a>
+          <div id="match-image" class="card-image waves-effect waves-block waves-light">
+            <a class="modal-trigger" href="#/matches#{{match._id}}" ng-click="mCtrl.openModal(match._id)"><img id="vs" src="../images/vs.svg"></a>
+            <a class="modal-trigger" href="#/matches#{{match._id}}" ng-click="mCtrl.openModal(match._id)"><img id="match-logo" ng-src="{{match.teams[0].teamLogoUrl}}"></a>
+            <a class="modal-trigger" href="#/matches#{{match._id}}" ng-click="mCtrl.openModal(match._id)"><img id="match-logo" ng-src="{{match.teams[1].teamLogoUrl}}"></a>
           </div>
-          <div class="card-content">
-            <a class="modal-trigger" href="#/matches#{{match.id}}" ng-click="mCtrl.openModal(match.id)"><span class="card-title activator grey-text text-darken-4">{{match.matchname}} <span class="match-time">{{match.time}}</span></span></a>
-            <br/>
-            <div class="chip">
-              <img ng-src="{{match.teamLogos[0]}}">
-              <span class="team-name">{{match.teams[0].name}} <span ng-class="{'team-pos': mCtrl.posOrNeg(match.teams[0].percentage,match.teams[1].percentage), 'team-neg': mCtrl.posOrNeg(match.teams[1].percentage,match.teams[0].percentage)}">{{match.teams[0].percentage}}</span></span>
-            </div>
-            <div class="chip">
-              <img ng-src="{{match.teamLogos[1]}}">
-              <span class="team-name">{{match.teams[1].name}} <span ng-class="{'team-pos': mCtrl.posOrNeg(match.teams[1].percentage,match.teams[0].percentage), 'team-neg': mCtrl.posOrNeg(match.teams[0].percentage,match.teams[1].percentage)}">{{match.teams[1].percentage}}</span></span>
-            </div>
+          <div class="card-action">
+            <a class="modal-trigger" href="#/matches#{{match._id}}" ng-click="mCtrl.openModal(match._id)"><span id="match-title" class="card-title activator grey-text text-darken-4">{{match.teams[0].teamName}} vs {{match.teams[1].teamName}}</a>
           </div>
         </div>
       </div>
@@ -24,18 +16,27 @@
 </div>
 
 <!-- Modal Structure -->
-<div id="{{match.id}}" class="modal bottom-sheet match-modal-wrapper" ng-repeat="match in mCtrl.matches">
-  <div class="match-modal-content" id="modal-content" ng-style="{'background-image' : 'url({{mCtrl.parseImageUrl(match.matchLogo)}})'}">
-    <a href="" ng-click="mCtrl.closeModal(match.id)"><span class="glyphicon glyphicon-resize-small back-arrow"></span></a>
+<div id="{{match._id}}" class="modal bottom-sheet match-modal-wrapper" ng-repeat="match in mCtrl.matches">
+  <div class="match-modal-content" id="match-modal-content">
+    <a href="" ng-click="mCtrl.closeModal(match._id)"><span class="glyphicon glyphicon-resize-small back-arrow"></span></a>
     <div class="row match-modal">
       <div>
-        <img class="team-logo" ng-src="{{match.teamLogos[0]}}"><h3>{{match.teams[0].name}} <span class="match-modal-perc" ng-class="{'team-pos': mCtrl.posOrNeg(match.teams[0].percentage,match.teams[1].percentage), 'team-neg': mCtrl.posOrNeg(match.teams[1].percentage,match.teams[0].percentage)}">{{match.teams[0].percentage}}</span></h3>
+        <img class="team-logo" ng-src="{{match.teams[0].teamLogoUrl}}"><h3>{{match.teams[0].teamName}}</h3>
         <div class="row">
-          <div class="col s12 m2" id="player-card-wrapper" ng-repeat="player in match.teamRosters[0]">
+          <div class="col s12 m2" id="player-card-wrapper" ng-repeat="player in match.teams[0].players">
             <div class="card">
               <div class="card-image">
-                <img id="playerImg" ng-src="{{player.playerImg}}" on-error-src="../images/defaultavatar.png">
+                <a class="" href="{{mCtrl.parseImageUrl(player.playerUrl)}}" target="_blank" >
+                  <img id="playerImg" ng-src="{{mCtrl.parseImageUrl(player.playerImg)}}" on-error-src="../images/defaultavatar.png">
+                </a>
                 <span class="card-title" id="player-name">{{player.playerName}}</span>
+              </div>
+              <div id="player-action" class="card-action">
+                Rating <b>{{player.rating}}</b><br/>
+                KPR <b>{{player.killsPerRound}}</b><br/>
+                DPR <b>{{player.deathsPerRound}}</b><br/>
+                Headshot <b>{{player.headshots}}</b><br/>
+                Contributed <b>{{player.roundsContributed}}</b>
               </div>
             </div>
           </div>
@@ -43,13 +44,22 @@
       </div>
       <br/>
       <div>
-        <img class="team-logo" ng-src="{{match.teamLogos[1]}}"><h3>{{match.teams[1].name}} <span class="match-modal-perc" ng-class="{'team-pos': mCtrl.posOrNeg(match.teams[1].percentage,match.teams[0].percentage), 'team-neg': mCtrl.posOrNeg(match.teams[0].percentage,match.teams[1].percentage)}">{{match.teams[1].percentage}}</span></h3>
+        <img class="team-logo" ng-src="{{match.teams[1].teamLogoUrl}}"><h3>{{match.teams[1].teamName}}</h3>
         <div class="row">
-          <div class="col s12 m2" id="player-card-wrapper" ng-repeat="player in match.teamRosters[1]">
+          <div class="col s12 m2" id="player-card-wrapper" ng-repeat="player in match.teams[1].players">
             <div class="card">
               <div class="card-image">
-                <img id="playerImg" ng-src="{{player.playerImg}}" on-error-src="../images/defaultavatar.png">
+                <a class="" href="{{mCtrl.parseImageUrl(player.playerUrl)}}" target="_blank" >
+                  <img id="playerImg" ng-src="{{mCtrl.parseImageUrl(player.playerImg)}}" on-error-src="../images/defaultavatar.png">
+                </a>
                 <span class="card-title" id="player-name">{{player.playerName}}</span>
+              </div>
+              <div id="player-action" class="card-action">
+                Rating <b>{{player.rating}}</b><br/>
+                KPR <b>{{player.killsPerRound}}</b><br/>
+                DPR <b>{{player.deathsPerRound}}</b><br/>
+                Headshot <b>{{player.headshots}}</b><br/>
+                Contributed <b>{{player.roundsContributed}}</b>
               </div>
             </div>
           </div>

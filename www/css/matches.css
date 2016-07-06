@@ -4,7 +4,7 @@
 }
 
 #match-logo {
-  width: 45%;
+  width: 49%;
   display: inline;
 }
 
@@ -34,7 +34,6 @@
 }
 
 .match-modal div {
-  background-color: rgba(0,0,0,0.8);
   color: white;
 }
 
@@ -48,8 +47,10 @@
   padding: 5px 20px 5px 20px;
 }
 
-.match-modal-content {
-  padding: 75px 20px 75px 20px;
+#match-modal-content {
+  height: 100%;
+  padding: 15px 0px 0px 0px;
+  background-image: url('../images/csgoback.jpg');
   background-position: center;
   background-size: cover;
 }
@@ -76,11 +77,11 @@
   background-color: black;
   max-height: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 .team-logo {
   padding: 5px;
+  width: 60px;
   vertical-align: middle;
 }
 
@@ -95,4 +96,26 @@
   background-color: rgba(0,0,0,0.8);
   color: #FF8A00;
   font-size: 40px;
+}
+
+#vs {
+  position: absolute;
+  z-index: 5;
+  top: 40%;
+  left: 30%;
+  width: 30%;
+}
+
+#match-image {
+  background-color: #ecf0f1;
+  max-height: 100%;
+  height: 100%;
+}
+
+#match-title {
+}
+
+#player-action {
+  background-color: #ecf0f1;
+  color: black;
 }

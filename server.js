@@ -221,7 +221,7 @@ function scrapeMatch(matchHref) {
     setTimeout(function() {
       console.log(matchObj)
       saveMatch(matchObj);
-    },3000);
+    },5000);
 
 
   })
