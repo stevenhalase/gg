@@ -43,25 +43,51 @@ function scrape() {
       let initialSlice = nameContainer[0].next.data.slice(14);
       let initialSplit = initialSlice.split(' ');
       let teamName = '';
-      if (initialSplit.length === 41) {
+      let teamCount = 0;
+
+      // console.log('split: ', initialSplit, 'split length: ', initialSplit.length)
+      console.log(matchUrl);
+      if (initialSplit.length === 41 || initialSplit.length === 40 || initialSplit.length === 39) {
         teamName = initialSplit[0];
-      } else if (initialSplit.length === 40) {
-        teamName = initialSplit[0];
-      };
+        teamCount++
+      }
+      console.log('first successful team: ', teamName)
       teams.push({
         teamName : teamName
       });
-      initialSlice = nameContainer[0].next.next.next.data.slice(14);
-      initialSplit = initialSlice.split(' ');
-      teamName = '';
-      if (initialSplit.length === 25) {
-        teamName = initialSplit[0] + ' ' + initialSplit[1];
-      } else if (initialSplit.length === 24) {
-        teamName = initialSplit[0];
-      };
-      teams.push({
-        teamName : teamName
-      });
+      // console.log('url: ', matchUrl)
+
+      // console.log('teamName: ', teamName, 'teamname length: ', teamName.length)
+      if (nameContainer[0].next.next === null) {
+        console.log('noname')
+        if (initialSplit[1] === ' '){
+          secondSlice = nameContainer[0].next.data.slice(14).split(' ')[27];
+          console.log('team 2: ', secondSlice)
+          console.log('second successful team: ', secondSlice)
+        } else {
+          secondSlice = nameContainer[0].next.data.slice(14).split(' ')[28];
+          console.log('team 2: ', secondSlice)
+          console.log('second successful team: ', secondSlice)
+        }
+        teams.push({
+          teamName : secondSlice
+        });
+      } else {
+        // console.log('teamNameLength: ', teamName.length, 'container: ', nameContainer[0])
+        initialSlice = nameContainer[0].next.next.next.data.slice(14);
+        initialSplit = initialSlice.split(' ');
+        teamName = '';
+        if (initialSplit.length === 25) {
+          teamName = initialSplit[0] + ' ' + initialSplit[1];
+        } else if (initialSplit.length === 24) {
+          teamName = initialSplit[0];
+        };
+        console.log('second successful team: ', teamName)
+        teams.push({
+          teamName : teamName
+        });
+      }
+
       ///////////////////////////////////////////////////
       /////   Create initial match object to be filled in
       let matchObj = {
@@ -143,27 +169,30 @@ function scrape() {
       ///////////////////////////////
       /////  Pass completed match object on to be saved
       setTimeout(function() {
-        for (team of matchObj.teams) {
-          if (team.players.length < 5) {
-            console.log(team.teamName, team.players.length)
-            let numLess = 5 - team.players.length;
-            for (let l = 0; l < numLess; l++) {
-              console.log('adding player');
-              team.players.push({
-                playerName : 'Noname',
-                playerID: '',
-                playerImg: 'http://static.hltv.org/images/playerprofile/thumb/10209/400.jpeg?v=1',
-                playerUrl: '',
-                rating: '',
-                headshots: '',
-                killsPerRound: '',
-                deathsPerRound: '',
-                roundsContributed: ''
-              }); /// end push
-            }; /// end for loop
-          }; /// end if
-        }; /// end for loop
-        saveMatch(matchObj);
+        if(matchObj.teams[0].teamName !== '' && matchObj.teams[1].teamName !== '') {
+          for (team of matchObj.teams) {
+            if (team.players.length < 5) {
+              console.log(team.teamName, team.players.length)
+              let numLess = 5 - team.players.length;
+              for (let l = 0; l < numLess; l++) {
+                console.log('adding player');
+                team.players.push({
+                  playerName : 'Noname',
+                  playerID: '',
+                  playerImg: 'http://static.hltv.org/images/playerprofile/thumb/10209/400.jpeg?v=1',
+                  playerUrl: '',
+                  rating: '',
+                  headshots: '',
+                  killsPerRound: '',
+                  deathsPerRound: '',
+                  roundsContributed: ''
+                }); /// end push
+              }; /// end for loop
+            }; /// end if
+          }; /// end for loop
+          console.log('saved match!!')
+          saveMatch(matchObj);
+        } /// end if
       },20000);
     }); /// end request
   }; /// end scrapeMatch

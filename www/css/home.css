@@ -8,24 +8,71 @@
 
 #home-wrapper h1 {
   position: absolute;
-  left: 178px;
-  top: 212px;
+  left: 62%;
+  top: 44%;
+  transform: translate(-50%, -50%);
   font-size: 91px;
   font-weight: bolder;
 }
 
 #home-logo-icon {
   font-size: 400px;
-  top: 0;
-  left: -81px;
+  left: 50%;
+  top: 36%;
+  transform: translate(-50%, -50%);
   position: absolute;
 }
 
-#home-wrapper p {
+#desc {
   color: white;
   position: absolute;
   left: 176px;
   top: 328px;
   font-weight: bold;
   font-size: 20px;
+}
+
+.action {
+  text-align: center;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+}
+
+.action p {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.action a {
+  margin: 5px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  background: rgba(221,109,0,1);
+  background: -moz-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 10%, rgba(255,143,0,1) 10%, rgba(255,143,0,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(221,109,0,1)), color-stop(10%, rgba(221,109,0,1)), color-stop(10%, rgba(255,143,0,1)), color-stop(100%, rgba(255,143,0,1)));
+  background: -webkit-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 10%, rgba(255,143,0,1) 10%, rgba(255,143,0,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 10%, rgba(255,143,0,1) 10%, rgba(255,143,0,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 10%, rgba(255,143,0,1) 10%, rgba(255,143,0,1) 100%);
+  background: linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 10%, rgba(255,143,0,1) 10%, rgba(255,143,0,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd6d00', endColorstr='#ff8f00', GradientType=1 );
+}
+
+.action a:link {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.action a:hover {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.action i {
+  font-size: 12px;
 }

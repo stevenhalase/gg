@@ -35,4 +35,4 @@ app.listen(3000, function () {
 })
 
 //// Used to scrape data when needed
-// scraper.scrape();
+scraper.scrape();
