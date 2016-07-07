@@ -1,0 +1,19 @@
+.news-wrapper {
+  height: 75vh;
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  padding: 100px;
+}
+
+#news-action > a {
+  color: black;
+}
+
+#news-action > a:link {
+  color: black;
+}
+
+#news-action > a:hover {
+  color: black;
+}

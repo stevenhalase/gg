@@ -10,6 +10,11 @@ function ggAppRouter($stateProvider, $urlRouterProvider) {
       templateUrl : 'partials/home.html',
       controller  : 'homeCtrl as hCtrl'
     })
+    .state('login', {
+      url: '/login',
+      templateUrl : 'partials/login.html',
+      controller  : 'loginCtrl as lCtrl'
+    })
     .state('matches', {
       url: '/matches',
       templateUrl : 'partials/matches.html',
@@ -30,6 +35,11 @@ function ggAppRouter($stateProvider, $urlRouterProvider) {
       templateUrl : 'partials/channel.html',
       params : {channelswitch : null},
       controller  : 'channelCtrl as cCtrl'
+    })
+    .state('statistics', {
+      url : '/statistics',
+      templateUrl : 'partials/statistics.html',
+      controller  : 'statisticsCtrl as sCtrl'
     })
 
     $urlRouterProvider.otherwise('/')

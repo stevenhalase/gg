@@ -8,8 +8,8 @@
 
 #home-wrapper h1 {
   position: absolute;
-  left: 20%;
-  top: 34%;
+  left: 178px;
+  top: 212px;
   font-size: 91px;
   font-weight: bolder;
 }
@@ -24,8 +24,8 @@
 #home-wrapper p {
   color: white;
   position: absolute;
-  left: 20%;
-  top: 52%;
+  left: 176px;
+  top: 328px;
   font-weight: bold;
   font-size: 20px;
 }

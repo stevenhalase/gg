@@ -13,6 +13,7 @@
     <script src="./lib/Materialize/dist/js/materialize.js" charset="utf-8"></script>
     <link rel="stylesheet" href="./lib/Materialize/dist/css/materialize.css" charset="utf-8">
     <link rel="stylesheet" href="./css/materialize-icons.css" charset="utf-8">
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
     <script src="app.js" charset="utf-8"></script>
     <script src="./js/controllers/index-controller.js" charset="utf-8"></script>
     <script src="./js/controllers/home-controller.js" charset="utf-8"></script>
@@ -21,28 +22,20 @@
     <script src="./js/controllers/streams-controller.js" charset="utf-8"></script>
     <script src="./js/controllers/channel-controller.js" charset="utf-8"></script>
     <script src="./js/controllers/stream-factory.js" charset="utf-8"></script>
+    <script src="./js/controllers/login-controller.js" charset="utf-8"></script>
+    <script src="./js/controllers/statistics-controller.js" charset="utf-8"></script>
     <link rel="stylesheet" href="./css/app.css" charset="utf-8">
     <link rel="stylesheet" href="./css/home.css" charset="utf-8">
     <link rel="stylesheet" href="./css/streams.css" charset="utf-8">
     <link rel="stylesheet" href="./css/matches.css" charset="utf-8">
     <link rel="stylesheet" href="./css/channel.css" charset="utf-8">
+    <link rel="stylesheet" href="./css/news.css" charset="utf-8">
+    <link rel="stylesheet" href="./css/statistics.css" charset="utf-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
   </head>
   <body ng-controller="indexCtrl as iCtrl">
     <header>
-      <!-- <nav>
-       <div class="nav-wrapper green darken-2">
-         <a href="#" class="brand-logo right">GG - Gaming Central</a>
-         <ul id="nav-mobile" class="left hide-on-med-and-down">
-           <li><a href="sass.html">Home</a></li>
-           <li><a href="badges.html">Streams</a></li>
-           <li><a href="collapsible.html">News</a></li>
-           <li><a href="collapsible.html">Tournaments</a></li>
-           <li><a href="collapsible.html">Statistics</a></li>
-         </ul>
-       </div>
-     </nav> -->
      <div class="navbar-fixed">
         <nav>
          <div class="nav-wrapper amber darken-3">

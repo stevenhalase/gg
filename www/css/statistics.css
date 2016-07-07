@@ -1,0 +1,19 @@
+.stats-wrapper {
+  height: 75vh;
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  padding: 100px;
+}
+
+#stats-action > a {
+  color: black;
+}
+
+#stats-action > a:link {
+  color: black;
+}
+
+#stats-action > a:hover {
+  color: black;
+}

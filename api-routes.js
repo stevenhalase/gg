@@ -1,14 +1,14 @@
 const apiRouter = require('express').Router();
-const matchesController = require('./matches-controller');
+const csgoMatchesController = require('./csgo-matches-controller');
 
-apiRouter.route('/matches')
-    .get(matchesController.all)
-    .post(matchesController.create)
+apiRouter.route('/csgo-matches')
+    .get(csgoMatchesController.all)
+    .post(csgoMatchesController.create)
 
-apiRouter.route('/matches/:id')
-    .get(matchesController.single)
-    .put(matchesController.update)
-    .delete(matchesController.destroy)
+apiRouter.route('/csgo-matches/:id')
+    .get(csgoMatchesController.single)
+    .put(csgoMatchesController.update)
+    .delete(csgoMatchesController.destroy)
 
 module.exports = apiRouter;
 

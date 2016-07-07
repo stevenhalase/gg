@@ -1,8 +1,8 @@
-const Match = require('./match-model')
+const csgoMatch = require('./csgo-match-model')
 
-const matchesController = {
+const csgoMatchesController = {
     all : function(req, res) {
-        Match.find({}, function(error, matches) {
+        csgoMatch.find({}, function(error, matches) {
             if (error) { console.error('ERROR FINDING MATCHES!', error); }
             else {
                 res.json(matches);
@@ -10,7 +10,7 @@ const matchesController = {
         });
     },
     create : function(req, res) {
-        let newMatch = new Match(req.body);
+        let newMatch = new csgoMatch(req.body);
         newMatch.save(function(error, match) {
              if (error) { console.error('ERROR SAVING MATCH!', error); }
              else {
@@ -20,7 +20,7 @@ const matchesController = {
     },
     single : function(req, res) {
         let id = req.params.id;
-        Match.findById(id, function(error, match) {
+        csgoMatch.findById(id, function(error, match) {
             if (error) { console.error('ERROR FINDING MATCH!', error); }
              else {
                  res.json(match);
@@ -30,7 +30,7 @@ const matchesController = {
     update: function(req, res) {
         var id = req.params.id;
 
-        Match.findByIdAndUpdate(id, req.body, { new: true}, function(error, upMatch) {
+        csgoMatch.findByIdAndUpdate(id, req.body, { new: true}, function(error, upMatch) {
             if (error) { console.error('ERROR UPDATING MATCH!', error); }
              else {
                  res.json(upMatch);
@@ -40,7 +40,7 @@ const matchesController = {
     destroy: function(req, res) {
         var id = req.params.id;
 
-        Match.findByIdAndRemove(id, function(error) {
+        csgoMatch.findByIdAndRemove(id, function(error) {
             if (error) { console.error('ERROR UPDATING MATCH!', error, id); }
             res.json( {
                 result : "Success",
@@ -50,4 +50,4 @@ const matchesController = {
     }
 };
 
-module.exports = matchesController;
+module.exports = csgoMatchesController;
