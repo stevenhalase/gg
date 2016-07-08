@@ -8,6 +8,11 @@ function streamsController($http, $state, StreamFactory, $cookies) {
 
   sCtrl.title = 'Home Controller';
 
+  $(document).ready(function(){
+      // Materialize.toast(message, displayLength, className, completeCallback);
+      Materialize.toast('You can click on individual games to see available streams and watch them!', 5000) // 4000 is the duration of the toast
+   });
+
 
   // Initialize collapse button
   $(".button-collapse").sideNav();

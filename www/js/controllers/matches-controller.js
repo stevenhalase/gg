@@ -8,6 +8,11 @@ function matchesController($http, $sce, $scope) {
 
   mCtrl.title = 'Home Controller';
 
+  $(document).ready(function(){
+      // Materialize.toast(message, displayLength, className, completeCallback);
+      Materialize.toast('You can click on individual matches to see team players and stats!', 5000) // 4000 is the duration of the toast
+   });
+
   mCtrl.matches = [];
 
   $(document).ready(function(){
@@ -43,7 +48,7 @@ function matchesController($http, $sce, $scope) {
   //     mCtrl.matches = response.data;
   //   })
 
-  
+
 
   setTimeout(function() {
     // console.log(mCtrl.matches)

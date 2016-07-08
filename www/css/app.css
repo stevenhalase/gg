@@ -9,6 +9,20 @@ main {
   flex: 1 0 auto;
 }
 
+#mobile-demo {
+  background-color: #FF8A00;
+  color: #FF8A00;
+}
+
+#mobile-demo:hover{
+  background-color: #FF8A00;
+  color: black;
+}
+
+#mobile-demo {
+  color: #FF8A00;
+}
+
 #menu-button {
   display: inline;
   width: 100px;

@@ -11,6 +11,11 @@ function indexController($scope, $location) {
     $scope.location = $location.path().replace('/', '');
   });
 
+  $(document).ready(function(){
+      // Materialize.toast(message, displayLength, className, completeCallback);
+      Materialize.toast('Thanks for visiting! Be sure to check out the streams and matches!', 5000) // 4000 is the duration of the toast
+   });
+
 
 
   iCtrl.title = 'Index Controller';
