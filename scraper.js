@@ -96,7 +96,7 @@ function scrape() {
       };
       ///////////////////////////////
       /////   For each team in match
-      for(let i = 0; i < teams.length; i++) {
+      for(var i = 0; i < teams.length; i++) {
         ///////////////////////////////
         /////   Add team url based on team names
         var teamUrl = 'http://www.hltv.org/?pageid=152&query=' + teams[i].teamName + '&m=yes';
