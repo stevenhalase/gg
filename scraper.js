@@ -104,73 +104,75 @@ function scrape() {
         console.log(teams[i].teamUrl)
         ///////////////////////////////
         /////   Scrape team information
-        request(teams[i].teamUrl , function (error, response, html2) {
-          var $ = cheerio.load(html2);
-          var teamLogoSelect = $('img');
-          /////////////////////////
-          /////   Add team logo url
-          var teamLogoUrl = teamLogoSelect[0].attribs.src;
-          teams[i].teamLogoUrl = teamLogoUrl;
-          //////////////////////////////////////////////////
-          /////   Get and add player name, url, id and image
-          var playersSelect = $('td a');
-          teams[i].players = [];
-          for (var j = 0; j < playersSelect.length; j++) {
-            if(playersSelect[j].attribs.href.includes('/player/')) {
-              var playerUrl = 'http://www.hltv.org' + playersSelect[j].attribs.href + '&m=yes';
-              var playerName = playerUrl.split('-')[1].split('&')[0];
-              var playerID = playerUrl.split('-')[0].split('/')[4];
-              var playerImg = 'http://static.hltv.org/images/playerprofile/thumb/' + playerID + '/400.jpeg?v=1';
-              teams[i].players.push({
-                playerName : playerName,
-                playerID : playerID,
-                playerUrl : playerUrl,
-                playerImg : playerImg
-              });
+        (function(i) {
+          request(teams[i].teamUrl , function (error, response, html2) {
+            var $ = cheerio.load(html2);
+            var teamLogoSelect = $('img');
+            /////////////////////////
+            /////   Add team logo url
+            var teamLogoUrl = teamLogoSelect[0].attribs.src;
+            teams[i].teamLogoUrl = teamLogoUrl;
+            //////////////////////////////////////////////////
+            /////   Get and add player name, url, id and image
+            var playersSelect = $('td a');
+            teams[i].players = [];
+            for (var j = 0; j < playersSelect.length; j++) {
+              if(playersSelect[j].attribs.href.includes('/player/')) {
+                var playerUrl = 'http://www.hltv.org' + playersSelect[j].attribs.href + '&m=yes';
+                var playerName = playerUrl.split('-')[1].split('&')[0];
+                var playerID = playerUrl.split('-')[0].split('/')[4];
+                var playerImg = 'http://static.hltv.org/images/playerprofile/thumb/' + playerID + '/400.jpeg?v=1';
+                teams[i].players.push({
+                  playerName : playerName,
+                  playerID : playerID,
+                  playerUrl : playerUrl,
+                  playerImg : playerImg
+                });
+              };
+              if(playersSelect[j].attribs.href.includes('playerid')) {
+                var playerUrl = 'http://www.hltv.org' + playersSelect[j].attribs.href + '&m=yes';
+                var playerID = playerUrl.split('=')[2].split('&')[0];
+                var playerImg = 'http://static.hltv.org/images/playerprofile/thumb/' + playerID + '/400.jpeg?v=1';
+                teams[i].players.push({
+                  playerName : 'Noname',
+                  playerID : playerID,
+                  playerUrl : playerUrl,
+                  playerImg : playerImg
+                });
+              };
             };
-            if(playersSelect[j].attribs.href.includes('playerid')) {
-              var playerUrl = 'http://www.hltv.org' + playersSelect[j].attribs.href + '&m=yes';
-              var playerID = playerUrl.split('=')[2].split('&')[0];
-              var playerImg = 'http://static.hltv.org/images/playerprofile/thumb/' + playerID + '/400.jpeg?v=1';
-              teams[i].players.push({
-                playerName : 'Noname',
-                playerID : playerID,
-                playerUrl : playerUrl,
-                playerImg : playerImg
-              });
-            };
-          };
-          ///////////////////////////////////////////////////////////////////////////////////
-          /////   For each player in team get and add player stats (rating,kpr,dpr,headshots)
-          for (var k = 0; k < teams[i].players.length; k++) {
-            (function(k) {
-              // console.log(teams[i].players[k])
-              request(teams[i].players[k].playerUrl , function (error, response, html3) {
-                var $ = cheerio.load(html3);
-                if(teams[i].players[k].playerUrl.includes('/player/')) {
-                  var statContainer = $('.flexContainer');
-                  // console.log(statContainer)
-                  teams[i].players[k].rating = statContainer[0].children[1].children[0].children[0].data;
-                  teams[i].players[k].killsPerRound = statContainer[0].children[5].children[0].children[0].data;
-                  teams[i].players[k].deathsPerRound = statContainer[0].children[9].children[0].children[0].data;
-                  teams[i].players[k].headshots = statContainer[0].children[11].children[0].children[0].data;
-                  teams[i].players[k].roundsContributed = statContainer[0].children[13].children[0].children[0].data;
-                };
-                if(teams[i].players[k].playerUrl.includes('playerid')) {
-                  var nameContainer = $('.covSmallHeadline');
-                  teams[i].players[k].playerName = nameContainer[0].children[0].data;
-                  var statContainer = $('.covSmallHeadline');
-                  teams[i].players[k].rating = statContainer[30].children[0].data;
-                  teams[i].players[k].killsPerRound = statContainer[24].children[0].data;
-                  teams[i].players[k].deathsPerRound = statContainer[28].children[0].data;
-                  teams[i].players[k].headshots = statContainer[14].children[0].data;
-                  teams[i].players[k].roundsContributed = statContainer[26].children[0].data;
-                };
-              }); /// end request
-            })(k)
+            ///////////////////////////////////////////////////////////////////////////////////
+            /////   For each player in team get and add player stats (rating,kpr,dpr,headshots)
+            for (var k = 0; k < teams[i].players.length; k++) {
+              (function(k) {
+                // console.log(teams[i].players[k])
+                request(teams[i].players[k].playerUrl , function (error, response, html3) {
+                  var $ = cheerio.load(html3);
+                  if(teams[i].players[k].playerUrl.includes('/player/')) {
+                    var statContainer = $('.flexContainer');
+                    // console.log(statContainer)
+                    teams[i].players[k].rating = statContainer[0].children[1].children[0].children[0].data;
+                    teams[i].players[k].killsPerRound = statContainer[0].children[5].children[0].children[0].data;
+                    teams[i].players[k].deathsPerRound = statContainer[0].children[9].children[0].children[0].data;
+                    teams[i].players[k].headshots = statContainer[0].children[11].children[0].children[0].data;
+                    teams[i].players[k].roundsContributed = statContainer[0].children[13].children[0].children[0].data;
+                  };
+                  if(teams[i].players[k].playerUrl.includes('playerid')) {
+                    var nameContainer = $('.covSmallHeadline');
+                    teams[i].players[k].playerName = nameContainer[0].children[0].data;
+                    var statContainer = $('.covSmallHeadline');
+                    teams[i].players[k].rating = statContainer[30].children[0].data;
+                    teams[i].players[k].killsPerRound = statContainer[24].children[0].data;
+                    teams[i].players[k].deathsPerRound = statContainer[28].children[0].data;
+                    teams[i].players[k].headshots = statContainer[14].children[0].data;
+                    teams[i].players[k].roundsContributed = statContainer[26].children[0].data;
+                  };
+                }); /// end request
+              })(k)
 
-          }; /// end for loop
-        }); /// end request
+            }; /// end for loop
+          }); /// end request
+        })(i) /// end iife
       }; /// end for loop
       ///////////////////////////////
       /////  Pass completed match object on to be saved
