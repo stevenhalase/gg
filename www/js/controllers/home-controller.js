@@ -4,7 +4,7 @@ angular.module('ggApp')
 homeController.$inject = ['$state'];
 
 function homeController($state) {
-  const hCtrl = this;
+  var hCtrl = this;
 
   // setTimeout(function() {
   //   console.log('home: ', $state.includes('home'));

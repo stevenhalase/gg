@@ -1,13 +1,13 @@
-const express = require('express');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
-const path = require('path');
-const mongoose = require('mongoose');
-const app = express();
-const apiRouter = require('./api-routes')
-const User = require('./user-model')
-const csgoMatch = require('./csgo-match-model')
-const scraper = require('./scraper')
+var express = require('express');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
+var path = require('path');
+var mongoose = require('mongoose');
+var app = express();
+var apiRouter = require('./api-routes')
+var User = require('./user-model')
+var csgoMatch = require('./csgo-match-model')
+var scraper = require('./scraper')
 
 
 mongoose.connect('mongodb://localhost/csgoMatches', function(error) {

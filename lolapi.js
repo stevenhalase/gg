@@ -1,6 +1,6 @@
-const Gosu = require('gosugamers-api');
-const request = require('request');
-const cheerio = require('cheerio');
+var Gosu = require('gosugamers-api');
+var request = require('request');
+var cheerio = require('cheerio');
 
 // Gosu.fetchMatchUrls('lol', function(err, urls) {
 //   // console.log(urls);
@@ -9,7 +9,7 @@ const cheerio = require('cheerio');
 //   })
 // });
 
-let newLolMatch =  {
+var newLolMatch =  {
   url: 'http://www.gosugamers.net/lol/tournaments/10629-2016-na-lcs-summer/matches/119724-phoenix1-vs-apex-gaming',
   home:
    { name: 'Phoenix1',
@@ -37,8 +37,8 @@ console.log('teamURL: \n', newLolMatch.home.url)
 
 function scrape() {
   request('http://www.gosugamers.net/' + newLolMatch.home.url, function(error, response, html) {
-    let $ = cheerio.load(html);
-    let teamImage = $('div.teamImage');
+    var $ = cheerio.load(html);
+    var teamImage = $('div.teamImage');
     console.log(teamImage.children)
   })
 }

@@ -1,6 +1,6 @@
-const csgoMatch = require('./csgo-match-model')
+var csgoMatch = require('./csgo-match-model')
 
-const csgoMatchesController = {
+var csgoMatchesController = {
     all : function(req, res) {
         csgoMatch.find({}, function(error, matches) {
             if (error) { console.error('ERROR FINDING MATCHES!', error); }
@@ -10,7 +10,7 @@ const csgoMatchesController = {
         });
     },
     create : function(req, res) {
-        let newMatch = new csgoMatch(req.body);
+        var newMatch = new csgoMatch(req.body);
         newMatch.save(function(error, match) {
              if (error) { console.error('ERROR SAVING MATCH!', error); }
              else {
@@ -19,7 +19,7 @@ const csgoMatchesController = {
         });
     },
     single : function(req, res) {
-        let id = req.params.id;
+        var id = req.params.id;
         csgoMatch.findById(id, function(error, match) {
             if (error) { console.error('ERROR FINDING MATCH!', error); }
              else {

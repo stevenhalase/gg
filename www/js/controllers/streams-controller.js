@@ -4,7 +4,7 @@ angular.module('ggApp')
 streamsController.$inject = ['$http', '$state', 'StreamFactory', '$cookies'];
 
 function streamsController($http, $state, StreamFactory, $cookies) {
-  const sCtrl = this;
+  var sCtrl = this;
 
   sCtrl.title = 'Home Controller';
 
@@ -59,19 +59,21 @@ function streamsController($http, $state, StreamFactory, $cookies) {
 
       sCtrl.games = response.data.top;
 
-      for(let i = 0; i < sCtrl.games.length; i++) {
-        // console.log(game);
-        gameName = sCtrl.games[i].game.name;
-        gameName = gameName.split(' ');
-        gameName = gameName.join('+');
-        // console.log(gameName)
-        //
-        $http.get('https://api.twitch.tv/kraken/streams/?game=' + gameName + '&stream_type=live&limit=4')
-          .then(function(response) {
-            // console.log('Streams: ', response.data.streams);
-            sCtrl.games[i].streams = response.data.streams;
-          })
-      }
+        for(var i = 0; i < sCtrl.games.length; i++) {
+          // console.log(game);
+          gameName = sCtrl.games[i].game.name;
+          gameName = gameName.split(' ');
+          gameName = gameName.join('+');
+          // console.log(gameName)
+          (function(i) {
+            $http.get('https://api.twitch.tv/kraken/streams/?game=' + gameName + '&stream_type=live&limit=4')
+              .then(function(response) {
+                // console.log('Streams: ', response.data.streams);
+                sCtrl.games[i].streams = response.data.streams;
+              })
+          })(i);
+
+        }
 
     })
 

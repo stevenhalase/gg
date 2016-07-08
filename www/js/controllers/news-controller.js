@@ -4,7 +4,7 @@ angular.module('ggApp')
 newsController.$inject = [];
 
 function newsController() {
-  const nCtrl = this;
+  var nCtrl = this;
 
   nCtrl.title = 'News Controller';
   // Initialize collapse button

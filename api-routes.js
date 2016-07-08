@@ -1,5 +1,5 @@
-const apiRouter = require('express').Router();
-const csgoMatchesController = require('./csgo-matches-controller');
+var apiRouter = require('express').Router();
+var csgoMatchesController = require('./csgo-matches-controller');
 
 apiRouter.route('/csgo-matches')
     .get(csgoMatchesController.all)

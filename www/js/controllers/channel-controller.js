@@ -4,7 +4,7 @@ angular.module('ggApp')
 channelController.$inject = ['$stateParams', '$sce', 'StreamFactory', '$state', '$cookies'];
 
 function channelController($stateParams, $sce, StreamFactory, $state, $cookies) {
-  const cCtrl = this;
+  var cCtrl = this;
 
   cCtrl.title = 'Channel Controller';
   // Initialize collapse button

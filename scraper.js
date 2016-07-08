@@ -1,7 +1,7 @@
-const csgoMatch = require('./csgo-match-model')
-const request = require('request');
-const cheerio = require('cheerio');
-const firebase = require("firebase");
+var csgoMatch = require('./csgo-match-model')
+var request = require('request');
+var cheerio = require('cheerio');
+var firebase = require("firebase");
 
 ////////////////////////////////
 /////   FIREBASE INITIALIZATION
@@ -9,8 +9,8 @@ firebase.initializeApp({
   serviceAccount: "./gghub-ecb5b94a426c.json",
   databaseURL: "https://gghub-9103b.firebaseio.com"
 });
-const db = firebase.database();
-const csgoMatchesRef = db.ref('/csgoMatches')
+var db = firebase.database();
+var csgoMatchesRef = db.ref('/csgoMatches')
 
 ////////////////////////////////////////
 /////   Remove previous matches from DB
@@ -22,8 +22,8 @@ csgoMatch.remove({}, function(err) {
 /////   Begin match scraping
 function scrape() {
   request('http://www.hltv.org/matches?m=yes' , function (error, response, html) {
-    let $ = cheerio.load(html);
-    let matches = $('.well>a');
+    var $ = cheerio.load(html);
+    var matches = $('.well>a');
     for (let i = 0; i < matches.length; i++) {
       ////////////////////////////////////////////////
       /////   Send matches found to be further scraped
@@ -33,25 +33,25 @@ function scrape() {
   ///////////////////////////////////////////////
   /////   Scrapes teams, players and player stats
   function scrapeMatch(matchHref) {
-    let matchUrl = 'http://www.hltv.org' + matchHref + '&m=yes';
+    var matchUrl = 'http://www.hltv.org' + matchHref + '&m=yes';
     ////////////////////////////////////////
     /////   Scrape match page for team names
     request(matchUrl , function (error, response, rethtml) {
-      let teams = [];
-      let $ = cheerio.load(rethtml);
-      let nameContainer = $('.img-rounded');
-      let initialSlice = nameContainer[0].next.data.slice(14);
-      let initialSplit = initialSlice.split(' ');
-      let teamName = '';
-      let teamCount = 0;
+      var teams = [];
+      var $ = cheerio.load(rethtml);
+      var nameContainer = $('.img-rounded');
+      var initialSlice = nameContainer[0].next.data.slice(14);
+      var initialSplit = initialSlice.split(' ');
+      var teamName = '';
+      var teamCount = 0;
 
       // console.log('split: ', initialSplit, 'split length: ', initialSplit.length)
-      console.log(matchUrl);
+      // console.log(matchUrl);
       if (initialSplit.length === 41 || initialSplit.length === 40 || initialSplit.length === 39) {
         teamName = initialSplit[0];
         teamCount++
       }
-      console.log('first successful team: ', teamName)
+      // console.log('first successful team: ', teamName)
       teams.push({
         teamName : teamName
       });
@@ -59,15 +59,15 @@ function scrape() {
 
       // console.log('teamName: ', teamName, 'teamname length: ', teamName.length)
       if (nameContainer[0].next.next === null) {
-        console.log('noname')
+        // console.log('noname')
         if (initialSplit[1] === ' '){
           secondSlice = nameContainer[0].next.data.slice(14).split(' ')[27];
-          console.log('team 2: ', secondSlice)
-          console.log('second successful team: ', secondSlice)
+          // console.log('team 2: ', secondSlice)
+          // console.log('second successful team: ', secondSlice)
         } else {
           secondSlice = nameContainer[0].next.data.slice(14).split(' ')[28];
-          console.log('team 2: ', secondSlice)
-          console.log('second successful team: ', secondSlice)
+          // console.log('team 2: ', secondSlice)
+          // console.log('second successful team: ', secondSlice)
         }
         teams.push({
           teamName : secondSlice
@@ -82,7 +82,7 @@ function scrape() {
         } else if (initialSplit.length === 24) {
           teamName = initialSplit[0];
         };
-        console.log('second successful team: ', teamName)
+        // console.log('second successful team: ', teamName)
         teams.push({
           teamName : teamName
         });
@@ -90,7 +90,7 @@ function scrape() {
 
       ///////////////////////////////////////////////////
       /////   Create initial match object to be filled in
-      let matchObj = {
+      var matchObj = {
         matchUrl : matchUrl,
         teams : teams
       };
@@ -99,27 +99,28 @@ function scrape() {
       for(let i = 0; i < teams.length; i++) {
         ///////////////////////////////
         /////   Add team url based on team names
-        let teamUrl = 'http://www.hltv.org/?pageid=152&query=' + teams[i].teamName + '&m=yes';
+        var teamUrl = 'http://www.hltv.org/?pageid=152&query=' + teams[i].teamName + '&m=yes';
         teams[i].teamUrl = teamUrl;
+        console.log(teams[i].teamUrl)
         ///////////////////////////////
         /////   Scrape team information
         request(teams[i].teamUrl , function (error, response, html2) {
-          let $ = cheerio.load(html2);
-          let teamLogoSelect = $('img');
+          var $ = cheerio.load(html2);
+          var teamLogoSelect = $('img');
           /////////////////////////
           /////   Add team logo url
-          let teamLogoUrl = teamLogoSelect[0].attribs.src;
+          var teamLogoUrl = teamLogoSelect[0].attribs.src;
           teams[i].teamLogoUrl = teamLogoUrl;
           //////////////////////////////////////////////////
           /////   Get and add player name, url, id and image
-          let playersSelect = $('td a');
+          var playersSelect = $('td a');
           teams[i].players = [];
-          for (let j = 0; j < playersSelect.length; j++) {
+          for (var j = 0; j < playersSelect.length; j++) {
             if(playersSelect[j].attribs.href.includes('/player/')) {
-              let playerUrl = 'http://www.hltv.org' + playersSelect[j].attribs.href + '&m=yes';
-              let playerName = playerUrl.split('-')[1].split('&')[0];
-              let playerID = playerUrl.split('-')[0].split('/')[4];
-              let playerImg = 'http://static.hltv.org/images/playerprofile/thumb/' + playerID + '/400.jpeg?v=1';
+              var playerUrl = 'http://www.hltv.org' + playersSelect[j].attribs.href + '&m=yes';
+              var playerName = playerUrl.split('-')[1].split('&')[0];
+              var playerID = playerUrl.split('-')[0].split('/')[4];
+              var playerImg = 'http://static.hltv.org/images/playerprofile/thumb/' + playerID + '/400.jpeg?v=1';
               teams[i].players.push({
                 playerName : playerName,
                 playerID : playerID,
@@ -128,9 +129,9 @@ function scrape() {
               });
             };
             if(playersSelect[j].attribs.href.includes('playerid')) {
-              let playerUrl = 'http://www.hltv.org' + playersSelect[j].attribs.href + '&m=yes';
-              let playerID = playerUrl.split('=')[2].split('&')[0];
-              let playerImg = 'http://static.hltv.org/images/playerprofile/thumb/' + playerID + '/400.jpeg?v=1';
+              var playerUrl = 'http://www.hltv.org' + playersSelect[j].attribs.href + '&m=yes';
+              var playerID = playerUrl.split('=')[2].split('&')[0];
+              var playerImg = 'http://static.hltv.org/images/playerprofile/thumb/' + playerID + '/400.jpeg?v=1';
               teams[i].players.push({
                 playerName : 'Noname',
                 playerID : playerID,
@@ -141,28 +142,33 @@ function scrape() {
           };
           ///////////////////////////////////////////////////////////////////////////////////
           /////   For each player in team get and add player stats (rating,kpr,dpr,headshots)
-          for (let k = 0; k < teams[i].players.length; k++) {
-            request(teams[i].players[k].playerUrl , function (error, response, html3) {
-              let $ = cheerio.load(html3);
-              if(teams[i].players[k].playerUrl.includes('/player/')) {
-                let statContainer = $('.flexContainer');
-                teams[i].players[k].rating = statContainer[0].children[1].children[0].children[0].data;
-                teams[i].players[k].killsPerRound = statContainer[0].children[5].children[0].children[0].data;
-                teams[i].players[k].deathsPerRound = statContainer[0].children[9].children[0].children[0].data;
-                teams[i].players[k].headshots = statContainer[0].children[11].children[0].children[0].data;
-                teams[i].players[k].roundsContributed = statContainer[0].children[13].children[0].children[0].data;
-              };
-              if(teams[i].players[k].playerUrl.includes('playerid')) {
-                let nameContainer = $('.covSmallHeadline');
-                teams[i].players[k].playerName = nameContainer[0].children[0].data;
-                let statContainer = $('.covSmallHeadline');
-                teams[i].players[k].rating = statContainer[30].children[0].data;
-                teams[i].players[k].killsPerRound = statContainer[24].children[0].data;
-                teams[i].players[k].deathsPerRound = statContainer[28].children[0].data;
-                teams[i].players[k].headshots = statContainer[14].children[0].data;
-                teams[i].players[k].roundsContributed = statContainer[26].children[0].data;
-              };
-            }); /// end request
+          for (var k = 0; k < teams[i].players.length; k++) {
+            (function(k) {
+              // console.log(teams[i].players[k])
+              request(teams[i].players[k].playerUrl , function (error, response, html3) {
+                var $ = cheerio.load(html3);
+                if(teams[i].players[k].playerUrl.includes('/player/')) {
+                  var statContainer = $('.flexContainer');
+                  // console.log(statContainer)
+                  teams[i].players[k].rating = statContainer[0].children[1].children[0].children[0].data;
+                  teams[i].players[k].killsPerRound = statContainer[0].children[5].children[0].children[0].data;
+                  teams[i].players[k].deathsPerRound = statContainer[0].children[9].children[0].children[0].data;
+                  teams[i].players[k].headshots = statContainer[0].children[11].children[0].children[0].data;
+                  teams[i].players[k].roundsContributed = statContainer[0].children[13].children[0].children[0].data;
+                };
+                if(teams[i].players[k].playerUrl.includes('playerid')) {
+                  var nameContainer = $('.covSmallHeadline');
+                  teams[i].players[k].playerName = nameContainer[0].children[0].data;
+                  var statContainer = $('.covSmallHeadline');
+                  teams[i].players[k].rating = statContainer[30].children[0].data;
+                  teams[i].players[k].killsPerRound = statContainer[24].children[0].data;
+                  teams[i].players[k].deathsPerRound = statContainer[28].children[0].data;
+                  teams[i].players[k].headshots = statContainer[14].children[0].data;
+                  teams[i].players[k].roundsContributed = statContainer[26].children[0].data;
+                };
+              }); /// end request
+            })(k)
+
           }; /// end for loop
         }); /// end request
       }; /// end for loop
@@ -173,8 +179,8 @@ function scrape() {
           for (team of matchObj.teams) {
             if (team.players.length < 5) {
               console.log(team.teamName, team.players.length)
-              let numLess = 5 - team.players.length;
-              for (let l = 0; l < numLess; l++) {
+              var numLess = 5 - team.players.length;
+              for (var l = 0; l < numLess; l++) {
                 console.log('adding player');
                 team.players.push({
                   playerName : 'Noname',
@@ -200,13 +206,13 @@ function scrape() {
 
   function saveMatch(matchObj) {
     /// FIREBASE PUSH
-    csgoMatchesRef.push().set(matchObj);
-    /// MONGODB SAVE
-    // let newMatch = new csgoMatch(matchObj);
-    // newMatch.save(function(error, nmatch) {
-    //   if (error) { console.error('ERROR SAVING MATCH!', error) }
-    //   else { console.log('Match Saved') };
-    // });
+    // csgoMatchesRef.push().set(matchObj);
+    // MONGODB SAVE
+    var newMatch = new csgoMatch(matchObj);
+    newMatch.save(function(error, nmatch) {
+      if (error) { console.error('ERROR SAVING MATCH!', error) }
+      else { console.log('Match Saved') };
+    });
   }; /// end saveMatch
 } /// end scrape
 

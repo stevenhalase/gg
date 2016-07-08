@@ -4,7 +4,7 @@ angular.module('ggApp')
 loginController.$inject = ['$http', '$state'];
 
 function loginController($http, $state) {
-  const lCtrl = this;
+  var lCtrl = this;
 
   // setTimeout(function() {
   //   console.log('home: ', $state.includes('home'));
@@ -17,7 +17,7 @@ function loginController($http, $state) {
   //$('.collapsible').collapsible();lCtrl.submitLogin(username,password)
 
   lCtrl.submitLogin = function (username,password) {
-    let user = {"username": username, "password" : password}
+    var user = {"username": username, "password" : password}
     console.log('sending')
     $http.post('/login', user)
       .then(
@@ -30,7 +30,7 @@ function loginController($http, $state) {
   }
 
   lCtrl.submitSignUp = function (username,password) {
-    let user = {"username": username, "password" : password}
+    var user = {"username": username, "password" : password}
     console.log('sending')
     $http.post('/signup', user)
       .then(

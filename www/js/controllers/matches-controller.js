@@ -4,7 +4,7 @@ angular.module('ggApp')
 matchesController.$inject = ['$http','$sce', '$scope'];
 
 function matchesController($http, $sce, $scope) {
-  const mCtrl = this;
+  var mCtrl = this;
 
   mCtrl.title = 'Home Controller';
 
@@ -41,12 +41,12 @@ function matchesController($http, $sce, $scope) {
     $('#' + modalID).closeModal();
   }
 
-  /// Local MONGODB API Call
-  // $http.get('/api/v1/csgo-matches/')
-  //   .then(function(response) {
-  //     console.log('Internal API response: ', response);
-  //     mCtrl.matches = response.data;
-  //   })
+  // Local MONGODB API Call
+  $http.get('/api/v1/csgo-matches/')
+    .then(function(response) {
+      console.log('Internal API response: ', response);
+      mCtrl.matches = response.data;
+    })
 
 
 

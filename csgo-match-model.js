@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
-const csgoMatchSchema = mongoose.Schema({
+var csgoMatchSchema = mongoose.Schema({
     matchUrl:    String,
     teams:       Array
 });
 
-const csgoMatch = mongoose.model('csgomatch', csgoMatchSchema);
+var csgoMatch = mongoose.model('csgomatch', csgoMatchSchema);
 
 module.exports = csgoMatch;

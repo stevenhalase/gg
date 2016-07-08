@@ -4,7 +4,7 @@ angular.module('ggApp')
 statisticsController.$inject = [];
 
 function statisticsController() {
-  const sCtrl = this;
+  var sCtrl = this;
 
   sCtrl.title = 'News Controller';
   // Initialize collapse button
