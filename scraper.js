@@ -5,12 +5,12 @@ var firebase = require("firebase");
 
 ////////////////////////////////
 /////   FIREBASE INITIALIZATION
-firebase.initializeApp({
-  serviceAccount: "./gghub-ecb5b94a426c.json",
-  databaseURL: "https://gghub-9103b.firebaseio.com"
-});
-var db = firebase.database();
-var csgoMatchesRef = db.ref('/csgoMatches')
+// firebase.initializeApp({
+//   serviceAccount: "./gghub-ecb5b94a426c.json",
+//   databaseURL: "https://gghub-9103b.firebaseio.com"
+// });
+// var db = firebase.database();
+// var csgoMatchesRef = db.ref('/csgoMatches')
 
 ////////////////////////////////////////
 /////   Remove previous matches from DB
@@ -24,7 +24,7 @@ function scrape() {
   request('http://www.hltv.org/matches?m=yes' , function (error, response, html) {
     var $ = cheerio.load(html);
     var matches = $('.well>a');
-    for (let i = 0; i < matches.length; i++) {
+    for (var i = 0; i < matches.length; i++) {
       ////////////////////////////////////////////////
       /////   Send matches found to be further scraped
       scrapeMatch(matches[i].attribs.href);
