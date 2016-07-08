@@ -101,7 +101,6 @@ function scrape() {
         /////   Add team url based on team names
         var teamUrl = 'http://www.hltv.org/?pageid=152&query=' + teams[i].teamName + '&m=yes';
         teams[i].teamUrl = teamUrl;
-        console.log(teams[i].teamUrl)
         ///////////////////////////////
         /////   Scrape team information
         (function(i) {
