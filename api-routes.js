@@ -11,5 +11,3 @@ apiRouter.route('/csgo-matches/:id')
     .delete(csgoMatchesController.destroy)
 
 module.exports = apiRouter;
-
-// console.log(Date.now() + 60*60*24*7)

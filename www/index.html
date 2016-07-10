@@ -45,6 +45,7 @@
     <script src="./js/controllers/stream-factory.js" charset="utf-8"></script>
     <script src="./js/controllers/login-controller.js" charset="utf-8"></script>
     <script src="./js/controllers/statistics-controller.js" charset="utf-8"></script>
+    <script src="./js/controllers/admin-controller.js" charset="utf-8"></script>
     <link rel="stylesheet" href="./css/app.css" charset="utf-8">
     <link rel="stylesheet" href="./css/home.css" charset="utf-8">
     <link rel="stylesheet" href="./css/streams.css" charset="utf-8">
@@ -52,6 +53,7 @@
     <link rel="stylesheet" href="./css/channel.css" charset="utf-8">
     <link rel="stylesheet" href="./css/news.css" charset="utf-8">
     <link rel="stylesheet" href="./css/statistics.css" charset="utf-8">
+    <link rel="stylesheet" href="./css/admin.css" charset="utf-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
   </head>
@@ -61,16 +63,8 @@
         <nav>
          <div class="nav-wrapper amber darken-3">
            <a ui-sref="home"><i id="logo-icon" class="material-icons">gamepad</i></a>
-           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-           <ul class="right hide-on-med-and-down">
-             <li ng-class="{'active': location===''}"><a ui-sref="home" >Home</a></li>
-             <li ng-class="{'active': location==='streams'}"><a ui-sref="streams">Streams</a></li>
-             <li ng-class="{'active': location==='news'}"><a ui-sref="news">News</a></li>
-             <li ng-class="{'active': location==='matches'}"><a ui-sref="matches">Matches</a></li>
-             <li ng-class="{'active': location==='statistics'}"><a ui-sref="statistics">Statistics</a></li>
-           </ul>
-           <ul class="right side-nav" id="mobile-demo">
-             <li ng-class="{'active': location===''}"><a ui-sref="home" >Home</a></li>
+           <ul class="right">
+             <li ng-class="{'active': location===''}"><a ui-sref="home">Home</a></li>
              <li ng-class="{'active': location==='streams'}"><a ui-sref="streams">Streams</a></li>
              <li ng-class="{'active': location==='news'}"><a ui-sref="news">News</a></li>
              <li ng-class="{'active': location==='matches'}"><a ui-sref="matches">Matches</a></li>

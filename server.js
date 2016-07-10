@@ -5,12 +5,12 @@ var path = require('path');
 var mongoose = require('mongoose');
 var app = express();
 var apiRouter = require('./api-routes')
-var User = require('./user-model')
+var userRouter = require('./user-routes')
 var csgoMatch = require('./csgo-match-model')
 var scraper = require('./scraper')
 
 
-mongoose.connect('mongodb://localhost/csgoMatches', function(error) {
+mongoose.connect('mongodb://localhost/gg', function(error) {
     if (error) {
         console.error(error);
     } else {
@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/v1', apiRouter);
+app.use('/users', userRouter);
 
 app.use(express.static(path.join(__dirname, './www')))
 

@@ -1,0 +1,55 @@
+.admin-wrapper {
+}
+
+#match-collection {
+}
+
+#admin-modal-content {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+#match_info {
+  height: 250px;
+  width: 80%;
+}
+
+#team_one {
+  width: 80%;
+}
+
+#team_two {
+  width: 80%;
+}
+
+#db-preview {
+  background-color: #F9F2F4;
+  padding: 3px;
+  border: 1px solid #f7dbe3;
+}
+
+.team-logo {
+  background-color: #cbcbcb;
+}
+
+h4 {
+  text-align: center;
+}
+
+.collection-item img {
+  width: 75px;
+  height: 75px;
+}
+
+.title {
+  font-size: 12px;
+}
+
+.collection-item p {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.team-buttons {
+  text-align: center;
+}

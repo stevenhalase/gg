@@ -19,14 +19,7 @@ function indexController($scope, $location) {
 
 
   iCtrl.title = 'Index Controller';
-  // Initialize collapse button
-  $(".button-collapse").sideNav();
-  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-  //$('.collapsible').collapsible();
-
-  iCtrl.toggleNav = function() {
-    $("#menu-button").sideNav();
-  }
+  
 
   /// FIREBASE Initialization
   // Set the configuration for your app

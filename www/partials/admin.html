@@ -1,0 +1,253 @@
+<div class="admin-wrapper">
+  <div class="fixed-action-btn horizontal" style="">
+     <a class="btn-floating btn-large amber darken-3" ng-click="aCtrl.clearForNew()">
+       <i class="large material-icons">mode_edit</i>
+     </a>
+     <ul>
+       <li><a class="btn-floating green"><i class="material-icons" ng-click="aCtrl.saveMatch()">done</i></a></li>
+       <li><a class="btn-floating blue"><i class="material-icons" href="#/admin#team_one" ng-click="aCtrl.openModal('team_two')">group</i></a></li>
+       <li><a class="btn-floating blue"><i class="material-icons" href="#/admin#team_one" ng-click="aCtrl.openModal('team_one')">group</i></a></li>
+       <li><a class="btn-floating red"><i class="material-icons" href="#/admin#match_info" ng-click="aCtrl.clearForNew(); aCtrl.openModal('match_info')">label</i></a></li>
+     </ul>
+   </div>
+
+  <div class="row">
+    <div class="col s8"><h4>Current Matches</h4></div>
+    <div class="col s4"><h4>Preview</h4></div>
+  <div class="row">
+    <div class="col s8">
+       <ul class="collection" id="match-collection">
+         <li class="collection-item" ng-repeat="match in aCtrl.matches">
+           <div class="row">
+             <div class="col s3">
+               <img ng-src="{{match.teams[0].teamLogoUrl}}" alt="" class="circle team-logo">
+               <img ng-src="{{match.teams[1].teamLogoUrl}}" alt="" class="circle team-logo">
+             </div>
+             <div class="col s9">
+               <span class="title">{{match.matchUrl}}</span>
+               <p>{{match.teams[0].teamName}} <br>
+                  {{match.teams[1].teamName}}
+               </p>
+               <span class="secondary-content">
+                 <a class="btn-floating green" ng-click="aCtrl.match = match"><i class="material-icons">visibility</i></a>
+                 <a class="btn-floating blue" ng-click="aCtrl.editMatch(match); aCtrl.openModal('match_info')"><i class="material-icons">mode_edit</i></a>
+                 <a class="btn-floating red" ng-click="aCtrl.removeMatch(match._id)"><i class="material-icons">clear</i></a>
+               </span>
+             </div>
+           </div>
+         </li>
+       </ul>
+     </div>
+     <div class="col s4" id="db-preview">
+       <code class="">
+         {<br/>
+           &nbsp;id : {{aCtrl.match._id}},<br/>
+           &nbsp;matchUrl : {{aCtrl.match.matchUrl}},<br/>
+           &nbsp;teams : [{<br/>
+             &nbsp;&nbsp;teamName : {{aCtrl.match.teams[0].teamName}},<br/>
+             &nbsp;&nbsp;teamUrl : {{aCtrl.match.teams[1].teamUrl}}<br/>
+             &nbsp;&nbsp;players : [<br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;{ playerName : {{aCtrl.match.teams[0].players[0].playerName}} },<br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;{ playerName : {{aCtrl.match.teams[0].players[1].playerName}} },<br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;{ playerName : {{aCtrl.match.teams[0].players[2].playerName}} },<br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;{ playerName : {{aCtrl.match.teams[0].players[3].playerName}} },<br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;{ playerName : {{aCtrl.match.teams[0].players[4].playerName}} }<br/>
+             &nbsp;&nbsp;}]<br/>
+           &nbsp;},<br/>
+           &nbsp;{<br/>
+             &nbsp;&nbsp;teamName : {{aCtrl.match.teams[1].teamName}},<br/>
+             &nbsp;&nbsp;teamUrl : {{aCtrl.match.teams[1].teamUrl}}<br/>
+             &nbsp;&nbsp;players : [<br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;{ playerName : {{aCtrl.match.teams[1].players[0].playerName}} },<br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;{ playerName : {{aCtrl.match.teams[1].players[1].playerName}} },<br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;{ playerName : {{aCtrl.match.teams[1].players[2].playerName}} },<br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;{ playerName : {{aCtrl.match.teams[1].players[3].playerName}} },<br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;{ playerName : {{aCtrl.match.teams[1].players[4].playerName}} }<br/>
+             &nbsp;&nbsp;}]<br/>
+           &nbsp;}]<br/>
+         }
+       </code>
+     </div>
+   </div>
+
+   <!-- Modal Structure -->
+   <div id="match_info" class="modal">
+     <div id="admin-modal-content" class="modal-content">
+       <p class="center"><b>Match: '{{aCtrl.match.matchUrl || ''}}'</b></p>
+       <div class="row">
+         <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="match_url" type="text" class="validate" ng-model="aCtrl.match.matchUrl">
+              <label for="match_url" ng-class="{active : aCtrl.match.matchUrl}">Match URL</label>
+            </div>
+          </div>
+         </form>
+       </div>
+     </div>
+     <div class="modal-footer">
+       <a class="waves-effect waves-light btn amber darken-3" ng-click="aCtrl.closeModal('match_info');aCtrl.openModal('team_one')">Next</a>
+     </div>
+   </div>
+
+   <!-- Modal Structure -->
+   <div id="team_one" class="modal">
+     <div id="admin-modal-content" class="modal-content">
+       <p class="center"><b>Team: '{{aCtrl.match.teams[0].teamName || 'One'}}'</b></p>
+       <div class="row">
+         <div class="input-field col s12">
+           <input id="team_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[0].teamName">
+           <label for="team_one_name" ng-class="{active : aCtrl.match.teams[0].teamName}">Team One Name</label>
+         </div>
+       </div>
+       <div class="row">
+         <div class="input-field col s12">
+           <input id="team_one_url" type="text" class="validate" ng-model="aCtrl.match.teams[0].teamUrl">
+           <label for="team_one_url" ng-class="{active : aCtrl.match.teams[0].teamUrl}">Team One URL</label>
+         </div>
+       </div>
+       <div class="row">
+         <div class="input-field col s12">
+           <input id="team_one_logo" type="text" class="validate" ng-model="aCtrl.match.teams[0].teamLogoUrl">
+           <label for="team_one_logo" ng-class="{active : aCtrl.match.teams[0].teamLogoUrl}">Team One Logo</label>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col s2" ng-repeat="player in aCtrl.match.teams[0].players track by $index">
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[0].players[$index].playerName">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[0].players[$index].playerName}">Name</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[0].players[$index].playerUrl">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[0].players[$index].playerUrl}">URL</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[0].players[$index].playerImage">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[0].players[$index].playerImage}">Image</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[0].players[$index].playerID">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[0].players[$index].playerID}">ID</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[0].players[$index].rating">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[0].players[$index].rating}">Rating</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[0].players[$index].killsPerRound">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[0].players[$index].killsPerRound}">KPR</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[0].players[$index].deathsPerRound">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[0].players[$index].deathsPerRound}">DPR</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[0].players[$index].headshots">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[0].players[$index].headshots}">Headshots</label>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="modal-footer">
+       <a class="waves-effect waves-light btn amber darken-3" ng-click="aCtrl.closeModal('team_one');aCtrl.openModal('team_two')">Next</a>
+     </div>
+   </div>
+
+   <!-- Modal Structure -->
+   <div id="team_two" class="modal">
+     <div id="admin-modal-content" class="modal-content">
+       <p class="center"><b>Team: '{{aCtrl.match.teams[1].teamName || 'Two'}}'</b></p>
+       <div class="row">
+         <div class="input-field col s12">
+           <input id="team_two_name" type="text" class="validate" ng-model="aCtrl.match.teams[1].teamName">
+           <label for="team_two_name" ng-class="{active : aCtrl.match.teams[1].teamName}">Team Two Name</label>
+         </div>
+       </div>
+       <div class="row">
+         <div class="input-field col s12">
+           <input id="team_two_url" type="text" class="validate" ng-model="aCtrl.match.teams[1].teamUrl">
+           <label for="team_two_url" ng-class="{active : aCtrl.match.teams[1].teamUrl}">Team Two URL</label>
+         </div>
+       </div>
+       <div class="row">
+         <div class="input-field col s12">
+           <input id="team_two_logo" type="text" class="validate" ng-model="aCtrl.match.teams[1].teamLogoUrl">
+           <label for="team_two_logo" ng-class="{active : aCtrl.match.teams[1].teamLogoUrl}">Team Two Logo</label>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col s2" ng-repeat="player in aCtrl.match.teams[1].players track by $index">
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[1].players[$index].playerName">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[1].players[$index].playerName}">Name</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[1].players[$index].playerUrl">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[1].players[$index].playerUrl}">URL</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[1].players[$index].playerImage">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[1].players[$index].playerImage}">Image</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[1].players[$index].playerID">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[1].players[$index].playerID}">ID</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[1].players[$index].rating">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[1].players[$index].rating}">Rating</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[1].players[$index].killsPerRound">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[1].players[$index].killsPerRound}">KPR</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[1].players[$index].deathsPerRound">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[1].players[$index].deathsPerRound}">DPR</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="team_one_player_one_name" type="text" class="validate" ng-model="aCtrl.match.teams[1].players[$index].headshots">
+               <label for="team_one_player_one_name" ng-class="{active : aCtrl.match.teams[1].players[$index].headshots}">Headshots</label>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="modal-footer">
+       <a class="waves-effect waves-light btn amber darken-3" ng-click="aCtrl.closeModal('team_two');aCtrl.saveMatch()">Save Match</a>
+     </div>
+   </div>
+
+</div>
