@@ -1,4 +1,5 @@
-.admin-wrapper {
+#admin-wrapper {
+  background-color: #ecf0f1;
 }
 
 #match-collection {
@@ -28,12 +29,22 @@
   border: 1px solid #f7dbe3;
 }
 
+#logos-container {
+  margin-top: 4%;
+}
+
 .admin-team-logo {
   background-color: #cbcbcb;
+  border: 2px solid #333;
 }
 
 h4 {
   text-align: center;
+  color: black;
+}
+
+.collection {
+  margin-top: 0;
 }
 
 .collection-item img {

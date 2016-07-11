@@ -3,16 +3,17 @@ var User = require('./user-model')
 var UserController = {
     all : function(req, res) {
         User.find({}, function(error, matches) {
-            if (error) { console.error('ERROR FINDING MATCHES!', error); }
+            if (error) { console.error('ERROR FINDING USERS!', error); }
             else {
+              console.log('ITS GOING THROUGH HERE!')
                 res.json(matches);
             }
         });
     },
     create : function(req, res) {
         var newMatch = new User(req.body);
-        newMatch.save(function(error, match) {
-             if (error) { console.error('ERROR SAVING MATCH!', error); }
+        User.save(function(error, user) {
+             if (error) { console.error('ERROR SAVING USER!', error); }
              else {
                  res.json(match);
              }
@@ -21,7 +22,7 @@ var UserController = {
     single : function(req, res) {
         var id = req.params.id;
         User.findById(id, function(error, match) {
-            if (error) { console.error('ERROR FINDING MATCH!', error); }
+            if (error) { console.error('ERROR FINDING USER!', error); }
              else {
                  res.json(match);
              }
@@ -31,7 +32,7 @@ var UserController = {
         var id = req.params.id;
 
         User.findByIdAndUpdate(id, req.body, { new: true}, function(error, upMatch) {
-            if (error) { console.error('ERROR UPDATING MATCH!', error); }
+            if (error) { console.error('ERROR UPDATING USER!', error); }
              else {
                  res.json(upMatch);
              }
@@ -41,12 +42,31 @@ var UserController = {
         var id = req.params.id;
 
         User.findByIdAndRemove(id, function(error) {
-            if (error) { console.error('ERROR UPDATING MATCH!', error, id); }
+            if (error) { console.error('ERROR UPDATING USER!', error, id); }
             res.json( {
                 result : "Success",
                 matchRemoved : id
             })
         })
+    },
+    upsert : function(req, res){
+        if(req.params.googleId){
+            // Update
+            User.update({googleId : req.params.id}, req.body, function(err, updated){
+                if(err){
+                   return res.send(err)
+                }
+                res.send(updated)
+            })
+        }
+        else{
+            // Create
+            var newUser = new User(req.body)
+
+            newUser.save(function(err, doc){
+                res.send(doc)
+            })
+        }
     }
 };
 

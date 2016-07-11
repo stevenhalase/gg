@@ -1,9 +1,9 @@
 angular.module('ggApp')
   .controller('streamsCtrl', streamsController);
 
-streamsController.$inject = ['$http', '$state', 'StreamFactory', '$cookies'];
+streamsController.$inject = ['$http', '$state', 'StreamFactory', 'userFactory', '$cookies'];
 
-function streamsController($http, $state, StreamFactory, $cookies) {
+function streamsController($http, $state, StreamFactory, userFactory, $cookies) {
   var sCtrl = this;
 
   sCtrl.title = 'Home Controller';
@@ -38,6 +38,8 @@ function streamsController($http, $state, StreamFactory, $cookies) {
   }
 
   sCtrl.changeChannel = function(streamObj,modalID) {
+    console.log('loggedin user: ', userFactory.currentUser);
+    userFactory.currentUser.recentChannels.push(streamObj);
     $cookies.putObject("currentChannel", streamObj);
     // console.log(streamObj);
     $state.go('channel');

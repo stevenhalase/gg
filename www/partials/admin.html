@@ -1,4 +1,4 @@
-<div class="admin-wrapper">
+<div id="admin-wrapper">
   <div class="fixed-action-btn horizontal" style="">
      <a class="btn-floating btn-large amber darken-3" ng-click="aCtrl.clearForNew()">
        <i class="large material-icons">mode_edit</i>
@@ -19,7 +19,7 @@
        <ul class="collection" id="match-collection">
          <li class="collection-item" ng-repeat="match in aCtrl.matches">
            <div class="row">
-             <div class="col s3">
+             <div id="logos-container" class="col s3">
                <img ng-src="{{match.teams[0].teamLogoUrl}}" alt="" class="circle admin-team-logo">
                <img ng-src="{{match.teams[1].teamLogoUrl}}" alt="" class="circle admin-team-logo">
              </div>
@@ -29,9 +29,9 @@
                   {{match.teams[1].teamName}}
                </p>
                <span class="secondary-content">
-                 <a class="btn-floating green" ng-click="aCtrl.match = match"><i class="material-icons">visibility</i></a>
-                 <a class="btn-floating blue" ng-click="aCtrl.editMatch(match); aCtrl.openModal('match_info')"><i class="material-icons">mode_edit</i></a>
-                 <a class="btn-floating red" ng-click="aCtrl.removeMatch(match._id)"><i class="material-icons">clear</i></a>
+                 <a class="btn-floating btn-flat green" ng-click="aCtrl.match = match"><i class="material-icons">visibility</i></a>
+                 <a class="btn-floating btn-flat blue" ng-click="aCtrl.editMatch(match); aCtrl.openModal('match_info')"><i class="material-icons">mode_edit</i></a>
+                 <a class="btn-floating btn-flat red" ng-click="aCtrl.removeMatch(match._id)"><i class="material-icons">clear</i></a>
                </span>
              </div>
            </div>

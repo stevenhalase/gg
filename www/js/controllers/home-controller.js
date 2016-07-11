@@ -1,15 +1,15 @@
 angular.module('ggApp')
   .controller('homeCtrl', homeController);
 
-homeController.$inject = ['$state'];
+homeController.$inject = ['$state', '$http'];
 
-function homeController($state) {
+function homeController($state, $http) {
   var hCtrl = this;
 
-  // setTimeout(function() {
-  //   console.log('home: ', $state.includes('home'));
-  // },1000)
-
+  $(document).ready(function(){
+      // Materialize.toast(message, displayLength, className, completeCallback);
+      Materialize.toast('Thanks for visiting! Be sure to check out the streams and matches!', 5000) // 4000 is the duration of the toast
+   });
 
   hCtrl.title = 'Home Controller';
   // Initialize collapse button

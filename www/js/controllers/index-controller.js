@@ -1,25 +1,32 @@
 angular.module('ggApp')
   .controller('indexCtrl', indexController);
 
-indexController.$inject = ['$scope', '$location'];
+indexController.$inject = ['$scope', '$location', '$http', 'userFactory'];
 
-function indexController($scope, $location) {
+function indexController($scope, $location, $http, userFactory) {
   var iCtrl = this;
+
+
+  iCtrl.loggedInUser = {};
+  iCtrl.loggedIn = false;
 
   $scope.$on('$locationChangeSuccess', function () {
     // console.log('changing location', $location.path())
     $scope.location = $location.path().replace('/', '');
   });
 
-  $(document).ready(function(){
-      // Materialize.toast(message, displayLength, className, completeCallback);
-      Materialize.toast('Thanks for visiting! Be sure to check out the streams and matches!', 5000) // 4000 is the duration of the toast
-   });
-
-
-
   iCtrl.title = 'Index Controller';
-  
+
+  userFactory.getUser()
+    .then(function(response) {
+      console.log(response);
+      iCtrl.loggedInUser = response.data;
+      userFactory.currentUser = iCtrl.loggedInUser;
+      if(iCtrl.loggedInUser._id) {
+        iCtrl.loggedIn = true;
+      }
+    })
+
 
   /// FIREBASE Initialization
   // Set the configuration for your app

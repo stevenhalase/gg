@@ -46,6 +46,11 @@ function ggAppRouter($stateProvider, $urlRouterProvider) {
       templateUrl : 'partials/admin.html',
       controller  : 'adminCtrl as aCtrl'
     })
+    .state('dashboard', {
+      url : '/dashboard',
+      templateUrl : 'partials/dashboard.html',
+      controller  : 'dashboardCtrl as dCtrl'
+    })
 
     $urlRouterProvider.otherwise('/')
 }

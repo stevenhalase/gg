@@ -43,13 +43,13 @@ main {
 .nav-wrapper {
   font-weight: bold;
   background: rgba(221,109,0,1);
-  background: -moz-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
+  /*background: -moz-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
   background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(221,109,0,1)), color-stop(11%, rgba(221,109,0,1)), color-stop(11%, rgba(255,143,0,1)), color-stop(100%, rgba(255,143,0,1)));
   background: -webkit-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
   background: -o-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
   background: -ms-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
   background: linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd6d00', endColorstr='#ff8f00', GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd6d00', endColorstr='#ff8f00', GradientType=1 );*/
 }
 
 .nav-wrapper a:hover {
@@ -82,4 +82,50 @@ footer.page-footer {
   background: -ms-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 52%, rgba(255,143,0,1) 52%, rgba(255,143,0,1) 100%);
   background: linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 52%, rgba(255,143,0,1) 52%, rgba(255,143,0,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd6d00', endColorstr='#ff8f00', GradientType=1 );
+}
+
+/* label color */
+.input-field label {
+  color: #c6975f;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #FF8A00;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #FF8A00;
+  box-shadow: 0 1px 0 0 #FF8A00;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #FF8A00;
+  box-shadow: 0 1px 0 0 #FF8A00;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #d13f3f;
+  box-shadow: 0 1px 0 0 #d13f3f;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #000;
+}
+
+#login-button {
+  margin-top: -30px;
+  margin-left: 10%;
+}
+
+#name-button {
+  margin-top: -33px;
+  margin-left: 10%;
+}
+
+#nav-profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 5px;
+
 }
