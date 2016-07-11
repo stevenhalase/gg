@@ -12,7 +12,8 @@ var passport        = require("passport");
 var expose          = require('express-expose');
 // var TwitchTokenStrategy = require('passport-twitch-token');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-var User = require('./user-model')
+var User = require('./user-model');
+var config = require('./config');
 
 var session = require('express-session')
 app.sessionMiddleware = session({
@@ -48,8 +49,8 @@ passport.deserializeUser(function(user, done) {
 });
 
 passport.use(new GoogleStrategy({
-    clientID: '599988447746-uektkf1gld8cn32f9udqbh404guo6qp0.apps.googleusercontent.com',
-    clientSecret: 'Tahl05klG9Vx0ImLOXZDUl5P',
+    clientID: config.gClientID,
+    clientSecret: config.gSecret,
     callbackURL: "http://localhost:3000/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
