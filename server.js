@@ -7,10 +7,11 @@ var app             = express();
 var apiRouter       = require('./api-routes')
 var userRouter      = require('./user-routes')
 var csgoMatch       = require('./csgo-match-model')
-var scraper         = require('./scraper')
+// var scraper         = require('./scraper')
 var passport        = require("passport");
 var expose          = require('express-expose');
 // var TwitchTokenStrategy = require('passport-twitch-token');
+var SteamStrategy = require('passport-steam').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var User = require('./user-model');
 var config = require('./config');
@@ -48,6 +49,41 @@ passport.deserializeUser(function(user, done) {
   });
 });
 
+///// STEAM / PASSPORT Middleware
+passport.use(new SteamStrategy({
+  returnURL: 'http://localhost:3000/auth/steam/return',
+  realm: 'http://localhost:3000/',
+  apiKey: config.sKey
+  },
+  function(identifier, profile, done) {
+    console.log(profile)
+    profile.accessLevel = 5;
+    profile.imageUrl = profile._json.avatarfull;
+    User.findOneAndUpdate({ openId: profile.id }, profile , {upsert: true, new: true} , function (err, user) {
+      console.log('strategy user: ', user)
+      return done(err, user);
+    });
+  }
+));
+
+app.get('/auth/steam',
+  passport.authenticate('steam'),
+  function(req, res) {
+    // The request will be redirected to Steam for authentication, so
+    // this function will not be called.
+  });
+
+app.get('/auth/steam/return',
+  passport.authenticate('steam', { failureRedirect: '/shittycock' }),
+  function(req, res) {
+    console.log('req user in callback: ', req.user)
+    req.logIn(req.user, function(err) { if (err) { return next(err); } });
+    // console.log('res in callback: ', res.isAuthenticated())
+    // req.session.user = req.user
+    res.redirect('/#/dashboard');
+  });
+
+/////// GOOGLE / PASSPORT Middleware
 passport.use(new GoogleStrategy({
     clientID: config.gClientID,
     clientSecret: config.gSecret,

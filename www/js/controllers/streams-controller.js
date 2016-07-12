@@ -8,12 +8,6 @@ function streamsController($http, $state, StreamFactory, userFactory, $cookies) 
 
   sCtrl.title = 'Home Controller';
 
-  $(document).ready(function(){
-      // Materialize.toast(message, displayLength, className, completeCallback);
-      Materialize.toast('You can click on individual games to see available streams and watch them!', 5000) // 4000 is the duration of the toast
-   });
-
-
   // Initialize collapse button
   $(".button-collapse").sideNav();
   // Initialize collapsible (uncomment the line below if you use the dropdown variation)
@@ -38,12 +32,14 @@ function streamsController($http, $state, StreamFactory, userFactory, $cookies) 
   }
 
   sCtrl.changeChannel = function(streamObj,modalID) {
-    userFactory.currentUser.recentChannels.push(streamObj);
-    console.log('loggedin user: ', userFactory.currentUser);
-    $http.post('/api/me', userFactory.currentUser)
-      .then(function(response) {
-        console.log('SAVED DUDE: ', response);
-      })
+    if (userFactory.currentUser.recentChannels !== undefined) {
+      userFactory.currentUser.recentChannels.push(streamObj);
+      console.log('loggedin user: ', userFactory.currentUser);
+      $http.post('/api/me', userFactory.currentUser)
+        .then(function(response) {
+          console.log('SAVED DUDE: ', response);
+        })
+    }
     $cookies.putObject("currentChannel", streamObj);
     // console.log(streamObj);
     $state.go('channel');
@@ -72,7 +68,7 @@ function streamsController($http, $state, StreamFactory, userFactory, $cookies) 
           gameName = gameName.join('+');
           // console.log(gameName)
           (function(i) {
-            $http.get('https://api.twitch.tv/kraken/streams/?game=' + gameName + '&stream_type=live&limit=4')
+            $http.get('https://api.twitch.tv/kraken/streams/?game=' + gameName + '&stream_type=live&limit=8')
               .then(function(response) {
                 // console.log('Streams: ', response.data.streams);
                 sCtrl.games[i].streams = response.data.streams;

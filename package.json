@@ -28,6 +28,7 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
+    "passport-steam": "^1.0.4",
     "passport-twitch": "^1.0.3",
     "passport-twitch-token": "^2.1.0",
     "request": "^2.72.0",

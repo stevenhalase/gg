@@ -10,6 +10,13 @@
   text-decoration: none;
 }
 
+#stream-status {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 75%;
+}
+
 #stream-name:hover {
   color: #FF8A00;
   text-decoration: none;

@@ -128,5 +128,15 @@ footer.page-footer {
   height: 50px;
   border-radius: 50%;
   margin-right: 5px;
+}
 
+.guide {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  padding: 10px;
+}
+
+.guide p {
+  font-weight: lighter;
+  margin-bottom: 0px;
 }

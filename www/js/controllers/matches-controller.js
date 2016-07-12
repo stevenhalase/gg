@@ -8,11 +8,6 @@ function matchesController($http, $sce, $scope) {
 
   mCtrl.title = 'Home Controller';
 
-  $(document).ready(function(){
-      // Materialize.toast(message, displayLength, className, completeCallback);
-      Materialize.toast('You can click on individual matches to see team players and stats!', 5000) // 4000 is the duration of the toast
-   });
-
   mCtrl.matches = [];
 
   $(document).ready(function(){
@@ -40,6 +35,43 @@ function matchesController($http, $sce, $scope) {
   mCtrl.closeModal = function(modalID) {
     // console.log('closing modal', modalID);
     $('#' + modalID).closeModal();
+  }
+
+  mCtrl.goCray = function() {
+    var randomWidth = Math.floor(Math.random() * 500) + 'px';
+    var randomAngle = 'rotate(' + Math.floor(Math.random() * 360) + 'deg)';
+    console.log(randomWidth)
+    $('#broke-img').css({
+      width: randomWidth,
+      transform: randomAngle
+    })
+    $('main').css({
+      'background-image': "url('../images/flames.jpg')",
+      'background-size': 'cover',
+      'background-position': 'center'
+    })
+    $('#updating').text('OH DAYUM!');
+    $('#updating').css({
+      'font-weight': 'bolder',
+      color: 'white'
+    })
+  }
+
+  mCtrl.nah = function() {
+    $('#broke-img').css({
+      width: '200px',
+      transform: 'none'
+    })
+    $('main').css({
+      'background-image': "none",
+      'background-size': 'cover',
+      'background-position': 'center'
+    })
+    $('#updating').text("We're updating matches, relax.");
+    $('#updating').css({
+      'font-weight': 'normal',
+      color: 'black'
+    })
   }
 
   // Local MONGODB API Call

@@ -9,37 +9,67 @@
   width: 100%;
 }
 
+#stream-title {
+  font-size: 14px;
+  color: black;
+}
+
+#actual-title {
+  display: inline-block;
+  width: 60%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 880px) {
+  #actual-title {
+    width: 50%;
+  }
+}
+
 .game-viewers {
   color: #FF8A00;
   padding: 3px;
-  font-size: 20px;
+  font-size: 14px;
 }
 
-.game-title i {
+#stream-title i {
   color: #FF8A00;
   font-size: 30px;
   margin-left: 0;
 }
 
-.modal.bottom-sheet.stream-modal {
+.back-arrow {
+  position: absolute;
+  left: 20px;
+  top: 20px;
   background-color: rgba(0,0,0,0.8);
-  max-height: 60%;
+  color: #FF8A00;
+  font-size: 40px;
+}
+
+.top-streams-title {
+  color: white;
+}
+
+.modal.bottom-sheet.stream-modal {
+  border-top: 2px solid #FF8A00;
+  background-color: rgba(0,0,0,0.8);
+  max-height: 100%;
+  height: 100%;
 }
 
 .stream-modal-content {
-  /*background-image: url('../images/gaming.png');*/
-  /*background-color: #FF8A00;*/
-  background-position: center;
-  background-size: cover;
-  border-radius: 0;
-  background: rgba(221,109,0,1);
-  background: -moz-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 50%, rgba(255,143,0,1) 50%, rgba(255,143,0,1) 100%);
-  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(221,109,0,1)), color-stop(50%, rgba(221,109,0,1)), color-stop(50%, rgba(255,143,0,1)), color-stop(100%, rgba(255,143,0,1)));
-  background: -webkit-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 50%, rgba(255,143,0,1) 50%, rgba(255,143,0,1) 100%);
-  background: -o-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 50%, rgba(255,143,0,1) 50%, rgba(255,143,0,1) 100%);
-  background: -ms-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 50%, rgba(255,143,0,1) 50%, rgba(255,143,0,1) 100%);
-  background: linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 50%, rgba(255,143,0,1) 50%, rgba(255,143,0,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd6d00', endColorstr='#ff8f00', GradientType=1 );
+  height: 100%;
+  background: rgba(0,0,0,1);
+  background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 47%, rgba(10,10,10,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(47%, rgba(20,20,20,1)), color-stop(100%, rgba(10,10,10,1)));
+  background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 47%, rgba(10,10,10,1) 100%);
+  background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 47%, rgba(10,10,10,1) 100%);
+  background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 47%, rgba(10,10,10,1) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 47%, rgba(10,10,10,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#0a0a0a', GradientType=0 );
 }
 
 .stream-card {

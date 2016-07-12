@@ -1,4 +1,6 @@
 <div class="home-wrapper grey darken-4">
+  <div class="guide"><p class="center">You can click on individual matches to see team players and stats!</p></div>
+  <div id="broke" ng-if="mCtrl.matches.length === 0"><img id="broke-img" class="center" src="../images/itsbroke.jpg" ng-mouseover="mCtrl.goCray()" ng-mouseleave="mCtrl.nah()"><h3 id="updating" class="center">We're updating matches, relax. <img class="emojis" src="../images/poop.png"><img class="emojis" src="../images/thumbs.png"></h3></div>
   <div class="row">
       <div class="col s12 m4" ng-repeat="match in mCtrl.matches">
         <div class="card small">

@@ -67,8 +67,9 @@
          <div class="nav-wrapper amber darken-3">
            <ul id="nav-mobile" class="left">
              <li><a ui-sref="home"><i id="logo-icon" class="material-icons">gamepad</i></a></li>
-             <li><a href="/auth/google" ng-if="iCtrl.loggedIn === false">Login</a></li>
-             <li><a ui-sref="dashboard" ><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}</a></li>
+             <li><a href="/auth/steam" ng-if="iCtrl.loggedIn === false"><img src="./images/steam-btn.png"></a></li>
+             <li><a href="/auth/google" ng-if="iCtrl.loggedIn === false"><img src="./images/google-btn.png"></a></li>
+             <li><a ui-sref="dashboard"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}</a></li>
            </ul>
            <ul class="right">
              <li ng-class="{'active': location===''}"><a ui-sref="home">Home</a></li>

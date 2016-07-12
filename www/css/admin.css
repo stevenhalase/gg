@@ -47,7 +47,7 @@ h4 {
   margin-top: 0;
 }
 
-.collection-item img {
+#collection-item img {
   width: 75px;
   height: 75px;
 }
@@ -56,7 +56,7 @@ h4 {
   font-size: 12px;
 }
 
-.collection-item p {
+#collection-item p {
   font-weight: bold;
   font-size: 16px;
 }

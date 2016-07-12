@@ -119,3 +119,21 @@
   background-color: #ecf0f1;
   color: black;
 }
+
+#broke {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#broke-img {
+  width: 200px;
+  border-radius: 4px;
+  display: inherit;
+  margin: 0 auto;
+}
+
+.emojis {
+  width: 30px;
+}
