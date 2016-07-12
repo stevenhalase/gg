@@ -82,11 +82,21 @@ app.get('/auth/google/callback',
   });
 
 app.get('/api/me', function(req, res) {
-  console.log('user in da apis: ', req._passport.session.user);
+  // console.log('user in da apis: ', req._passport.session.user);
   User.findOne({'_id':req._passport.session.user}, function(err, user) {
-    console.log('THE USER: ', user)
+    // console.log('THE USER: ', user)
     res.send(user)
   })
+})
+
+app.post('/api/me', function(req, res) {
+  console.log('POSTING')
+  User.findOneAndUpdate({ _id : req.body._id }, req.body, {upsert: true, new: true} , function(err, user) {
+    if(err) {console.log('ERROR: ', err)}
+    // console.log('SAVED USER: ', user)
+    res.send(user)
+  })
+  // res.send('ayyy')
 })
 
 // passport.use(new TwitchTokenStrategy({

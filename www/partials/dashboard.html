@@ -2,14 +2,19 @@
   <h4>{{dCtrl.currentUser.displayName}}</h4>
 
   <ul class="collection with-header">
-    <li class="collection-header"><h5><b>Recently watched streams</b></h5></li>
+    <li class="collection-header"><h5 id="recent-streams-title"><b>Recently watched streams</b></h5> <a id="clear-streams-button" href="" ng-click="dCtrl.clearStreams()" class="btn-flat waves-effect waves-light amber darken-3">Clear</a></li>
     <li class="collection-item avatar" ng-repeat="stream in dCtrl.currentUser.recentChannels">
       <a id="stream-name" href="" ng-click="dCtrl.changeChannel(stream)"><img ng-src="{{stream.logo}}" alt="" class="circle">
-      <span class="title">{{stream.display_name}}</span></a>
+        <span class="title">{{stream.display_name}}</span>
+      </a>
+      <div class="chip">
+        <span><b>{{stream.game}}</b></span>
+      </div>
       <p>
         {{stream.status}}
       </p>
-      <p id="streams-date" class="secondary-content">{{stream.updated_at | date}}</p>
+      <p id="streams-date" class="secondary-content">{{stream.updated_at | date}}<br/><a href="" ng-click="dCtrl.removeStream(stream)"><i id="remove-stream" class="material-icons amber darken-3 right">close</i></a></p>
+
     </li>
   </ul>
 

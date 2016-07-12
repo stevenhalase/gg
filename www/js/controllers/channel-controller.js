@@ -18,5 +18,6 @@ function channelController($stateParams, $sce, StreamFactory, $state, $cookies) 
   cCtrl.channel = $cookies.getObject("currentChannel");
 
   cCtrl.channelUrl = $sce.trustAsResourceUrl('https://player.twitch.tv/?channel=' + cCtrl.channel.name);
+  cCtrl.chatUrl = $sce.trustAsResourceUrl('http://www.twitch.tv/' + cCtrl.channel.name + '/chat/');
 
 }

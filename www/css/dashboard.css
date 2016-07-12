@@ -1,3 +1,6 @@
+.dash-wrapper {
+}
+
 #streams-date {
   color: #FF8A00;
 }
@@ -15,4 +18,29 @@
 #stream-name {
   color: #FF8A00;
   text-decoration: none;
+}
+
+#remove-stream {
+  color: white;
+  border-radius: 50%;
+}
+
+#recent-streams-title {
+  display: inline;
+  vertical-align: middle;
+}
+
+#clear-streams-button {
+  color: white;
+  margin-left: 5px;
+  padding: 0 5px 5px 5px;
+}
+
+#clear-streams-button:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.chip {
+  font-size: 10px;
 }

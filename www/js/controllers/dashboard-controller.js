@@ -22,5 +22,22 @@ function dashboardController($state, $http, userFactory, $cookies) {
     $state.go('channel');
   }
 
+  dCtrl.removeStream = function (stream) {
+    var index = dCtrl.currentUser.recentChannels.indexOf(stream);
+    dCtrl.currentUser.recentChannels.splice(index, 1);
+    $http.post('/api/me', dCtrl.currentUser)
+      .then(function(response) {
+        console.log('SAVED DUDE: ', response);
+      })
+  }
+
+  dCtrl.clearStreams = function() {
+    dCtrl.currentUser.recentChannels = [];
+    $http.post('/api/me', dCtrl.currentUser)
+      .then(function(response) {
+        console.log('SAVED DUDE: ', response);
+      })
+  }
+
 
 }

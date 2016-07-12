@@ -1,12 +1,27 @@
 .channel-wrapper {
-  background-color: black;
+  background-color: #ecf0f1;
   height: 100%;
 }
 
 .stream-container {
-  width: 80%;
-  left: 10%;
-  padding: 25%;
+  position: relative;;
+}
+
+#channel-stream {
+  max-width: 60%;
+  width: 60%;
+  position: absolute;
+  left:3%;
+  top: 2%;
+  overflow: hidden;
+}
+
+#chat_embed {
+  max-width: 30%;
+  width: 30%;
+  position: absolute;
+  left:65%;
+  top: 1%;
 }
 
 .video-container iframe, .video-container object, .video-container embed {
@@ -33,8 +48,9 @@
 
 #powered {
   display: inline-block;
-  color: white;
+  color: black;
   font-weight: bolder;
   margin-left: 50%;
   transform: translate(-50%);
+  margin-top: 25px;
 }

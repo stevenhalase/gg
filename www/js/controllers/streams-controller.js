@@ -38,8 +38,12 @@ function streamsController($http, $state, StreamFactory, userFactory, $cookies) 
   }
 
   sCtrl.changeChannel = function(streamObj,modalID) {
-    console.log('loggedin user: ', userFactory.currentUser);
     userFactory.currentUser.recentChannels.push(streamObj);
+    console.log('loggedin user: ', userFactory.currentUser);
+    $http.post('/api/me', userFactory.currentUser)
+      .then(function(response) {
+        console.log('SAVED DUDE: ', response);
+      })
     $cookies.putObject("currentChannel", streamObj);
     // console.log(streamObj);
     $state.go('channel');

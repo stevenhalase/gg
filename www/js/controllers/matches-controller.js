@@ -28,6 +28,7 @@ function matchesController($http, $sce, $scope) {
   }
 
   mCtrl.parseImageUrl = function(url) {
+    console.log('parsin fool!')
     return $sce.trustAsResourceUrl(url);
   }
 
