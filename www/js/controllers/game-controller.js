@@ -60,16 +60,31 @@ function gameController($state, $http, userFactory, $cookies) {
     return url;
   }
 
+  gCtrl.fixGiantBombUrl = function(imageUrl) {
+    imageUrl = imageUrl.split('//')[1]
+    return imageUrl = 'http://' + imageUrl
+  }
+
   var queryName = gCtrl.currentGame.game.name.split(' ').join('')
   console.log(gCtrl.currentGame.game.giantbomb_id)
-  $http.get('http://www.giantbomb.com/api/game/' + gCtrl.currentGame.game.giantbomb_id + '/?api_key=c63b181fdfa9d0b843f4d59835027bfbe3616c85&format=json')
+  $http({
+    method: 'JSONP',
+    url: 'https://www.giantbomb.com/api/game/' + gCtrl.currentGame.game.giantbomb_id + '/?api_key=c63b181fdfa9d0b843f4d59835027bfbe3616c85&format=json',
+    params: {
+      format: 'jsonp',
+      json_callback: 'JSON_CALLBACK'
+    }
+  })
     .then(function(response) {
       gCtrl.currentGameData = response.data.results;
       console.log('db response: ', gCtrl.currentGameData)
-      // console.log(gCtrl.currentGameData.image.super_url)
+      console.log(gCtrl.currentGameData.image.super_url)
+
+      parsedImageUrl = gCtrl.fixGiantBombUrl(gCtrl.currentGameData.image.super_url)
+      console.log(parsedImageUrl)
 
       $('.game-wrapper').css({
-        'background-image' : 'url(' + gCtrl.currentGameData.image.super_url + ')'
+        'background-image' : 'url(' + parsedImageUrl + ')'
       })
     })
 
