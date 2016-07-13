@@ -135,6 +135,11 @@ app.post('/api/me', function(req, res) {
   // res.send('ayyy')
 })
 
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
 // passport.use(new TwitchTokenStrategy({
 //     clientID: '9pqovxuw6ao9y2uac91byz0tncspfvz',
 //     clientSecret: 's0nzv1mz6zdmaqinym3e2f19q7zhqsu',

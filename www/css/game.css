@@ -1,0 +1,78 @@
+.back {
+  background-color: #14181C;
+  height: 900px;
+}
+
+.game-wrapper {
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+}
+
+#fade {
+  /*background-color: black;*/
+  background-image: url('../images/bg-fade.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+}
+
+.game-content {
+  padding-top: 125px;
+  /*background-color: black;*/
+}
+
+#game-cover {
+  background-color: #14181C;
+  width: 80%;
+  border: 3px solid black;
+  margin: 50px;
+}
+
+#game-title {
+  color: white;
+  margin-top: 150px;
+}
+
+.game-details {
+  color: white;
+}
+
+#game-chip {
+  margin: 5px;
+}
+
+#game-platform {
+  background-color: #FF8F00;
+  padding: 3px 5px;
+  display: inline;
+  margin: 10px 1px;
+  border-radius: 2px;
+}
+
+#game-platform-div {
+  margin: 15px 0px;
+}
+
+#streams-div {
+  margin-top: 20px;
+  padding-right: 20px;
+}
+
+.twitch-img {
+  margin-top:25px;
+  margin-left: 35%;
+  width: 150px;
+}
+
+.back-arrow-game {
+  position: absolute;
+  left: 20px;
+  top: 84px;
+  /*background-color: rgba(0,0,0,0.4);*/
+  color: #FF8A00;
+  font-size: 40px;
+}

@@ -27,56 +27,19 @@ function streamsController($http, $state, StreamFactory, userFactory, $cookies) 
     $('#' + modalID).closeModal();
   }
 
-  sCtrl.getStreamLink = function(streamName) {
-    return 'https://player.twitch.tv/?channel=' + streamName;
-  }
-
-  sCtrl.changeChannel = function(streamObj,modalID) {
-    if (userFactory.currentUser.recentChannels !== undefined) {
-      userFactory.currentUser.recentChannels.push(streamObj);
-      console.log('loggedin user: ', userFactory.currentUser);
-      $http.post('/api/me', userFactory.currentUser)
-        .then(function(response) {
-          console.log('SAVED DUDE: ', response);
-        })
-    }
-    $cookies.putObject("currentChannel", streamObj);
+  sCtrl.goToGame = function(gameObj) {
+    $cookies.putObject("currentGame", gameObj);
     // console.log(streamObj);
-    $state.go('channel');
-    $('#' + modalID).closeModal();
+    $state.go('game');
   }
 
   sCtrl.games = [];
-  sCtrl.gameStreams = [];
 
   // TWITCH API CALL
-  $http.get('https://api.twitch.tv/kraken/search/streams?q=esea')
-    .then(function(response) {
-      // console.log('Twitch Streams Response: ', response.data.streams);
-    })
-
   $http.get('https://api.twitch.tv/kraken/games/top')
     .then(function(response) {
       // console.log('Twitch Top Games Response: ', response.data.top);
-
       sCtrl.games = response.data.top;
-
-        for(var i = 0; i < sCtrl.games.length; i++) {
-          // console.log(game);
-          gameName = sCtrl.games[i].game.name;
-          gameName = gameName.split(' ');
-          gameName = gameName.join('+');
-          // console.log(gameName)
-          (function(i) {
-            $http.get('https://api.twitch.tv/kraken/streams/?game=' + gameName + '&stream_type=live&limit=8')
-              .then(function(response) {
-                // console.log('Streams: ', response.data.streams);
-                sCtrl.games[i].streams = response.data.streams;
-              })
-          })(i);
-
-        }
-
     })
 
   sCtrl.fixLogoUrl = function(url) {

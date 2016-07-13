@@ -47,6 +47,7 @@
     <script src="./js/controllers/statistics-controller.js" charset="utf-8"></script>
     <script src="./js/controllers/admin-controller.js" charset="utf-8"></script>
     <script src="./js/controllers/dashboard-controller.js" charset="utf-8"></script>
+    <script src="./js/controllers/game-controller.js" charset="utf-8"></script>
     <script src="./js/controllers/user-factory.js" charset="utf-8"></script>
     <link rel="stylesheet" href="./css/app.css" charset="utf-8">
     <link rel="stylesheet" href="./css/home.css" charset="utf-8">
@@ -57,6 +58,7 @@
     <link rel="stylesheet" href="./css/statistics.css" charset="utf-8">
     <link rel="stylesheet" href="./css/admin.css" charset="utf-8">
     <link rel="stylesheet" href="./css/dashboard.css" charset="utf-8">
+    <link rel="stylesheet" href="./css/game.css" charset="utf-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
   </head>
@@ -67,13 +69,12 @@
          <div class="nav-wrapper amber darken-3">
            <ul id="nav-mobile" class="left">
              <li><a ui-sref="home"><i id="logo-icon" class="material-icons">gamepad</i></a></li>
-             <li><a href="/auth/steam" ng-if="iCtrl.loggedIn === false"><img src="./images/steam-btn.png"></a></li>
-             <li><a href="/auth/google" ng-if="iCtrl.loggedIn === false"><img src="./images/google-btn.png"></a></li>
-             <li><a ui-sref="dashboard"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}</a></li>
+             <li ng-if="iCtrl.loggedIn === false"><a class="dropdown-button" href="" data-activates="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li>
+             <li ng-show="iCtrl.loggedIn === true"><a class="dropdown-button" href="" data-activates="dropdown2"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}<i class="material-icons right">arrow_drop_down</i></li>
            </ul>
            <ul class="right">
              <li ng-class="{'active': location===''}"><a ui-sref="home">Home</a></li>
-             <li ng-class="{'active': location==='streams'}"><a ui-sref="streams">Streams</a></li>
+             <li ng-class="{'active': location==='streams'}"><a ui-sref="streams">Games</a></li>
              <li ng-class="{'active': location==='news'}"><a ui-sref="news">News</a></li>
              <li ng-class="{'active': location==='matches'}"><a ui-sref="matches">Matches</a></li>
              <li ng-class="{'active': location==='statistics'}"><a ui-sref="statistics">Statistics</a></li>
@@ -82,6 +83,14 @@
         </nav>
       </div>
     </header>
+    <ul id="dropdown1" class="dropdown-content grey darken-4">
+      <li><a href="/auth/steam"><img src="./images/steam-btn.png"></a></li>
+      <li><a href="/auth/google"><img src="./images/google-btn.png"></a></li>
+    </ul>
+    <ul id="dropdown2" class="dropdown-content grey darken-4">
+      <li><a ui-sref="dashboard">View Dashboard</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
 
     <main>
     <ui-view></ui-view>
