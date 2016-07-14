@@ -33,5 +33,9 @@
     "passport-twitch-token": "^2.1.0",
     "request": "^2.72.0",
     "spooky": "^0.2.5"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
   }
 }

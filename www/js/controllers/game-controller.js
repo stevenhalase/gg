@@ -16,16 +16,17 @@ function gameController($state, $http, userFactory, $cookies) {
   // console.log($cookies.getObject("currentGame"))
 
   gCtrl.currentGame = $cookies.getObject("currentGame");
-  console.log('current game: ', gCtrl.currentGame)
+  // console.log('current game: ', gCtrl.currentGame)
 
   // console.log(userFactory.currentUser);
   gCtrl.currentUser = userFactory.currentUser;
   gCtrl.favoriteGames = [];
-  gCtrl.currentGameData = {}
+  gCtrl.currentGameData = {};
+  gCtrl.currentGameAppId = '';
 
   $http.get('https://api.twitch.tv/kraken/streams/?game=' + gCtrl.currentGame.game.name + '&stream_type=live&limit=3')
     .then(function(response) {
-      console.log('Streams: ', response.data.streams);
+      // console.log('Streams: ', response.data.streams);
       gCtrl.currentGame.streams = response.data.streams;
     })
 
@@ -66,7 +67,7 @@ function gameController($state, $http, userFactory, $cookies) {
   }
 
   var queryName = gCtrl.currentGame.game.name.split(' ').join('')
-  console.log(gCtrl.currentGame.game.giantbomb_id)
+  // console.log(gCtrl.currentGame.game.giantbomb_id)
   $http({
     method: 'JSONP',
     url: 'https://www.giantbomb.com/api/game/' + gCtrl.currentGame.game.giantbomb_id + '/?api_key=c63b181fdfa9d0b843f4d59835027bfbe3616c85&format=json',
@@ -77,16 +78,38 @@ function gameController($state, $http, userFactory, $cookies) {
   })
     .then(function(response) {
       gCtrl.currentGameData = response.data.results;
-      console.log('db response: ', gCtrl.currentGameData)
-      console.log(gCtrl.currentGameData.image.super_url)
+      // console.log('db response: ', gCtrl.currentGameData)
+      // console.log(gCtrl.currentGameData.image.super_url)
+      var gameNameQuery = gCtrl.currentGameData.name.split(' ').join('+')
+      gCtrl.getNews(gameNameQuery)
 
       parsedImageUrl = gCtrl.fixGiantBombUrl(gCtrl.currentGameData.image.super_url)
-      console.log(parsedImageUrl)
+      // console.log(parsedImageUrl)
 
       $('.game-wrapper').css({
         'background-image' : 'url(' + parsedImageUrl + ')'
       })
     })
+
+  gCtrl.getNews = function(gameNameQuery) {
+    $http.get('https://steamdb.info/search/?a=app&q=' + gameNameQuery)
+      .then(function(response) {
+        // console.log('steam dddddbbbbb: ', response)
+        // console.log('TYPE: ', (typeof response.data))
+        var firstSplit = response.data.split('/app/')[1]
+        // console.log('FIRST SPLIT: ', firstSplit)
+        firstSplit = firstSplit.split('/')[0];
+        // console.log('SECOND SPLIT: ', firstSplit)
+        gCtrl.currentGameAppId = firstSplit;
+
+        $http.get('http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=' + gCtrl.currentGameAppId + '&count=3&maxlength=300&format=json')
+          .then(function(response) {
+            gCtrl.news = response.data.appnews.newsitems;
+            // console.log('NEWS ITEM: ', gCtrl.news)
+          })
+      })
+  }
+
 
   // setTimeout(function() {
   //   $(window).on('scroll', function() {

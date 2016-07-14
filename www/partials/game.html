@@ -31,27 +31,20 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal Structure -->
-<div id="stream-modal" class="modal bottom-sheet stream-modal">
-  <div class="stream-modal-content modal-content">
-    <a href="" ng-click="gCtrl.closeModal(stream-modal)"><span class="glyphicon glyphicon-resize-small back-arrow"></span></a>
-    <h3 class="top-streams-title center">Top Streams</h3>
-    <div class="row">
-      <div class="col s12 m6 l3" ng-repeat="stream in gCtrl.currentGame.streams">
-        <div class="card stream-card">
-          <div class="card-image waves-effect waves-block waves-light">
-            <a class="modal-trigger" ng-click="gCtrl.changeChannel(stream.channel,game.game._id)"><img id="game-logo" ng-src="{{sCtrl.fixLogoUrl(stream.preview.large)}}"></a>
-          </div>
-          <div id="player-action" class="card-action">
-            <a class="modal-trigger" ng-click="gCtrl.changeChannel(stream.channel,game.game._id)"><img id="game-logo"><span id="stream-title" class="card-title">{{stream.channel.name}}<i class="material-icons right">account_box</i><span class="game-viewers right">{{stream.viewers}}</span></span></a>
+            <div class="row">
+              <div class="col s12">
+                <ul class="collection with-header">
+                  <li class="collection-header">
+                    <h4 class="center news-header">Recent News</h4>
+                  </li>
+                  <li class="collection-item" ng-repeat="article in gCtrl.news">
+                    <span id="article-date" class="secondary-content">{{article.date * 1000 | date:'medium'}}</span>
+                    <a href="{{article.url}}" target="_blank"><p id="article-title">{{article.title}} </p></a>
+                    <p class="article-content">{{article.contents}}</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

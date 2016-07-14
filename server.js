@@ -7,6 +7,7 @@ var app             = express();
 var apiRouter       = require('./api-routes')
 var userRouter      = require('./user-routes')
 var csgoMatch       = require('./csgo-match-model')
+var request         = require('request');
 // var scraper         = require('./scraper')
 var passport        = require("passport");
 var expose          = require('express-expose');
@@ -162,6 +163,30 @@ app.use(express.static(path.join(__dirname, './www')))
 app.get('/', function (req, res) {
   res.sendFile('index.html', {root : './www'})
 });
+
+// app.get('/api/news/:query', function(req, res) {
+//   console.log(req.params.query)
+//   var newQuery = req.params.query.split(' ').join('%20')
+//   console.log(newQuery)
+//   var fullUrl = 'https://steamdb.info/instantsearch/?q=' + newQuery + '&hPP=20&idx=steamdb&p=0&dFR[appType][0]=Game&is_v=1';
+//   console.log(fullUrl)
+//   request(fullUrl , function (error, response, html) {
+//     if (error) {console.log('Error retrieving news')}
+//
+//     res.send(html)
+//
+//     // // console.log(html)
+//     // var retHtml = html.split('/search/')[1].split('"')[0]
+//     // retHtml = retHtml.split('amp;')[0] + retHtml.split('amp;')[1] + retHtml.split('amp;')[2];
+//     // var newUrl = 'https://steamdb.info/search/?a=app&q=' + req.params.query;
+//     // console.log(retHtml)
+//     //
+//     // request(fullUrl , function (error, response, html) {
+//     //   if (error) {console.log('Error retrieving news')}
+//     //   res.send(html)
+//     // })
+//   })
+// })
 
 app.listen(3000, function () {
     console.log('Server started at http://localhost:3000')

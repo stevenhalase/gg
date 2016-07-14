@@ -1,6 +1,6 @@
 .back {
   background-color: #14181C;
-  height: 900px;
+  height: 150vh;
 }
 
 .game-wrapper {
@@ -75,4 +75,40 @@
   /*background-color: rgba(0,0,0,0.4);*/
   color: #FF8A00;
   font-size: 40px;
+}
+
+.article-content {
+  font-weight: lighter;
+  color: black;
+}
+
+#article-label {
+  font-weight: bold;
+  color: #FF8A00;
+}
+
+#article-title {
+  font-weight: bolder;
+  font-size: 20px;
+  display: inline;
+  color: black;
+  text-decoration: none;
+}
+
+#article-title:hover {
+  text-decoration: none;
+}
+
+#article-date {
+  font-weight: lighter;
+  color: #777;
+}
+
+.game-icon {
+  width: 50px;
+  display: inline-block;
+}
+
+.news-header {
+  display: inline;
 }
