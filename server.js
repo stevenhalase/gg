@@ -15,7 +15,7 @@ var expose          = require('express-expose');
 var SteamStrategy = require('passport-steam').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var User = require('./user-model');
-var config = require('./config');
+var config = require('./config.js');
 
 var session = require('express-session')
 app.sessionMiddleware = session({
