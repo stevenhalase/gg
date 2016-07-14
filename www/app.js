@@ -1,19 +1,15 @@
+///// Defining App module
 angular.module('ggApp', ['ui.router', 'ngCookies'])
   .config(ggAppRouter)
-
+///// Defining App injections
 ggAppRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
-
+///// Router function to define routes
 function ggAppRouter($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/',
       templateUrl : 'partials/home.html',
       controller  : 'homeCtrl as hCtrl'
-    })
-    .state('login', {
-      url: '/login',
-      templateUrl : 'partials/login.html',
-      controller  : 'loginCtrl as lCtrl'
     })
     .state('matches', {
       url: '/matches',
@@ -59,7 +55,7 @@ function ggAppRouter($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/')
 }
-
+///// Added directive to handle player images being missing
 angular.module('ggApp')
   .directive('onErrorSrc', function() {
     return {

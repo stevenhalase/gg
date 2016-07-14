@@ -1,3 +1,4 @@
+///// Attaching Matches controller to App module
 angular.module('ggApp')
   .controller('matchesCtrl', matchesController);
 
