@@ -16,9 +16,9 @@
 }
 
 #home-logo-icon {
-  font-size: 200px;
+  width: 150px;
   left: 50%;
-  top: 30%;
+  top: 40%;
   transform: translate(-50%, -50%);
   position: absolute;
 }
@@ -47,8 +47,35 @@
   color: white;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 60%;
   transform: translate(-50%, -50%);
+}
+
+@media (max-width: 340px) {
+  .action {
+    top: 75%;
+  }
+  #home-wrapper {
+    height: 95vh;
+  }
+}
+
+@media (max-width: 700px) {
+  .action {
+    top: 70%;
+  }
+  #home-wrapper {
+    height: 85vh;
+  }
+}
+
+@media (min-width: 701px) {
+  .action {
+    top: 62%;
+  }
+  #home-wrapper {
+    height: 80vh;
+  }
 }
 
 .action p {

@@ -112,3 +112,24 @@
 .news-header {
   display: inline;
 }
+
+@media (max-width: 992px) {
+  .back {
+    height: 300vh;
+  }
+  .twitch-img {
+    margin-left: 15%;
+  }
+}
+
+@media (max-width: 600px) {
+  .back {
+    height: 350vh;
+  }
+  #game-title {
+    margin-top: 0px;
+  }
+  .twitch-img {
+    margin-left: 20%;
+  }
+}

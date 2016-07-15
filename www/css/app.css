@@ -10,6 +10,11 @@ main {
   background-color: #ecf0f1;
 }
 
+#nav-logo-icon {
+  width: 50px;
+  margin-top: -5px;
+}
+
 #menu-collapse {
   background-color:  #ecf0f1;
 }

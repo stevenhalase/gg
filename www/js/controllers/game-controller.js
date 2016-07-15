@@ -15,7 +15,7 @@ function gameController($state, $http, userFactory, $cookies) {
   gCtrl.currentGameData = {};
   gCtrl.currentGameAppId = '';
   ///// GET request to Twitch API to get top 3 streams for the current game
-  $http.get('https://api.twitch.tv/kraken/streams/?game=' + gCtrl.currentGame.game.name + '&stream_type=live&limit=3')
+  $http.get('https://api.twitch.tv/kraken/streams/?game=' + gCtrl.currentGame.game.name + '&stream_type=live&limit=4')
     .then(function(response) {
       ///// Attach returned streams to current game object
       gCtrl.currentGame.streams = response.data.streams;

@@ -1,28 +1,19 @@
 <!DOCTYPE html>
 <html ng-app="ggApp">
   <head>
-    <!-- Hotjar Tracking Code for https://gghub-9103b.firebaseapp.com -->
-    <!-- <script>
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-            h._hjSettings={hjid:246231,hjsv:5};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-    </script> -->
-    <!-- Begin Inspectlet Embed Code -->
-    <!-- <script type="text/javascript" id="inspectletjs">
-    window.__insp = window.__insp || [];
-    __insp.push(['wid', 135875821]);
-    (function() {
-    function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
-    setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
-    })();
-    </script> -->
-    <!-- End Inspectlet Embed Code -->
     <link rel="manifest" href="/app-manifest.json">
+    <link rel="icon" type="image/png" sizes="32x32" href="./ic_launcher/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./ic_launcher/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./ic_launcher/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="./ic_launcher/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./ic_launcher/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./ic_launcher/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./ic_launcher/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./ic_launcher/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./ic_launcher/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./ic_launcher/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./ic_launcher/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./ic_launcher/apple-icon-180x180.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>GG - Gaming Central</title>
@@ -69,7 +60,7 @@
         <nav>
          <div class="nav-wrapper amber darken-3">
            <a href="" data-activates="menu-collapse" class="button-collapse"><i class="material-icons">menu</i></a>
-           <a class="brand-logo" ui-sref="home"><i id="logo-icon" class="material-icons">gamepad</i></a>
+           <a class="brand-logo" ui-sref="home"><img src="../ic_launcher/web_hi_res_512.png" id="nav-logo-icon" ></a>
            <ul class="hide-on-med-and-down right">
              <li ng-if="iCtrl.loggedIn === false"><a class="dropdown-button" href="" data-activates="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li>
              <li ng-show="iCtrl.loggedIn === true"><a class="dropdown-button" href="" data-activates="dropdown2"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -123,10 +114,10 @@
             <p class="grey-text text-lighten-4">We are a gaming hub laser-focused on <br/>streaming and the competitive scene.</p>
           </div>
           <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Partners</h5>
+            <h5 class="white-text">Powered By</h5>
             <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Twitch.tv</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Steam</a></li>
             </ul>
           </div>
         </div>
@@ -134,7 +125,6 @@
       <div class="footer-copyright">
         <div class="container">
         © 2016 GG
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
       </div>
     </footer>

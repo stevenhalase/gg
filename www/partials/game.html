@@ -3,11 +3,11 @@
     <div id="fade">
       <div class="game-content">
         <div class="row">
-          <div class="col s4">
+          <div class="col s12 m6 l4">
             <a href="" ui-sref="streams"><span class="glyphicon glyphicon-arrow-left back-arrow-game"></span></a>
             <img id="game-cover" ng-src="{{gCtrl.fixGiantBombUrl(gCtrl.currentGameData.image.small_url)}}">
           </div>
-          <div class="col s8 game-details">
+          <div class="col s12 m6 l8 game-details">
             <h3 id="game-title">{{gCtrl.currentGameData.name}}</h3>
             <div id="game-platform-div">
             <p id="game-platform" ng-repeat="platform in gCtrl.currentGameData.platforms">{{platform.name}}</p>
@@ -20,7 +20,7 @@
             <!-- <h3 class="top-streams-title center">Top Streams</h3> -->
             <div><img class="twitch-img" src="../images/twitch.png"> STREAMS</div>
             <div class="row" id="streams-div">
-              <div class="col s12 m6 l4" ng-repeat="stream in gCtrl.currentGame.streams">
+              <div class="col m12 l6" ng-repeat="stream in gCtrl.currentGame.streams">
                 <div class="card stream-card">
                   <div class="card-image waves-effect waves-block waves-light">
                     <a class="modal-trigger" ng-click="gCtrl.changeChannel(stream.channel,game.game._id)"><img id="game-logo" ng-src="{{gCtrl.fixLogoUrl(stream.preview.large)}}"></a>
