@@ -67,29 +67,48 @@
      <div class="navbar-fixed">
         <nav>
          <div class="nav-wrapper amber darken-3">
-           <ul id="nav-mobile" class="left">
-             <li><a ui-sref="home"><i id="logo-icon" class="material-icons">gamepad</i></a></li>
+           <a href="" data-activates="menu-collapse" class="button-collapse"><i class="material-icons">menu</i></a>
+           <a class="brand-logo" ui-sref="home"><i id="logo-icon" class="material-icons">gamepad</i></a>
+           <ul class="hide-on-med-and-down right">
              <li ng-if="iCtrl.loggedIn === false"><a class="dropdown-button" href="" data-activates="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li>
-             <li ng-show="iCtrl.loggedIn === true"><a class="dropdown-button" href="" data-activates="dropdown2"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}<i class="material-icons right">arrow_drop_down</i></li>
-           </ul>
-           <ul class="right">
+             <li ng-show="iCtrl.loggedIn === true"><a class="dropdown-button" href="" data-activates="dropdown2"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}<i class="material-icons right">arrow_drop_down</i></a></li>
              <li ng-class="{'active': location===''}"><a ui-sref="home">Home</a></li>
              <li ng-class="{'active': location==='streams'}"><a ui-sref="streams">Games</a></li>
              <li ng-class="{'active': location==='matches'}"><a ui-sref="matches">Matches</a></li>
              <li ng-class="{'active': location==='statistics'}"><a ui-sref="statistics">Statistics</a></li>
            </ul>
+           <ul class="side-nav" id="menu-collapse">
+             <li ng-if="iCtrl.loggedIn === false" ng-click="iCtrl.showLogin=!iCtrl.showLogin"><a class="collapsible-header">Login<i class="material-icons right">arrow_drop_down</i></a></li>
+             <div ng-show="iCtrl.showLogin">
+               <ul class="grey darken-4">
+                 <li class="center" ng-click="iCtrl.showLogin=!iCtrl.showLogin"><a href="/auth/steam"><img src="./images/steam-btn.png"></a></li>
+                 <li class="center" ng-click="iCtrl.showLogin=!iCtrl.showLogin"><a href="/auth/google"><img src="./images/google-btn.png"></a></li>
+               </ul>
+             </div>
+             <li ng-show="iCtrl.loggedIn === true" ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu"><a class="collapsible-header"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}<i class="material-icons right">arrow_drop_down</i></a></li>
+             <div ng-show="iCtrl.showUserMenu">
+               <ul class="grey darken-4">
+                 <li ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu"><a ui-sref="dashboard">View Dashboard</a></li>
+                 <li ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu"><a href="/logout">Logout</a></li>
+               </ul>
+             </div>
+             <li ng-class="{'active': location===''}" ng-click="iCtrl.closeOverlay()"><a ui-sref="home">Home</a></li>
+             <li ng-class="{'active': location==='streams'}" ng-click="iCtrl.closeOverlay()"><a ui-sref="streams">Games</a></li>
+             <li ng-class="{'active': location==='matches'}" ng-click="iCtrl.closeOverlay()"><a ui-sref="matches">Matches</a></li>
+             <li ng-class="{'active': location==='statistics'}" ng-click="iCtrl.closeOverlay()"><a ui-sref="statistics">Statistics</a></li>
+           </ul>
          </div>
         </nav>
+        <ul id="dropdown1" class="dropdown-content grey darken-4">
+         <li><a href="/auth/steam"><img src="./images/steam-btn.png"></a></li>
+         <li><a href="/auth/google"><img src="./images/google-btn.png"></a></li>
+        </ul>
+        <ul id="dropdown2" class="dropdown-content grey darken-4">
+         <li><a ui-sref="dashboard">View Dashboard</a></li>
+         <li><a href="/logout">Logout</a></li>
+        </ul>
       </div>
     </header>
-    <ul id="dropdown1" class="dropdown-content grey darken-4">
-      <li><a href="/auth/steam"><img src="./images/steam-btn.png"></a></li>
-      <li><a href="/auth/google"><img src="./images/google-btn.png"></a></li>
-    </ul>
-    <ul id="dropdown2" class="dropdown-content grey darken-4">
-      <li><a ui-sref="dashboard">View Dashboard</a></li>
-      <li><a href="/logout">Logout</a></li>
-    </ul>
 
     <main>
     <ui-view></ui-view>

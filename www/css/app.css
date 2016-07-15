@@ -10,17 +10,11 @@ main {
   background-color: #ecf0f1;
 }
 
-#mobile-demo {
-  background-color: #FF8A00;
-  color: #FF8A00;
+#menu-collapse {
+  background-color:  #ecf0f1;
 }
 
-#mobile-demo:hover{
-  background-color: #FF8A00;
-  color: black;
-}
-
-#mobile-demo {
+#menu-collapse a {
   color: #FF8A00;
 }
 

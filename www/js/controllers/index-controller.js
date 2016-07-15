@@ -2,11 +2,35 @@
 angular.module('ggApp')
   .controller('indexCtrl', indexController);
 ///// Defining Index controller injections
-indexController.$inject = ['$scope', '$location', '$http', 'userFactory'];
+indexController.$inject = ['$scope', '$location', '$http', '$state', 'userFactory'];
 ///// Index controller function
-function indexController($scope, $location, $http, userFactory) {
+function indexController($scope, $location, $http, $state, userFactory) {
   ///// Local variable referring to 'this'
   var iCtrl = this;
+  $(document).ready(function() {
+    // Initialize collapse button
+    $(".button-collapse").sideNav({menuWidth: 300,closeOnClick: true});
+  })
+  iCtrl.openNav = function() {
+    $('.button-collapse').sideNav('show');
+  }
+
+  iCtrl.closeOverlay = function() {
+    $('div[id^=sidenav-overlay]').remove();
+    if (iCtrl.loggedIn === false) {
+      if(iCtrl.showLogin === true) {
+        iCtrl.showLogin = false;
+      }
+    } else if (iCtrl.loggedIn === true) {
+      if(iCtrl.showUserMenu === true) {
+        iCtrl.showUserMenu = false;
+      }
+    }
+  }
+
+  iCtrl.showLogin = false;
+  iCtrl.showUserMenu = false;
+
   iCtrl.loggedInUser = {};
   iCtrl.loggedIn = false;
   ///// When UI-Router route changes parse it to be used for 'active' class
