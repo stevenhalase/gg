@@ -75,3 +75,16 @@
 .stream-card {
   border-radius: 0;
 }
+
+#game-search {
+  max-width: 50%;
+  color:white;
+}
+
+#game-search-button {
+  margin-left: 15px;
+}
+
+.game-search-input {
+  text-align: center;
+}

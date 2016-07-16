@@ -53,4 +53,21 @@ function streamsController($http, $state, StreamFactory, userFactory, $cookies) 
     // console.log(url);
     return url;
   }
+
+  sCtrl.searchGame = function() {
+    console.log(sCtrl.gameSearchField);
+    $http.get('https://api.twitch.tv/kraken/search/games?q=' + sCtrl.gameSearchField + '&type=suggest')
+      .then(function(response) {
+        console.log(response)
+        if(response.data.games.length > 0) {
+          sCtrl.goToGame(response.data.games[0])
+        }
+        console.log('couldnt find anything')
+      })
+    // if (sCtrl.gameSearchField.includes(' ')) {
+    //   console.log('has spaces')
+    //   sCtrl.gameSearchField = sCtrl.gameSearchField.split(' ').join('')
+    //   console.log(sCtrl.gameSearchField)
+    // }
+  }
 }

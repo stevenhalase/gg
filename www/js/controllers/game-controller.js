@@ -9,13 +9,14 @@ function gameController($state, $http, userFactory, $cookies) {
   var gCtrl = this;
   ///// Setting current game to current game stored in $cookies
   gCtrl.currentGame = $cookies.getObject("currentGame");
+  console.log('current game: ', gCtrl.currentGame )
   ///// Setting current user in controller to current user from userFactory
   gCtrl.currentUser = userFactory.currentUser;
   gCtrl.favoriteGames = [];
   gCtrl.currentGameData = {};
   gCtrl.currentGameAppId = '';
   ///// GET request to Twitch API to get top 3 streams for the current game
-  $http.get('https://api.twitch.tv/kraken/streams/?game=' + gCtrl.currentGame.game.name + '&stream_type=live&limit=4')
+  $http.get('https://api.twitch.tv/kraken/streams/?game=' + gCtrl.currentGame.name + '&stream_type=live&limit=4')
     .then(function(response) {
       ///// Attach returned streams to current game object
       gCtrl.currentGame.streams = response.data.streams;
@@ -60,11 +61,11 @@ function gameController($state, $http, userFactory, $cookies) {
     return imageUrl = 'http://' + imageUrl
   }
   ///// Generating querystring to be used to call GiantBomb API
-  var queryName = gCtrl.currentGame.game.name.split(' ').join('')
+  var queryName = gCtrl.currentGame.name.split(' ').join('')
   ///// JSONP request to GiantBomb API to get information for current game
   $http({
     method: 'JSONP',
-    url: 'https://www.giantbomb.com/api/game/' + gCtrl.currentGame.game.giantbomb_id + '/?api_key=c63b181fdfa9d0b843f4d59835027bfbe3616c85&format=json',
+    url: 'https://www.giantbomb.com/api/game/' + gCtrl.currentGame.giantbomb_id + '/?api_key=c63b181fdfa9d0b843f4d59835027bfbe3616c85&format=json',
     params: {
       format: 'jsonp',
       json_callback: 'JSON_CALLBACK'

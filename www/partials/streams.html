@@ -1,11 +1,22 @@
 <div class="streams-wrapper">
   <div class="guide"><p class="center">You can click on individual games to see available streams and watch them!</p></div>
   <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="game-search-input input-field col s12">
+          <input id="game-search" type="text" class="validate" ng-model="sCtrl.gameSearchField">
+          <label for="game-search">Search for Game</label>
+          <input type=submit id="game-search-button" class="waves-effect waves-light btn amber darken-3" ng-click="sCtrl.searchGame()"></input>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row">
     <div class="col s12 m4" ng-repeat="game in sCtrl.games">
       <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
-          <a class="modal-trigger" href="" ng-click="sCtrl.goToGame(game)"><img id="game-logo" ng-src="{{sCtrl.fixLogoUrl(game.game.logo.large)}}"></a>
-          <a class="modal-trigger" href="" ng-click="sCtrl.goToGame(game)">
+          <a class="modal-trigger" href="" ng-click="sCtrl.goToGame(game.game)"><img id="game-logo" ng-src="{{sCtrl.fixLogoUrl(game.game.logo.large)}}"></a>
+          <a class="modal-trigger" href="" ng-click="sCtrl.goToGame(game.game)">
             <span class="card-title game-title"><p id="actual-title">{{game.game.name}}</p>
               <span class="game-viewers right"><i class="material-icons right">account_box</i> {{game.viewers}}</span>
             </span>

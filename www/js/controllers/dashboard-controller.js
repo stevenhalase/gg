@@ -9,12 +9,16 @@ function dashboardController($state, $http, userFactory, $cookies) {
   var dCtrl = this;
   ///// Setting current user in controller to current user from userFactory
   dCtrl.currentUser = userFactory.currentUser;
-  dCtrl.profileGames = [];
   ///// Change channel by placing channel info in $cookie
   dCtrl.changeChannel = function(streamObj) {
     $cookies.putObject("currentChannel", streamObj);
     ///// Go to channel view after setting current channel
     $state.go('channel');
+  }
+  dCtrl.goToGame = function(gameObj) {
+    $cookies.putObject("currentGame", gameObj);
+    // console.log(streamObj);
+    $state.go('game');
   }
   ///// Remove stream from User object in DB
   dCtrl.removeStream = function (stream) {
@@ -37,10 +41,35 @@ function dashboardController($state, $http, userFactory, $cookies) {
         console.log('SAVED DUDE: ', response);
       })
   }
-  ///// GET request to Steam API to get User recently played games from Steam profile by passing in User's OpenId
-  $http.get(' http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=5E9C274F1883D1017D2D677F0DD21F3C&include_appinfo=1&steamid=' + dCtrl.currentUser.openId + '&format=json')
-    .then(function(response) {
-      ///// Get top 10 user recently played games from Steam profile response
-      dCtrl.profileGames = response.data.response.games.slice(0,9);
-    })
+
+  dCtrl.searchFavoriteGame = function() {
+    console.log(dCtrl.favoriteGameSearchField);
+    $http.get('https://api.twitch.tv/kraken/search/games?q=' + dCtrl.favoriteGameSearchField + '&type=suggest')
+      .then(function(response) {
+        // console.log(response)
+        if(response.data.games.length > 0) {
+          // console.log('game result: ', response.data.games[0])
+          dCtrl.currentUser.favoriteGames.push(response.data.games[0])
+          console.log(dCtrl.currentUser.favoriteGames[0])
+          $http.post('/api/me', dCtrl.currentUser)
+            .then(function(response) {
+              console.log('SAVED DUDE: ', response);
+            })
+        }
+      })
+  }
+
+  dCtrl.searchForFriends = function() {
+    console.log(dCtrl.friendSearchField);
+    console.log('current user: ', dCtrl.currentUser)
+    $http.post('/api/users', {'query': dCtrl.friendSearchField})
+      .then(function(response) {
+        console.log(response);
+        dCtrl.currentUser.friends.push(response.data[0]);
+        $http.post('/api/me', dCtrl.currentUser)
+          .then(function(response) {
+            console.log('SAVED DUDE: ', response);
+          })
+      })
+  }
 }

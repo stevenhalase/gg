@@ -129,6 +129,17 @@ app.get('/api/me', function(req, res) {
     res.send(user)
   })
 })
+///// API GET Route to pull User from DB
+app.post('/api/users', function(req, res) {
+  console.log('body: ', req.body.query)
+  ///// Find User in DB
+  User.find({ 'displayName': { $regex : new RegExp(req.body.query, "i") }}, function(err, user) {
+    if(err) {console.log('Error finding user: ', err)}
+    ///// Send user profile from DB
+    console.log(user)
+    res.send(user)
+  })
+})
 ///// API POST Rout to update User in DB
 app.post('/api/me', function(req, res) {
   ///// Find user profile in DB and update with sent information
