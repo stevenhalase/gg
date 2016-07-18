@@ -4,8 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var mongoose = require('mongoose');
 var uristring =
-    process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL ||
+    'mongodb://heroku_knntg35z:8m0rolcpngpo4651do8um0lp73@ds023425.mlab.com:23425/heroku_knntg35z' ||
     'mongodb://localhost/gg';
 ///// Connect to MongoDB
 mongoose.connect(uristring, function(error) {
