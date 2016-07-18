@@ -15,6 +15,7 @@ var SteamStrategy = require('passport-steam').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var User = require('./user-model');
 var config = require('./config');
+var port = process.env.PORT || 3000;
 ///// Used to create user session
 var session = require('express-session')
 var newsScraper = require('./news-scraper')
@@ -201,7 +202,7 @@ app.get('/', function (req, res) {
   res.sendFile('index.html', {root : './www'})
 });
 ///// Set up server listening port
-app.listen(80, function () {
+app.listen(port, function () {
     console.log('Server started at https://gaming-central.herokuapp.com/')
 })
 
