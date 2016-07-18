@@ -3,8 +3,12 @@ var csgoMatch = require('./csgo-match-model')
 var request = require('request');
 var cheerio = require('cheerio');
 var mongoose = require('mongoose');
+var uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/gg';
 ///// Connect to MongoDB
-mongoose.connect('mongodb://localhost/gg', function(error) {
+mongoose.connect(uristring, function(error) {
     if (error) {console.error(error);} else {console.log('Mongoose connected successfully')}
 })
 ///// Clear Matches from DB

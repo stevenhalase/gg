@@ -16,6 +16,10 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var User = require('./user-model');
 var config = require('./config');
 var port = process.env.PORT || 3000;
+var uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/gg';
 ///// Used to create user session
 var session = require('express-session')
 var newsScraper = require('./news-scraper')
@@ -27,7 +31,7 @@ app.sessionMiddleware = session({
 })
 app.use(app.sessionMiddleware)
 ///// Connecting to MONGODB
-mongoose.connect('mongodb://localhost/gg', function(error) {
+mongoose.connect(uristring, function(error) {
   ///// If error connecting to MongoDB
   if (error) {
       console.error(error);
@@ -58,7 +62,7 @@ passport.deserializeUser(function(user, done) {
 ///// Steam strategy for Passport authentication
 passport.use(new SteamStrategy({
   returnURL: 'https://gaming-central.herokuapp.com/auth/steam/return',
-  realm: 'https://gaming-central.herokuapp.com/',
+  realm: 'https://gaming-central.herokuapp.com',
   apiKey: config.sKey
   },
   function(identifier, profile, done) {
