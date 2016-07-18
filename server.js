@@ -56,8 +56,8 @@ passport.deserializeUser(function(user, done) {
 });
 ///// Steam strategy for Passport authentication
 passport.use(new SteamStrategy({
-  returnURL: 'http://localhost:3000/auth/steam/return',
-  realm: 'http://localhost:3000/',
+  returnURL: 'https://gaming-central.herokuapp.com/auth/steam/return',
+  realm: 'https://gaming-central.herokuapp.com/',
   apiKey: config.sKey
   },
   function(identifier, profile, done) {
@@ -201,8 +201,8 @@ app.get('/', function (req, res) {
   res.sendFile('index.html', {root : './www'})
 });
 ///// Set up server listening port
-app.listen(3000, function () {
-    console.log('Server started at http://localhost:3000')
+app.listen(80, function () {
+    console.log('Server started at https://gaming-central.herokuapp.com/')
 })
 
 //// Used to scrape data when needed
