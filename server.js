@@ -104,7 +104,7 @@ app.get('/auth/steam/return',
 passport.use(new GoogleStrategy({
     clientID: config.gClientID,
     clientSecret: config.gSecret,
-    callbackURL: "http://localhost:3000/auth/google/callback"
+    callbackURL: "https://gaming-central.herokuapp.com/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
     ///// If user has cover photo in Google profile
