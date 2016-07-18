@@ -53,8 +53,12 @@
 }
 
 #favorite-game-search {
-  max-width: 60%;
+  max-width: 100%;
   margin-bottom: 0px;
+}
+
+#favorite-game-search-button {
+  display: none;
 }
 
 #gotogame-link {
@@ -64,4 +68,25 @@
 #gotogame-link:hover {
   color: #FF8A00;
   text-decoration: none;
+}
+
+#add-friend-search-button {
+  display: none;
+}
+
+#outer-chat {
+  height: 100vh;
+  padding-right: 0px
+}
+
+#inner-chat {
+  padding-right: 0px;
+}
+
+#friend-name {
+  font-size: 12px;
+}
+
+#friend-image {
+  width: 50px;
 }

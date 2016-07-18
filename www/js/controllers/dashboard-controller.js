@@ -59,6 +59,11 @@ function dashboardController($state, $http, userFactory, $cookies) {
       })
   }
 
+  dCtrl.removeGame = function(game) {
+    var index = dCtrl.currentUser.favoriteGames.indexOf(game);
+    dCtrl.currentUser.favoriteGames.splice(index, 1);
+  }
+
   dCtrl.searchForFriends = function() {
     console.log(dCtrl.friendSearchField);
     console.log('current user: ', dCtrl.currentUser)
@@ -71,5 +76,10 @@ function dashboardController($state, $http, userFactory, $cookies) {
             console.log('SAVED DUDE: ', response);
           })
       })
+  }
+
+  dCtrl.openFriendModal = function(_id) {
+    console.log('#' + _id)
+     $('#' + _id).openModal();
   }
 }

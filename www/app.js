@@ -52,6 +52,11 @@ function ggAppRouter($stateProvider, $urlRouterProvider) {
       templateUrl : 'partials/game.html',
       controller  : 'gameCtrl as gCtrl'
     })
+    .state('newProfile', {
+      url : '/newProfile',
+      templateUrl : 'partials/new-profile.html',
+      controller  : 'newProfileCtrl as npCtrl'
+    })
 
     $urlRouterProvider.otherwise('/')
 }

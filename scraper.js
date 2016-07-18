@@ -2,7 +2,6 @@
 var csgoMatch = require('./csgo-match-model')
 var request = require('request');
 var cheerio = require('cheerio');
-var firebase = require("firebase");
 var mongoose = require('mongoose');
 ///// Connect to MongoDB
 mongoose.connect('mongodb://localhost/gg', function(error) {

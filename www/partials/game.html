@@ -37,10 +37,9 @@
                   <li class="collection-header">
                     <h4 class="center news-header">Recent News</h4>
                   </li>
-                  <li class="collection-item" ng-repeat="article in gCtrl.news">
-                    <span id="article-date" class="secondary-content">{{article.date * 1000 | date:'medium'}}</span>
-                    <a href="{{article.url}}" target="_blank"><p id="article-title">{{article.title}} </p></a>
-                    <p class="article-content">{{article.contents}}</p>
+                  <li class="collection-item" ng-repeat="article in gCtrl.news | orderBy: 'timeAgo'">
+                    <span id="article-date" class="secondary-content">{{article.timeAgo}}</span>
+                    <a href="{{article.link}}" target="_blank"><p id="article-title">{{article.title}} </p></a>
                   </li>
                 </ul>
               </div>

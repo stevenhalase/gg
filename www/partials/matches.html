@@ -38,13 +38,43 @@
                 KPR <b>{{player.killsPerRound}}</b><br/>
                 DPR <b>{{player.deathsPerRound}}</b><br/>
                 Headshot <b>{{player.headshots}}</b><br/>
-                Contributed <b>{{player.roundsContributed}}</b>
+                <!-- Contributed <b>{{player.roundsContributed}}</b> -->
               </div>
             </div>
           </div>
         </div>
       </div>
       <br/>
+      <div class="row">
+        <table class="centered col s10 offset-s1 stats-table">
+          <thead>
+            <tr>
+                <th>Team</th>
+                <th>Avg Rating</th>
+                <th>Avg KPR</th>
+                <th>Avg DPR</th>
+                <th>Avg Headshot</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>{{match.teams[0].teamName}}</td>
+              <td class="{{ mCtrl.getBg(match.teams[0], match.teams[1], 'rating') }}">{{mCtrl.getAvg(match.teams[0], 'rating') | number:2}}</td>
+              <td class="{{ mCtrl.getBg(match.teams[0], match.teams[1], 'killsPerRound') }}">{{mCtrl.getAvg(match.teams[0], 'killsPerRound') | number:2}}</td>
+              <td class="{{ mCtrl.getBg(match.teams[0], match.teams[1], 'deathsPerRound') }}">{{mCtrl.getAvg(match.teams[0], 'deathsPerRound') | number:2}}</td>
+              <td class="{{ mCtrl.getBg(match.teams[0], match.teams[1], 'headshots') }}">{{mCtrl.getAvg(match.teams[0], 'headshots') | number:2}}</td>
+            </tr>
+            <tr>
+              <td>{{match.teams[1].teamName}}</td>
+              <td class="{{ mCtrl.getBg(match.teams[1], match.teams[0], 'rating') }}">{{mCtrl.getAvg(match.teams[1], 'rating') | number:2}}</td>
+              <td class="{{ mCtrl.getBg(match.teams[1], match.teams[0], 'killsPerRound') }}">{{mCtrl.getAvg(match.teams[1], 'killsPerRound') | number:2}}</td>
+              <td class="{{ mCtrl.getBg(match.teams[1], match.teams[0], 'deathsPerRound') }}">{{mCtrl.getAvg(match.teams[1], 'deathsPerRound') | number:2}}</td>
+              <td class="{{ mCtrl.getBg(match.teams[1], match.teams[0], 'headshots') }}">{{mCtrl.getAvg(match.teams[1], 'headshots') | number:2}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div>
         <img class="team-logo" ng-src="{{match.teams[1].teamLogoUrl}}"><h3>{{match.teams[1].teamName}}</h3>
         <div class="row">
@@ -61,7 +91,7 @@
                 KPR <b>{{player.killsPerRound}}</b><br/>
                 DPR <b>{{player.deathsPerRound}}</b><br/>
                 Headshot <b>{{player.headshots}}</b><br/>
-                Contributed <b>{{player.roundsContributed}}</b>
+                <!-- Contributed <b>{{player.roundsContributed}}</b> -->
               </div>
             </div>
           </div>

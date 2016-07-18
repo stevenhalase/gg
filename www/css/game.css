@@ -1,6 +1,6 @@
 .back {
   background-color: #14181C;
-  height: 150vh;
+  height: 250vh;
 }
 
 .game-wrapper {
@@ -115,7 +115,7 @@
 
 @media (max-width: 992px) {
   .back {
-    height: 300vh;
+    height: 330vh;
   }
   .twitch-img {
     margin-left: 15%;
@@ -124,7 +124,7 @@
 
 @media (max-width: 600px) {
   .back {
-    height: 350vh;
+    height: 400vh;
   }
   #game-title {
     margin-top: 0px;

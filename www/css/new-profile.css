@@ -1,0 +1,39 @@
+.new-profle-wrapper {
+}
+
+.profile-form {
+  background-color: #e7e7e7;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.profile-image-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.first-row {
+  margin-bottom: 0px;
+}
+
+#user-image {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+#displayName {
+  margin-top: 25px;
+}
+
+#displayNameLbl {
+  margin-top: 25px;
+}
+
+.new-profile-game {
+  background: none;
+}
+
+.new-profile-game-collection {
+  margin-top: 20px;
+}

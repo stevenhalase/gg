@@ -3,11 +3,32 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 ///// Begin match scraping
-function scrape() {
-  request('https://steamdb.info/search/?a=app&q=league+of+legends' , function (error, response, html) {
+function scrape(gameNameQuery, callback) {
+  request('http://n4g.com/channel/' + gameNameQuery , function (error, response, html) {
     var $ = cheerio.load(html);
-    console.log(html)
+    // console.log(html)
+    var contents = $('.si-content')
+    console.log(contents.length)
+    var newsArticles = []
+    // console.log(contents[0].children[0].next.children[0].children[0].data)
+    var iterations = 5;
+    if (contents.length < 5) {
+      callback([])
+    } else {
+      for (var i = 0; i < 5 ; i++) {
+        var article = {
+          link : 'http://n4g.com/' + contents[i].children[0].attribs.href,
+          title : contents[i].children[0].children[0].children[0].data,
+          timeAgo : contents[i].children[0].next.children[0].children[0].data
+        }
+        newsArticles.push(article)
+      }
+      // console.log(newsArticles)
+      callback(newsArticles)
+    }
   })
-
 }
-scrape()
+
+module.exports = {
+  scrape : scrape
+}

@@ -9,7 +9,7 @@ var apiRouter       = require('./api-routes')
 var userRouter      = require('./user-routes')
 var csgoMatch       = require('./csgo-match-model')
 var request         = require('request');
-var passport        = require("passport");
+var passport        = require('passport');
 var expose          = require('express-expose');
 var SteamStrategy = require('passport-steam').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -17,6 +17,8 @@ var User = require('./user-model');
 var config = require('./config');
 ///// Used to create user session
 var session = require('express-session')
+var newsScraper = require('./news-scraper')
+
 app.sessionMiddleware = session({
   secret: 'keyboard cat',
   resave: false,
@@ -66,6 +68,9 @@ passport.use(new SteamStrategy({
     ///// Try to either find existing user from DB or create new user if none is found
     User.findOneAndUpdate({ openId: profile.id }, profile , {upsert: true, new: true} , function (err, user) {
       ///// Return user to continue authentication
+      if (user.newUser === undefined) {
+        user.newUser = true;
+      }
       return done(err, user);
     });
   }
@@ -85,7 +90,14 @@ app.get('/auth/steam/return',
     ///// Login user after authentication
     req.logIn(req.user, function(err) { if (err) { return next(err); } });
     ///// Redirect user to dashboard
-    res.redirect('/#/dashboard');
+    if(req.user.newUser === true) {
+      req.user.newUser = false;
+      User.findOneAndUpdate({ _id : req.user._id }, req.user, {upsert: true, new: true} , function(err, user) {
+        if(err) {console.log('ERROR: ', err)}
+        ///// Send back updated user profile from DB
+        res.redirect('/#/newProfile');
+      })
+    } else { res.redirect('/#/dashboard'); }
   });
 /////// Google strategy for Passport authentication
 passport.use(new GoogleStrategy({
@@ -104,6 +116,9 @@ passport.use(new GoogleStrategy({
     ///// Try to either find existing user from DB or create new user if none is found
     User.findOneAndUpdate({ googleId: profile.id }, profile , {upsert: true, new: true} , function (err, user) {
       ///// Pass user to /auth/google/callback callback function
+      if (user.newUser === undefined) {
+        user.newUser = true;
+      }
       return cb(err, user);
     });
   }
@@ -119,7 +134,15 @@ app.get('/auth/google/callback',
     ///// Login user after authentication
     req.logIn(req.user, function(err) { if (err) { return next(err); } });
     ///// Redirect user to dashboard
-    res.redirect('/#/dashboard');
+    // console.log(req.user.newUser === undefined)
+    if(req.user.newUser === true) {
+      req.user.newUser = false;
+      User.findOneAndUpdate({ _id : req.user._id }, req.user, {upsert: true, new: true} , function(err, user) {
+        if(err) {console.log('ERROR: ', err)}
+        ///// Send back updated user profile from DB
+        res.redirect('/#/newProfile');
+      })
+    } else { res.redirect('/#/dashboard'); }
   });
 ///// API GET Route to pull User from DB
 app.get('/api/me', function(req, res) {
@@ -148,6 +171,15 @@ app.post('/api/me', function(req, res) {
     ///// Send back updated user profile from DB
     res.send(user)
   })
+})
+///// News Scraper API Route
+app.get('/api/news/:game', function(req, res) {
+  console.log(req.params.game)
+  newsScraper.scrape(req.params.game, passNews)
+  function passNews(articles) {
+    console.log(articles)
+    res.send(articles)
+  }
 })
 ///// Route to logout user
 app.get('/logout', function(req, res){

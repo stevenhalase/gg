@@ -38,6 +38,106 @@ function matchesController($http, $sce, $scope) {
     $('#' + modalID).closeModal();
   }
 
+  mCtrl.getAvg = function(team, category) {
+    // console.log(team.players[0].rating.length)
+    var playersLength = 5;
+    for (player of team.players) {
+      // console.log('PLAYER: ', player);
+      if (player.rating.length === 0) {
+        playersLength--
+      }
+    }
+    if(category === 'rating') {
+      var sum = 0;
+      for (player of team.players) {
+        if (player.rating.length !== 0) {
+          sum = sum + parseFloat(player.rating);
+        }
+      }
+      team.rating = sum / playersLength;
+      // console.log(team)
+      // console.log('sum : ', sum, 'avg: ', sum / playersLength)
+      return sum / playersLength;
+    } else if (category === 'killsPerRound') {
+      var sum = 0;
+      for (player of team.players) {
+        if (player.killsPerRound.length !== 0) {
+          sum = sum + parseFloat(player.killsPerRound);
+        }
+      }
+      team.killsPerRound = sum / playersLength;
+      // console.log('sum : ', sum, 'avg: ', sum / playersLength)
+      return sum / playersLength;
+    } else if (category === 'deathsPerRound') {
+      var sum = 0;
+      for (player of team.players) {
+        if (player.deathsPerRound.length !== 0) {
+          sum = sum + parseFloat(player.deathsPerRound);
+        }
+      }
+      team.deathsPerRound = sum / playersLength;
+      // console.log('sum : ', sum, 'avg: ', sum / playersLength)
+      return sum / playersLength;
+    } else if (category === 'headshots') {
+      var sum = 0;
+      for (player of team.players) {
+        if (player.headshots.length !== 0) {
+          sum = sum + parseFloat(player.headshots);
+        }
+      }
+      team.headshots = sum / playersLength;
+      // console.log('sum : ', sum, 'avg: ', sum / playersLength)
+      return sum / playersLength;
+    } else if (category === 'roundsContributed') {
+      var sum = 0;
+      for (player of team.players) {
+        if (player.roundsContributed.length !== 0) {
+          sum = sum + parseFloat(player.roundsContributed);
+        }
+      }
+      // console.log('sum : ', sum, 'avg: ', sum / playersLength)
+      return sum / playersLength;
+    }
+  }
+
+  mCtrl.getBg = function(teamOne, teamTwo, category) {
+    console.log(category)
+    if (category === 'rating') {
+      if(teamOne.rating === teamTwo.rating) {
+        return 'tied';
+      } else if(teamOne.rating > teamTwo.rating) {
+        return 'higher';
+      } else {
+        return 'lower'
+      }
+    } else if (category === 'killsPerRound') {
+      if(teamOne.killsPerRound === teamTwo.killsPerRound) {
+        return 'tied';
+      } else if(teamOne.killsPerRound > teamTwo.killsPerRound) {
+        return 'higher';
+      } else {
+        return 'lower'
+      }
+    } else if (category === 'deathsPerRound') {
+      if(teamOne.deathsPerRound === teamTwo.deathsPerRound) {
+        return 'tied';
+      } else if(teamOne.deathsPerRound > teamTwo.deathsPerRound) {
+        return 'higher';
+      } else {
+        return 'lower'
+      }
+    } else if (category === 'headshots') {
+      if(teamOne.headshots === teamTwo.headshots) {
+        return 'tied';
+      } else if(teamOne.headshots > teamTwo.headshots) {
+        return 'higher';
+      } else {
+        return 'lower'
+      }
+    }
+
+  }
+
   mCtrl.goCray = function() {
     var randomWidth = Math.floor(Math.random() * 500) + 'px';
     var randomAngle = 'rotate(' + Math.floor(Math.random() * 360) + 'deg)';

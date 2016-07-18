@@ -1,0 +1,54 @@
+<div class="new-profle-wrapper">
+  <div class="row">
+    <form class="col s6 offset-s3 profile-form">
+      <div class="row first-row">
+        <div class="col s3 profile-image-container">
+          <img id="user-image" ng-src="{{npCtrl.currentUser.imageUrl || '../images/defaultavatar.png'}}" ng-model="npCtrl.currentUser.imageUrl">
+        </div>
+        <div class="input-field col s9">
+          <input id="displayName" type="text" class="validate" value="{{npCtrl.currentUser.displayName}}" ng-model="npCtrl.currentUser.displayName">
+          <label id="displayNameLbl" class="active" for="displayName">Display Name</label>
+        </div>
+      </div>
+      <div class="row first-row">
+        <div class="input-field col s9 offset-s3">
+          <input id="email" type="text" class="validate" value="{{npCtrl.currentUser.email}}" ng-model="npCtrl.currentUser.email">
+          <label id="emailLbl" class="" for="email">Email Address</label>
+        </div>
+      </div>
+      <div class="row first-row">
+        <div class="input-field col s3 offset-s3">
+          <input id="age" type="text" class="validate" value="{{npCtrl.currentUser.age}}" ng-model="npCtrl.currentUser.age">
+          <label id="ageLbl" class="" for="age">Age</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="location" type="text" class="validate" value="{{npCtrl.currentUser.location}}" ng-model="npCtrl.currentUser.location">
+          <label id="locationLbl" class="" for="location">Location</label>
+        </div>
+      </div>
+      <div class="row first-row">
+        <div class="favorite-game-search-input input-field col s9 offset-s3">
+          <input id="favorite-game-search" type="text" class="validate" ng-model="npCtrl.favoriteGameSearchField">
+          <label for="favorite-game-search">Add Favorite Game </label>
+          <input type="submit" id="favorite-game-search-button" class="waves-effect waves-light btn amber darken-3" ng-click="npCtrl.searchFavoriteGame()"></input>
+        </div>
+        <div class="col s9 offset-s3">
+          <ul class="new-profile-game-collection collection">
+            <li class="new-profile-game collection-item avatar" ng-repeat="game in npCtrl.currentUser.favoriteGames">
+              <img class="circle" ng-src="{{game.box.small}}" alt="">
+              <span class="title"><h5>{{game.name}}</h5></span>
+              <span class="secondary-content">
+                <a class="btn-floating btn-flat red remove-icon" ng-click="npCtrl.removeGame(game)"><i class="material-icons">clear</i></a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s3 offset-s9">
+          <input type="submit" id="" class="waves-effect waves-light btn amber darken-3" ng-click="npCtrl.saveProfile()"></input>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

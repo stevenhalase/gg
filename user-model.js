@@ -8,7 +8,11 @@ const userSchema = mongoose.Schema({
     accessLevel    : Number,
     recentChannels : Array,
     favoriteGames  : Array,
-    friends        : Array
+    friends        : Array,
+    newUser        : Boolean,
+    age            : String,
+    location       : String,
+    email          : String
 });
 
 const User = mongoose.model('user', userSchema);

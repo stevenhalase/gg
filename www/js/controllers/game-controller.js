@@ -75,7 +75,10 @@ function gameController($state, $http, userFactory, $cookies) {
       ///// Save response data to controller variable
       gCtrl.currentGameData = response.data.results;
       ///// Adjusting game name to be used to get news from SteamDB
-      var gameNameQuery = gCtrl.currentGameData.name.split(' ').join('+')
+      var gameNameQuery = gCtrl.currentGameData.name.split(' ').join('-');
+      if (gameNameQuery.includes(':')) {
+        gameNameQuery = gameNameQuery.split(':').join('');
+      }
       gCtrl.getNews(gameNameQuery)
       ///// Parsing image url to be used to set background of game page
       parsedImageUrl = gCtrl.fixGiantBombUrl(gCtrl.currentGameData.image.super_url)
@@ -87,15 +90,10 @@ function gameController($state, $http, userFactory, $cookies) {
   ///// Get news for current game from SteamDB
   ///// TODO: get it to work. Currently blocked.
   gCtrl.getNews = function(gameNameQuery) {
-    $http.get('https://steamdb.info/search/?a=app&q=' + gameNameQuery)
+    $http.get('/api/news/' + gameNameQuery)
       .then(function(response) {
-        var firstSplit = response.data.split('/app/')[1]
-        firstSplit = firstSplit.split('/')[0];
-        gCtrl.currentGameAppId = firstSplit;
-        $http.get('http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=' + gCtrl.currentGameAppId + '&count=3&maxlength=300&format=json')
-          .then(function(response) {
-            gCtrl.news = response.data.appnews.newsitems;
-          })
+        console.log('news response: ', response)
+        gCtrl.news = response.data;
       })
   }
 }
