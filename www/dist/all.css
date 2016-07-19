@@ -872,6 +872,12 @@ footer.page-footer {
   display: inline;
 }
 
+#n4g-logo {
+  width: 75px;
+  background-color: #555;
+  border-radius: 4px;
+}
+
 .stats-wrapper {
   height: 75vh;
   background-color: black;

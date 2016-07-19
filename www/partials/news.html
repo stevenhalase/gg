@@ -7,7 +7,7 @@
     <div class="col s12">
       <ul class="collection with-header">
         <li class="collection-header">
-          <h4 class="center news-header">PC News</h4>
+          <h4 class="center news-header">PC News</h4> <span class="right">Powered by <img id="n4g-logo" src="../images/n4g.png"></span>
         </li>
         <li class="collection-item" ng-repeat="article in nCtrl.pcNews | orderBy: 'timeAgo'">
           <span id="article-date" class="secondary-content">{{article.timeAgo}}</span>
@@ -21,7 +21,7 @@
     <div class="col s12">
       <ul class="collection with-header">
         <li class="collection-header">
-          <h4 class="center news-header">PS4 News</h4>
+          <h4 class="center news-header">PS4 News</h4> <span class="right">Powered by <img id="n4g-logo" src="../images/n4g.png"></span>
         </li>
         <li class="collection-item" ng-repeat="article in nCtrl.ps4News | orderBy: 'timeAgo'">
           <span id="article-date" class="secondary-content">{{article.timeAgo}}</span>
@@ -35,7 +35,7 @@
     <div class="col s12">
       <ul class="collection with-header">
         <li class="collection-header">
-          <h4 class="center news-header">Xbox One News</h4>
+          <h4 class="center news-header">Xbox One News</h4> <span class="right">Powered by <img id="n4g-logo" src="../images/n4g.png"></span>
         </li>
         <li class="collection-item" ng-repeat="article in nCtrl.xboxOneNews | orderBy: 'timeAgo'">
           <span id="article-date" class="secondary-content">{{article.timeAgo}}</span>
