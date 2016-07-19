@@ -3,8 +3,8 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 ///// Begin match scraping
-function scrape(gameNameQuery, callback) {
-  request('http://n4g.com/channel/' + gameNameQuery , function (error, response, html) {
+function scrape(nameQuery, callback) {
+  request('http://n4g.com/channel/' + nameQuery , function (error, response, html) {
     var $ = cheerio.load(html);
     // console.log(html)
     var contents = $('.si-content')

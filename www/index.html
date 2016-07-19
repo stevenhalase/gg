@@ -43,6 +43,7 @@
              <li ng-show="iCtrl.loggedIn === true"><a class="dropdown-button" href="" data-activates="dropdown2"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}<i class="material-icons right">arrow_drop_down</i></a></li>
              <li ng-class="{'active': location===''}"><a ui-sref="home">Home</a></li>
              <li ng-class="{'active': location==='streams'}"><a ui-sref="streams">Games</a></li>
+             <li ng-class="{'active': location==='news'}"><a ui-sref="news">News</a></li>
              <li ng-class="{'active': location==='matches'}"><a ui-sref="matches">Matches</a></li>
              <li ng-class="{'active': location==='statistics'}"><a ui-sref="statistics">Statistics</a></li>
            </ul>

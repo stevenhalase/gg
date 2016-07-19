@@ -177,7 +177,16 @@ app.post('/api/me', function(req, res) {
   })
 })
 ///// News Scraper API Route
-app.get('/api/news/:game', function(req, res) {
+app.get('/api/news/:platform', function(req, res) {
+  console.log(req.params.platform)
+  newsScraper.scrape(req.params.platform, passNews)
+  function passNews(articles) {
+    console.log(articles)
+    res.send(articles)
+  }
+})
+///// Game News Scraper API Route
+app.get('/api/news/game/:game', function(req, res) {
   console.log(req.params.game)
   newsScraper.scrape(req.params.game, passNews)
   function passNews(articles) {

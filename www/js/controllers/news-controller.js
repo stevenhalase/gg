@@ -8,19 +8,27 @@ function newsController($http) {
 
   nCtrl.title = 'News Controller';
 
-  nCtrl.csgoNews = [];
+  nCtrl.pcNews = [];
+  nCtrl.ps4News = [];
+  nCtrl.xboxOneNews = [];
 
-  nCtrl.selectedGame = 730;
+  $http.get('/api/news/game/pc')
+    .then(function(response) {
+      console.log('news response: ', response);
+      nCtrl.pcNews = response.data;
+    });
 
-  nCtrl.newsChange = function() {
-    console.log(nCtrl.selectedGame);
-    $http.get('http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=' + nCtrl.selectedGame + '&count=10&maxlength=300&format=json')
-      .then(function(response) {
-        nCtrl.news = response.data.appnews.newsitems;
-        console.log(nCtrl.news);
-      });
-  };
-  nCtrl.newsChange();
+  $http.get('/api/news/game/ps4')
+    .then(function(response) {
+      console.log('news response: ', response);
+      nCtrl.ps4News = response.data;
+    });
+
+  $http.get('/api/news/game/xbox-one')
+    .then(function(response) {
+      console.log('news response: ', response);
+      nCtrl.xboxOneNews = response.data;
+    });
 
   $(document).ready(function() {
     $('select').material_select();

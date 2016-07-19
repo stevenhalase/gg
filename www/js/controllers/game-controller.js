@@ -91,7 +91,7 @@ function gameController($state, $http, userFactory, $cookies) {
   ///// Get news for current game from SteamDB
   ///// TODO: get it to work. Currently blocked.
   gCtrl.getNews = function(gameNameQuery) {
-    $http.get('/api/news/' + gameNameQuery)
+    $http.get('/api/news/game/' + gameNameQuery)
       .then(function(response) {
         console.log('news response: ', response);
         gCtrl.news = response.data;
