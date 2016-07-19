@@ -12,5 +12,5 @@ function channelController($stateParams, $sce, StreamFactory, $state, $cookies) 
   ///// Passing channel Twitch url through $sce to trust it as a valid url
   cCtrl.channelUrl = $sce.trustAsResourceUrl('https://player.twitch.tv/?channel=' + cCtrl.channel.name);
   ///// Passing chat Twitch url through $sce to trust it as a valid url
-  cCtrl.chatUrl = $sce.trustAsResourceUrl('http://www.twitch.tv/' + cCtrl.channel.name + '/chat/');
+  cCtrl.chatUrl = $sce.trustAsResourceUrl('https://www.twitch.tv/' + cCtrl.channel.name + '/chat/');
 }
