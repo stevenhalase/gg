@@ -4,7 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var mongoose = require('mongoose');
 var uristring =
-    process.env.MONGOLAB_URI ||
+    process.env.MONGODB_URI ||
     'mongodb://localhost/gg';
 ///// Connect to MongoDB
 mongoose.connect(uristring, function(error) {

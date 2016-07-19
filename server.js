@@ -17,7 +17,7 @@ var User = require('./user-model');
 var config = require('./config');
 var port = process.env.PORT || 3000;
 var uristring =
-    process.env.MONGOLAB_URI ||
+    process.env.MONGODB_URI ||
     'mongodb://localhost/gg';
 ///// Used to create user session
 var session = require('express-session')
