@@ -12,11 +12,11 @@ function adminController($state, $http) {
   ///// Open modal using JQuery
   aCtrl.openModal = function(modalID) {
     $('#' + modalID).openModal();
-  }
+  };
   ///// Close modal using JQuery
   aCtrl.closeModal = function(modalID) {
     $('#' + modalID).closeModal();
-  }
+  };
   ///// Saves admin updated Match to DB
   aCtrl.saveMatch = function() {
     ///// If Match has an _id (i.e. checking if Match is originally came from DB
@@ -27,7 +27,7 @@ function adminController($state, $http) {
         .then(function(response) {
           ///// Display result from saving match
           console.log('Match Save API response: ', response);
-        })
+        });
     ///// If Match is newly generated and hasn't been in DB
     } else {
       ///// Send POST request to Express server API route to save new Match
@@ -35,7 +35,7 @@ function adminController($state, $http) {
         .then(function(response) {
           ///// Display result from saving match
           console.log('Match Save API response: ', response);
-        })
+        });
     }
     ///// After saving new Match or updating existing one, refresh
     ///// displayed matches from DB
@@ -43,8 +43,8 @@ function adminController($state, $http) {
       .then(function(response) {
         console.log('Internal API response: ', response);
         aCtrl.matches = response.data;
-      })
-  }
+      });
+  };
   ///// Removes Match from DB through API call to Express
   aCtrl.removeMatch = function(id) {
     ///// Send DELETE request to DB through API
@@ -52,26 +52,26 @@ function adminController($state, $http) {
       .then(function(response) {
         ///// Display result from deleting Match from DB
         console.log('Match Save API response: ', response);
-      })
+      });
     ///// After saving new Match or updating existing one, refresh
     ///// displayed matches from DB
     $http.get('/api/v1/csgo-matches/')
       .then(function(response) {
         console.log('Internal API response: ', response);
         aCtrl.matches = response.data;
-      })
-  }
+      });
+  };
 
   ///// Setting current Match to respective user selected Match
   aCtrl.editMatch = function(match) {
     aCtrl.match = match;
-  }
+  };
   ///// GET request to get Matches from DB
   $http.get('/api/v1/csgo-matches/')
     .then(function(response) {
       console.log('Internal API response: ', response);
       aCtrl.matches = response.data;
-    })
+    });
   ///// Clearing current Match object when user selects to create new Match
   aCtrl.clearForNew = function() {
     aCtrl.match = {
@@ -187,7 +187,7 @@ function adminController($state, $http) {
         }]
       }]
     };
-  }
+  };
   ///// Setting default current Match to empty
   aCtrl.match = {
     matchUrl : '',
@@ -301,5 +301,5 @@ function adminController($state, $http) {
         headshots : ''
       }]
     }]
-  }
+  };
 }

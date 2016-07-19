@@ -9,7 +9,7 @@ function gameController($state, $http, userFactory, $cookies) {
   var gCtrl = this;
   ///// Setting current game to current game stored in $cookies
   gCtrl.currentGame = $cookies.getObject("currentGame");
-  console.log('current game: ', gCtrl.currentGame )
+  console.log('current game: ', gCtrl.currentGame );
   ///// Setting current user in controller to current user from userFactory
   gCtrl.currentUser = userFactory.currentUser;
   gCtrl.favoriteGames = [];
@@ -20,7 +20,7 @@ function gameController($state, $http, userFactory, $cookies) {
     .then(function(response) {
       ///// Attach returned streams to current game object
       gCtrl.currentGame.streams = response.data.streams;
-    })
+    });
   ///// Change Twitch channel based on stream selected by user
   gCtrl.changeChannel = function(streamObj,modalID) {
     ///// Check to see if current User has a recentChannels array
@@ -32,7 +32,7 @@ function gameController($state, $http, userFactory, $cookies) {
       $http.post('/api/me', userFactory.currentUser)
         .then(function(response) {
           console.log('SAVED DUDE: ', response);
-        })
+        });
     }
     ///// Add stream to $cookie to be used in the channel controller
     $cookies.putObject("currentChannel", streamObj);
@@ -40,28 +40,29 @@ function gameController($state, $http, userFactory, $cookies) {
     $state.go('channel');
     ///// Close the modal using JQuery
     $('#' + modalID).closeModal();
-  }
+  };
   ///// Generate Stream url from Stream name
   gCtrl.getStreamLink = function(streamName) {
     return 'https://player.twitch.tv/?channel=' + streamName;
-  }
+  };
   ///// Fixes given logo url for Twitch game cover
   gCtrl.fixLogoUrl = function(url) {
-    url = url.split('logoart')
+    url = url.split('logoart');
     url = url[0] + 'boxart' + url[1];
-    url = url.split('240')
+    url = url.split('240');
     url = url[0] + '800' + url[1];
     url = url.split('144');
     url = url[0] + '800' + url[1];
     return url;
-  }
+  };
   ///// Fixed given image url from GiantBomb
   gCtrl.fixGiantBombUrl = function(imageUrl) {
-    imageUrl = imageUrl.split('//')[1]
-    return imageUrl = 'http://' + imageUrl
-  }
+    imageUrl = imageUrl.split('//')[1];
+    imageUrl = 'http://' + imageUrl;
+    return imageUrl;
+  };
   ///// Generating querystring to be used to call GiantBomb API
-  var queryName = gCtrl.currentGame.name.split(' ').join('')
+  var queryName = gCtrl.currentGame.name.split(' ').join('');
   ///// JSONP request to GiantBomb API to get information for current game
   $http({
     method: 'JSONP',
@@ -79,21 +80,21 @@ function gameController($state, $http, userFactory, $cookies) {
       if (gameNameQuery.includes(':')) {
         gameNameQuery = gameNameQuery.split(':').join('');
       }
-      gCtrl.getNews(gameNameQuery)
+      gCtrl.getNews(gameNameQuery);
       ///// Parsing image url to be used to set background of game page
-      parsedImageUrl = gCtrl.fixGiantBombUrl(gCtrl.currentGameData.image.super_url)
+      parsedImageUrl = gCtrl.fixGiantBombUrl(gCtrl.currentGameData.image.super_url);
       ///// Setting game page background image with JQuery
       $('.game-wrapper').css({
         'background-image' : 'url(' + parsedImageUrl + ')'
-      })
-    })
+      });
+    });
   ///// Get news for current game from SteamDB
   ///// TODO: get it to work. Currently blocked.
   gCtrl.getNews = function(gameNameQuery) {
     $http.get('/api/news/' + gameNameQuery)
       .then(function(response) {
-        console.log('news response: ', response)
+        console.log('news response: ', response);
         gCtrl.news = response.data;
-      })
-  }
+      });
+  };
 }

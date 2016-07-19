@@ -8,11 +8,11 @@ angular.module('ggApp')
     var currentUser = {};
 
     function getUser() {
-      return $http.get('/api/me/')
+      return $http.get('/api/me/');
     }
 
     return {
       getUser : getUser,
       currentUser : currentUser
-    }
+    };
   }

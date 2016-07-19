@@ -9,5 +9,5 @@ angular.module('ggApp')
 
     return {
       currentChannel : currentChannel
-    }
+    };
   }

@@ -1,0 +1,1161 @@
+#admin-wrapper {
+  background-color: #ecf0f1;
+}
+
+#match-collection {
+}
+
+#admin-modal-content {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+#match_info {
+  height: 250px;
+  width: 80%;
+}
+
+#team_one {
+  width: 80%;
+}
+
+#team_two {
+  width: 80%;
+}
+
+#db-preview {
+  background-color: #F9F2F4;
+  padding: 3px;
+  border: 1px solid #f7dbe3;
+}
+
+#logos-container {
+  margin-top: 4%;
+}
+
+.admin-team-logo {
+  background-color: #cbcbcb;
+  border: 2px solid #333;
+}
+
+h4 {
+  text-align: center;
+  color: black;
+}
+
+.collection {
+  margin-top: 0;
+}
+
+#collection-item img {
+  width: 75px;
+  height: 75px;
+}
+
+.title {
+  font-size: 12px;
+}
+
+#collection-item p {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.team-buttons {
+  text-align: center;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  }
+
+main {
+  flex: 1 0 auto;
+  background-color: #ecf0f1;
+}
+
+#nav-logo-icon {
+  width: 50px;
+  margin-top: -5px;
+}
+
+#menu-collapse {
+  background-color:  #ecf0f1;
+}
+
+#menu-collapse a {
+  color: #FF8A00;
+}
+
+#menu-button {
+  display: inline;
+  width: 100px;
+}
+
+#menu-icon {
+  display: inline;
+  width: 100px;
+}
+
+#logo-icon {
+  margin-left: 30px;
+  display: inline;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.nav-wrapper {
+  font-weight: bold;
+  background: rgba(221,109,0,1);
+  /*background: -moz-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(221,109,0,1)), color-stop(11%, rgba(221,109,0,1)), color-stop(11%, rgba(255,143,0,1)), color-stop(100%, rgba(255,143,0,1)));
+  background: -webkit-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
+  background: linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 11%, rgba(255,143,0,1) 11%, rgba(255,143,0,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd6d00', endColorstr='#ff8f00', GradientType=1 );*/
+}
+
+.nav-wrapper a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-wrapper a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-wrapper a:active {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-wrapper a:focus {
+  color: white;
+  text-decoration: none;
+}
+
+footer.page-footer {
+  margin-top: 0;
+  background: rgba(221,109,0,1);
+  background: -moz-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 52%, rgba(255,143,0,1) 52%, rgba(255,143,0,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(221,109,0,1)), color-stop(52%, rgba(221,109,0,1)), color-stop(52%, rgba(255,143,0,1)), color-stop(100%, rgba(255,143,0,1)));
+  background: -webkit-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 52%, rgba(255,143,0,1) 52%, rgba(255,143,0,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 52%, rgba(255,143,0,1) 52%, rgba(255,143,0,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 52%, rgba(255,143,0,1) 52%, rgba(255,143,0,1) 100%);
+  background: linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 52%, rgba(255,143,0,1) 52%, rgba(255,143,0,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd6d00', endColorstr='#ff8f00', GradientType=1 );
+}
+
+/* label color */
+.input-field label {
+  color: #c6975f;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #FF8A00;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #FF8A00;
+  box-shadow: 0 1px 0 0 #FF8A00;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #FF8A00;
+  box-shadow: 0 1px 0 0 #FF8A00;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #d13f3f;
+  box-shadow: 0 1px 0 0 #d13f3f;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #000;
+}
+
+#login-button {
+  margin-top: -30px;
+  margin-left: 10%;
+}
+
+#name-button {
+  margin-top: -33px;
+  margin-left: 10%;
+}
+
+#nav-profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.guide {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  padding: 10px;
+}
+
+.guide p {
+  font-weight: lighter;
+  margin-bottom: 0px;
+}
+
+#dropdown1 {
+  min-width: 220px;
+}
+
+.channel-wrapper {
+  background-color: #ecf0f1;
+  height: 100%;
+}
+
+.stream-container {
+  position: relative;;
+}
+
+#channel-stream {
+  max-width: 60%;
+  width: 60%;
+  position: absolute;
+  left:3%;
+  top: 2%;
+  overflow: hidden;
+}
+
+#chat_embed {
+  max-width: 30%;
+  width: 30%;
+  position: absolute;
+  left:65%;
+  top: 1%;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+
+}
+
+#channel-logo {
+  position: absolute;
+  z-index: 5;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 100px;
+  border-radius: 50%;
+  border: 2px solid #FF8A00;
+}
+
+#twitch-logo {
+  z-index: 5;
+  margin-left: 50%;
+  transform: translate(-50%);
+  padding: 10px;
+  width: 150px;
+}
+
+#powered {
+  display: inline-block;
+  color: black;
+  font-weight: bolder;
+  margin-left: 50%;
+  transform: translate(-50%);
+  margin-top: 25px;
+}
+
+.dash-wrapper {
+}
+
+#streams-date {
+  color: #FF8A00;
+}
+
+#stream-name:link {
+  color: #FF8A00;
+  text-decoration: none;
+}
+
+#stream-status {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 75%;
+}
+
+#stream-name:hover {
+  color: #FF8A00;
+  text-decoration: none;
+}
+
+#stream-name {
+  color: #FF8A00;
+  text-decoration: none;
+}
+
+#remove-stream {
+  color: white;
+  border-radius: 50%;
+}
+
+#recent-streams-title {
+  display: inline;
+  vertical-align: middle;
+}
+
+#clear-streams-button {
+  color: white;
+  margin-left: 5px;
+  padding: 0 5px 5px 5px;
+}
+
+#clear-streams-button:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.chip {
+  font-size: 10px;
+}
+
+#favorite-game-search {
+  max-width: 100%;
+  margin-bottom: 0px;
+}
+
+#favorite-game-search-button {
+  display: none;
+}
+
+#gotogame-link {
+  color: #FF8A00;
+}
+
+#gotogame-link:hover {
+  color: #FF8A00;
+  text-decoration: none;
+}
+
+#add-friend-search-button {
+  display: none;
+}
+
+#outer-chat {
+  height: 100vh;
+  padding-right: 0px
+}
+
+#inner-chat {
+  padding-right: 0px;
+}
+
+#friend-name {
+  font-size: 12px;
+}
+
+#friend-image {
+  width: 50px;
+}
+
+.back {
+  background-color: #14181C;
+  height: 250vh;
+}
+
+.game-wrapper {
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+}
+
+#fade {
+  /*background-color: black;*/
+  background-image: url('../images/bg-fade.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+}
+
+.game-content {
+  padding-top: 125px;
+  /*background-color: black;*/
+}
+
+#game-cover {
+  background-color: #14181C;
+  width: 80%;
+  border: 3px solid black;
+  margin: 50px;
+}
+
+#game-title {
+  color: white;
+  margin-top: 150px;
+}
+
+.game-details {
+  color: white;
+}
+
+#game-chip {
+  margin: 5px;
+}
+
+#game-platform {
+  background-color: #FF8F00;
+  padding: 3px 5px;
+  display: inline;
+  margin: 10px 1px;
+  border-radius: 2px;
+}
+
+#game-platform-div {
+  margin: 15px 0px;
+}
+
+#streams-div {
+  margin-top: 20px;
+  padding-right: 20px;
+}
+
+.twitch-img {
+  margin-top:25px;
+  margin-left: 35%;
+  width: 150px;
+}
+
+.back-arrow-game {
+  position: absolute;
+  left: 20px;
+  top: 84px;
+  /*background-color: rgba(0,0,0,0.4);*/
+  color: #FF8A00;
+  font-size: 40px;
+}
+
+.article-content {
+  font-weight: lighter;
+  color: black;
+}
+
+#article-label {
+  font-weight: bold;
+  color: #FF8A00;
+}
+
+#article-title {
+  font-weight: bolder;
+  font-size: 20px;
+  display: inline;
+  color: black;
+  text-decoration: none;
+}
+
+#article-title:hover {
+  text-decoration: none;
+}
+
+#article-date {
+  font-weight: lighter;
+  color: #777;
+}
+
+.game-icon {
+  width: 50px;
+  display: inline-block;
+}
+
+.news-header {
+  display: inline;
+}
+
+@media (max-width: 992px) {
+  .back {
+    height: 330vh;
+  }
+  .twitch-img {
+    margin-left: 15%;
+  }
+}
+
+@media (max-width: 600px) {
+  .back {
+    height: 400vh;
+  }
+  #game-title {
+    margin-top: 0px;
+  }
+  .twitch-img {
+    margin-left: 20%;
+  }
+}
+
+#home-wrapper {
+  height: 75vh;
+  background-image: url('../images/bg.jpg');
+  background-position: center;
+  background-size: cover;
+  color: #FF8A00;
+}
+
+#home-wrapper h1 {
+  position: absolute;
+  left: 62%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+  font-size: 91px;
+  font-weight: bolder;
+}
+
+#home-logo-icon {
+  width: 150px;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+#desc {
+  color: white;
+  position: absolute;
+  left: 176px;
+  top: 328px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#pointer {
+  font-weight: bold;
+  font-size: 40px;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.action {
+  text-align: center;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 340px) {
+  .action {
+    top: 75%;
+  }
+  #home-wrapper {
+    height: 95vh;
+  }
+}
+
+@media (max-width: 700px) {
+  .action {
+    top: 70%;
+  }
+  #home-wrapper {
+    height: 85vh;
+  }
+}
+
+@media (min-width: 701px) {
+  .action {
+    top: 62%;
+  }
+  #home-wrapper {
+    height: 80vh;
+  }
+}
+
+.action p {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.action a {
+  margin: 5px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  background: #FF8A00;
+}
+
+.action a:link {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.action a:hover {
+  background-color: #DD6D00;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.action i {
+  font-size: 12px;
+}
+
+.match-time {
+  font-size: 12px;
+}
+
+#match-logo {
+  width: 49%;
+  display: inline;
+}
+
+.chip > img {
+  background-color: black;
+}
+
+.team-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.team-pos {
+  color: #49b34e;
+}
+
+.team-neg {
+  color: #e25025;
+}
+
+.match-info > div {
+}
+
+.match-modal-wrapper {
+  border-top: 2px solid #FF8A00;
+  text-align: center;
+}
+
+.match-modal div {
+  color: white;
+}
+
+.match-modal h3 {
+  vertical-align: middle;
+  display: inline;
+  margin-left: 10px;
+}
+
+.match-modal-perc {
+  padding: 5px 20px 5px 20px;
+}
+
+#match-modal-content {
+  height: 100%;
+  padding: 15px 0px 0px 0px;
+  background-image: url('../images/csgoback.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+#player-name {
+  color: #FF8A00;
+  font-weight: bold;
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
+  max-height: 50px;
+  padding: 0;
+}
+
+.csgo-lounge-button {
+  background-color: black;
+  border-radius: 4px;
+}
+
+.csgo-lounge-button img {
+  padding: 5px 10px;
+}
+
+.modal.bottom-sheet.match-modal-wrapper {
+  background-color: black;
+  max-height: 100%;
+  height: 100%;
+}
+
+.team-logo {
+  padding: 5px;
+  width: 60px;
+  vertical-align: middle;
+}
+
+#player-card-wrapper:first-of-type {
+  margin-left: 8%;
+}
+
+.back-arrow {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: rgba(0,0,0,0.8);
+  color: #FF8A00;
+  font-size: 40px;
+  border-radius: 5px;
+}
+
+#vs {
+  position: absolute;
+  z-index: 5;
+  top: 40%;
+  left: 30%;
+  width: 30%;
+}
+
+#match-image {
+  background-color: #ecf0f1;
+  max-height: 100%;
+  height: 100%;
+}
+
+#match-title {
+}
+
+#player-action {
+  background-color: #ecf0f1;
+  color: black;
+}
+
+#broke {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#broke-img {
+  width: 200px;
+  border-radius: 4px;
+  display: inherit;
+  margin: 0 auto;
+}
+
+.emojis {
+  width: 30px;
+}
+
+.stats-table {
+  text-align: center;
+}
+
+.higher {
+  border-radius: 0px;
+  background-color: rgba(46, 204, 113,0.5);
+}
+
+.lower {
+  border-radius: 0px;
+  background-color: rgba(231, 76, 60,0.5);
+}
+
+.tied {
+  border-radius: 0px;
+  background-color: rgba(241, 196, 15,0.5)
+}
+
+/* fallback */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(http://fonts.gstatic.com/s/materialicons/v17/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.new-profle-wrapper {
+}
+
+.profile-form {
+  background-color: #e7e7e7;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.profile-image-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.first-row {
+  margin-bottom: 0px;
+}
+
+#user-image {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+#displayName {
+  margin-top: 25px;
+}
+
+#displayNameLbl {
+  margin-top: 25px;
+}
+
+.new-profile-game {
+  background: none;
+}
+
+.new-profile-game-collection {
+  margin-top: 20px;
+}
+
+.news-wrapper {
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  padding: 25px;
+}
+
+.article-content {
+  font-weight: lighter;
+}
+
+#article-label {
+  font-weight: bold;
+  color: #FF8A00;
+}
+
+#article-title {
+  font-weight: bolder;
+  font-size: 20px;
+  display: inline;
+  color: black;
+  text-decoration: none;
+}
+
+#article-title:hover {
+  text-decoration: none;
+}
+
+#article-date {
+  font-weight: lighter;
+  color: #777;
+}
+
+.game-icon {
+  width: 50px;
+  display: inline-block;
+}
+
+.news-header {
+  display: inline;
+}
+
+.stats-wrapper {
+  height: 75vh;
+  background-color: black;
+  background-position: center;
+  background-size: cover;
+  padding: 100px;
+}
+
+#stats-action > a {
+  color: black;
+}
+
+#stats-action > a:link {
+  color: black;
+}
+
+#stats-action > a:hover {
+  color: black;
+}
+
+.streams-wrapper {
+  background-color: black;
+}
+
+.game-title {
+  color: white;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
+}
+
+#stream-title {
+  font-size: 14px;
+  color: black;
+}
+
+#actual-title {
+  display: inline-block;
+  width: 60%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 880px) {
+  #actual-title {
+    width: 50%;
+  }
+}
+
+.game-viewers {
+  color: #FF8A00;
+  padding: 3px;
+  font-size: 14px;
+}
+
+#stream-title i {
+  color: #FF8A00;
+  font-size: 30px;
+  margin-left: 0;
+}
+
+.back-arrow {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: rgba(0,0,0,0.8);
+  color: #FF8A00;
+  font-size: 40px;
+}
+
+.top-streams-title {
+  color: white;
+}
+
+.modal.bottom-sheet.stream-modal {
+  border-top: 2px solid #FF8A00;
+  background-color: rgba(0,0,0,0.8);
+  max-height: 100%;
+  height: 100%;
+}
+
+.stream-modal-content {
+  height: 100%;
+  background: rgba(0,0,0,1);
+  background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 47%, rgba(10,10,10,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(47%, rgba(20,20,20,1)), color-stop(100%, rgba(10,10,10,1)));
+  background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 47%, rgba(10,10,10,1) 100%);
+  background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 47%, rgba(10,10,10,1) 100%);
+  background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 47%, rgba(10,10,10,1) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 47%, rgba(10,10,10,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#0a0a0a', GradientType=0 );
+}
+
+.stream-card {
+  border-radius: 0;
+}
+
+#game-search {
+  max-width: 50%;
+  color:white;
+}
+
+#game-search-button {
+  margin-left: 15px;
+}
+
+.game-search-input {
+  text-align: center;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Titillium WebThin'), local('TitilliumWeb-Thin'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wprzS7C564OTp_INgXTr8EAGg.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Titillium WebThin'), local('TitilliumWeb-Thin'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wprwncwICprNeqbmuPE2HfhOU.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr30ibtJ3ueB9Z81J478WEJQ.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr6YfJ4wTnNoNUCmOpdh16Tg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Titillium Web'), local('TitilliumWeb-Regular'), url(https://fonts.gstatic.com/s/titilliumweb/v4/7XUFZ5tgS-tD6QamInJTcSGR3J8a2Jm30YJvJ3tIMOY.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Titillium Web'), local('TitilliumWeb-Regular'), url(https://fonts.gstatic.com/s/titilliumweb/v4/7XUFZ5tgS-tD6QamInJTceHuglUR2dhBxWD-q_ehMME.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Titillium WebSemiBold'), local('TitilliumWeb-SemiBold'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr1Tcxd1fGlbIJMCb5Y260Wk.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Titillium WebSemiBold'), local('TitilliumWeb-SemiBold'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr6d1JQt-lS5nD-1TJX2NNl0.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Titillium WebBold'), local('TitilliumWeb-Bold'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr6nZAMwsGZpiGJKtVINElMQ.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Titillium WebBold'), local('TitilliumWeb-Bold'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr8hG3LOB74UqS1hPmWaAxzQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Titillium WebBlack'), local('TitilliumWeb-Black'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpry6ppOJQXOpn8IlQzTbo2Ns.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Titillium WebBlack'), local('TitilliumWeb-Black'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr38V1Ceyva9e1TrsMaWAC_w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 200;
+  src: local('Titillium WebThin Italic'), local('TitilliumWeb-ThinItalic'), url(https://fonts.gstatic.com/s/titilliumweb/v4/RZunN20OBmkvrU7sA4GPPlJE2ff-A43GlZDxz8FPlfj3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 200;
+  src: local('Titillium WebThin Italic'), local('TitilliumWeb-ThinItalic'), url(https://fonts.gstatic.com/s/titilliumweb/v4/RZunN20OBmkvrU7sA4GPPhd7TTgBBEGVxkjmQgbPAyw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Titillium WebLight Italic'), local('TitilliumWeb-LightItalic'), url(https://fonts.gstatic.com/s/titilliumweb/v4/RZunN20OBmkvrU7sA4GPPiOhBaFVoVDc-z8-DYP2cCb3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Titillium WebLight Italic'), local('TitilliumWeb-LightItalic'), url(https://fonts.gstatic.com/s/titilliumweb/v4/RZunN20OBmkvrU7sA4GPPkb38SFW3SGHxd5c_83r5xk.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Titillium WebItalic'), local('TitilliumWeb-Italic'), url(https://fonts.gstatic.com/s/titilliumweb/v4/r9OmwyQxrgzUAhaLET_KOyohs_GVCV93aZwGb7eT-mc.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Titillium WebItalic'), local('TitilliumWeb-Italic'), url(https://fonts.gstatic.com/s/titilliumweb/v4/r9OmwyQxrgzUAhaLET_KO04Sq3N3sm-tF9FpL8sHob4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Titillium WebSemiBold Italic'), local('TitilliumWeb-SemiBoldItalic'), url(https://fonts.gstatic.com/s/titilliumweb/v4/RZunN20OBmkvrU7sA4GPPgHWXvJEMqz2JvmyFwzXZKX3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Titillium WebSemiBold Italic'), local('TitilliumWeb-SemiBoldItalic'), url(https://fonts.gstatic.com/s/titilliumweb/v4/RZunN20OBmkvrU7sA4GPPubnHKM7EA09T6nhONWaMpo.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Titillium WebBold Italic'), local('TitilliumWeb-BoldItalic'), url(https://fonts.gstatic.com/s/titilliumweb/v4/RZunN20OBmkvrU7sA4GPPrllv97p_r9FmS3SWdZzB6_3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Titillium WebBold Italic'), local('TitilliumWeb-BoldItalic'), url(https://fonts.gstatic.com/s/titilliumweb/v4/RZunN20OBmkvrU7sA4GPPipre1WS4Xml-pRMufJH74k.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}

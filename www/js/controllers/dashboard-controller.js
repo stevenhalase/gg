@@ -14,12 +14,12 @@ function dashboardController($state, $http, userFactory, $cookies) {
     $cookies.putObject("currentChannel", streamObj);
     ///// Go to channel view after setting current channel
     $state.go('channel');
-  }
+  };
   dCtrl.goToGame = function(gameObj) {
     $cookies.putObject("currentGame", gameObj);
     // console.log(streamObj);
     $state.go('game');
-  }
+  };
   ///// Remove stream from User object in DB
   dCtrl.removeStream = function (stream) {
     ///// Get index of stream in User profile recentChannels array
@@ -29,8 +29,8 @@ function dashboardController($state, $http, userFactory, $cookies) {
     $http.post('/api/me', dCtrl.currentUser)
       .then(function(response) {
         console.log('SAVED DUDE: ', response);
-      })
-  }
+      });
+  };
   ///// Remove all streams from User object in DB
   dCtrl.clearStreams = function() {
     ///// Clear User profile recentChannels array
@@ -39,8 +39,8 @@ function dashboardController($state, $http, userFactory, $cookies) {
     $http.post('/api/me', dCtrl.currentUser)
       .then(function(response) {
         console.log('SAVED DUDE: ', response);
-      })
-  }
+      });
+  };
 
   dCtrl.searchFavoriteGame = function() {
     console.log(dCtrl.favoriteGameSearchField);
@@ -49,24 +49,24 @@ function dashboardController($state, $http, userFactory, $cookies) {
         // console.log(response)
         if(response.data.games.length > 0) {
           // console.log('game result: ', response.data.games[0])
-          dCtrl.currentUser.favoriteGames.push(response.data.games[0])
-          console.log(dCtrl.currentUser.favoriteGames[0])
+          dCtrl.currentUser.favoriteGames.push(response.data.games[0]);
+          console.log(dCtrl.currentUser.favoriteGames[0]);
           $http.post('/api/me', dCtrl.currentUser)
             .then(function(response) {
               console.log('SAVED DUDE: ', response);
-            })
+            });
         }
-      })
-  }
+      });
+  };
 
   dCtrl.removeGame = function(game) {
     var index = dCtrl.currentUser.favoriteGames.indexOf(game);
     dCtrl.currentUser.favoriteGames.splice(index, 1);
-  }
+  };
 
   dCtrl.searchForFriends = function() {
     console.log(dCtrl.friendSearchField);
-    console.log('current user: ', dCtrl.currentUser)
+    console.log('current user: ', dCtrl.currentUser);
     $http.post('/api/users', {'query': dCtrl.friendSearchField})
       .then(function(response) {
         console.log(response);
@@ -74,12 +74,12 @@ function dashboardController($state, $http, userFactory, $cookies) {
         $http.post('/api/me', dCtrl.currentUser)
           .then(function(response) {
             console.log('SAVED DUDE: ', response);
-          })
-      })
-  }
+          });
+      });
+  };
 
   dCtrl.openFriendModal = function(_id) {
-    console.log('#' + _id)
+    console.log('#' + _id);
      $('#' + _id).openModal();
-  }
+  };
 }

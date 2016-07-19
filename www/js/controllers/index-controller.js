@@ -10,10 +10,10 @@ function indexController($scope, $location, $http, $state, userFactory) {
   $(document).ready(function() {
     // Initialize collapse button
     $(".button-collapse").sideNav({menuWidth: 300,closeOnClick: true});
-  })
+  });
   iCtrl.openNav = function() {
     $('.button-collapse').sideNav('show');
-  }
+  };
 
   iCtrl.closeOverlay = function() {
     $('div[id^=sidenav-overlay]').remove();
@@ -26,7 +26,7 @@ function indexController($scope, $location, $http, $state, userFactory) {
         iCtrl.showUserMenu = false;
       }
     }
-  }
+  };
 
   iCtrl.showLogin = false;
   iCtrl.showUserMenu = false;
@@ -50,5 +50,5 @@ function indexController($scope, $location, $http, $state, userFactory) {
       if(iCtrl.loggedInUser._id) {
         iCtrl.loggedIn = true;
       }
-    })
+    });
 }

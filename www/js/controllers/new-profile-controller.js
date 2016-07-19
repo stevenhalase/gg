@@ -2,13 +2,13 @@
 angular.module('ggApp')
   .controller('newProfileCtrl', newProfileController);
 ///// Defining Home controller injections
-newProfileController.$inject = ['$state', '$http', '$state', 'userFactory'];
+newProfileController.$inject = ['$state', '$http', 'userFactory'];
 ///// Home controller function
-function newProfileController($state, $http, $state, userFactory) {
+function newProfileController($state, $http, userFactory) {
   ///// Local variable referring to 'this'
   var npCtrl = this;
   npCtrl.currentUser = userFactory.currentUser;
-  console.log(npCtrl.currentUser)
+  console.log(npCtrl.currentUser);
 
   npCtrl.searchFavoriteGame = function() {
     console.log(npCtrl.favoriteGameSearchField);
@@ -17,15 +17,15 @@ function newProfileController($state, $http, $state, userFactory) {
         // console.log(response)
         if(response.data.games.length > 0) {
           // console.log('game result: ', response.data.games[0])
-          npCtrl.currentUser.favoriteGames.push(response.data.games[0])
-          console.log(npCtrl.currentUser.favoriteGames[0])
+          npCtrl.currentUser.favoriteGames.push(response.data.games[0]);
+          console.log(npCtrl.currentUser.favoriteGames[0]);
           $http.post('/api/me', npCtrl.currentUser)
             .then(function(response) {
               console.log('SAVED DUDE: ', response);
-            })
+            });
         }
-      })
-  }
+      });
+  };
 
   npCtrl.removeGame = function(game) {
     var index = npCtrl.currentUser.favoriteGames.indexOf(game);
@@ -33,8 +33,8 @@ function newProfileController($state, $http, $state, userFactory) {
     $http.post('/api/me', npCtrl.currentUser)
       .then(function(response) {
         console.log('SAVED DUDE: ', response);
-      })
-  }
+      });
+  };
 
   npCtrl.saveProfile = function() {
     // console.log(npCtrl.currentUser.imageUrl)
@@ -44,7 +44,7 @@ function newProfileController($state, $http, $state, userFactory) {
     $http.post('/api/me', npCtrl.currentUser)
       .then(function(response) {
         console.log('SAVED DUDE: ', response);
-        $state.go('dashboard')
-      })
-  }
+        $state.go('dashboard');
+      });
+  };
 }
