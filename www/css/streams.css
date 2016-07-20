@@ -77,8 +77,13 @@
 }
 
 #game-search {
-  max-width: 50%;
-  color:white;
+  color: #FF8A00;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.game-search-field {
+  color: white;
 }
 
 #game-search-button {

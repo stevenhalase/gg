@@ -409,6 +409,7 @@ footer.page-footer {
   display: inline;
   margin: 10px 1px;
   border-radius: 2px;
+  line-height: 35px;
 }
 
 #game-platform-div {
@@ -691,9 +692,6 @@ footer.page-footer {
   vertical-align: middle;
 }
 
-#player-card-wrapper:first-of-type {
-}
-
 .back-arrow {
   position: absolute;
   left: 20px;
@@ -762,6 +760,11 @@ footer.page-footer {
 .tied {
   border-radius: 0px;
   background-color: rgba(241, 196, 15,0.5)
+}
+
+#stats-collection {
+  color: black;
+  padding: 0px;
 }
 
 /* fallback */
@@ -979,8 +982,13 @@ footer.page-footer {
 }
 
 #game-search {
-  max-width: 50%;
-  color:white;
+  color: #FF8A00;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.game-search-field {
+  color: white;
 }
 
 #game-search-button {

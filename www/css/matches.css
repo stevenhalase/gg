@@ -84,9 +84,6 @@
   vertical-align: middle;
 }
 
-#player-card-wrapper:first-of-type {
-}
-
 .back-arrow {
   position: absolute;
   left: 20px;
@@ -155,4 +152,9 @@
 .tied {
   border-radius: 0px;
   background-color: rgba(241, 196, 15,0.5)
+}
+
+#stats-collection {
+  color: black;
+  padding: 0px;
 }
