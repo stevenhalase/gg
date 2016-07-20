@@ -28,7 +28,8 @@ var MongoDBStore    = require('connect-mongodb-session')(session);
 
 var store = new MongoDBStore(
       {
-        uri: 'mongodb://localhost/connect_mongodb_session',
+        // uri: 'mongodb://localhost/connect_mongodb_session',
+        uri: process.env.MONGODB_URI
         collection: 'ggSessions'
       });
 
