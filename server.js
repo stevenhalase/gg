@@ -25,7 +25,7 @@ var session = require('express-session')
 var newsScraper = require('./news-scraper')
 
 var MongoDBStore    = require('connect-mongodb-session')(session);
-
+//
 var store = new MongoDBStore(
       {
         // uri: 'mongodb://localhost/connect_mongodb_session',
