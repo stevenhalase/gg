@@ -7,7 +7,10 @@ newProfileController.$inject = ['$state', '$http', 'userFactory'];
 function newProfileController($state, $http, userFactory) {
   ///// Local variable referring to 'this'
   var npCtrl = this;
-  npCtrl.currentUser = userFactory.currentUser;
+  $http.get('/api/me')
+    .then(function(response) {
+      npCtrl.currentUser = response.data
+    })
   console.log(npCtrl.currentUser);
 
   npCtrl.searchFavoriteGame = function() {
@@ -23,7 +26,6 @@ function newProfileController($state, $http, userFactory) {
           console.log(npCtrl.currentUser.favoriteGames[0]);
           $http.post('/api/me', npCtrl.currentUser)
             .then(function(response) {
-              //
               console.log('SAVED DUDE: ', response);
             });
         } else {
