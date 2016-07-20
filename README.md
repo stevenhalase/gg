@@ -1,4 +1,4 @@
-![Alt text](/ggpreview2.png?raw=true "gg preview screenshot")
+![Alt text](/ggpreview3.png?raw=true "gg preview screenshot")
 
 # gg
 A gaming hub for streams, news and the competitive scene.
