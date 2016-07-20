@@ -35,6 +35,7 @@
         <ul class="collection with-header ">
           <li class="collection-header col s12"><h5 id="recent-streams-title"><b>Your Favorite Games</b></h5></li>
           <li class="collection-item avatar col s12" ng-repeat="game in dCtrl.currentUser.favoriteGames">
+            <br/>
             <img class="circle" ng-src="{{game.box.small}}" alt="">
             <span class="title">{{game.name}}</span>
             <p><a id="gotogame-link" href="" ng-click="dCtrl.goToGame(game)">Go to Game</a></p>

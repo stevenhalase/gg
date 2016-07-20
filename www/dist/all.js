@@ -817,17 +817,17 @@ function newProfileController($state, $http, userFactory) {
   console.log(npCtrl.currentUser);
 
   npCtrl.searchFavoriteGame = function() {
-    console.log(dCtrl.favoriteGameSearchField);
-    $http.get('https://api.twitch.tv/kraken/search/games?q=' + dCtrl.favoriteGameSearchField + '&type=suggest')
+    console.log(npCtrl.favoriteGameSearchField);
+    $http.get('https://api.twitch.tv/kraken/search/games?q=' + npCtrl.favoriteGameSearchField + '&type=suggest')
       .then(function(response) {
         // console.log(response)
         if(response.data.games.length > 0) {
-          dCtrl.favoriteGameSearchField = '';
+          npCtrl.favoriteGameSearchField = '';
           Materialize.toast('Game added!', 3000)
           // console.log('game result: ', response.data.games[0])
-          dCtrl.currentUser.favoriteGames.push(response.data.games[0]);
-          console.log(dCtrl.currentUser.favoriteGames[0]);
-          $http.post('/api/me', dCtrl.currentUser)
+          npCtrl.currentUser.favoriteGames.push(response.data.games[0]);
+          console.log(npCtrl.currentUser.favoriteGames[0]);
+          $http.post('/api/me', npCtrl.currentUser)
             .then(function(response) {
               console.log('SAVED DUDE: ', response);
             });
