@@ -48,6 +48,8 @@ function dashboardController($state, $http, userFactory, $cookies) {
       .then(function(response) {
         // console.log(response)
         if(response.data.games.length > 0) {
+          dCtrl.favoriteGameSearchField = '';
+          Materialize.toast('Game added!', 3000)
           // console.log('game result: ', response.data.games[0])
           dCtrl.currentUser.favoriteGames.push(response.data.games[0]);
           console.log(dCtrl.currentUser.favoriteGames[0]);
@@ -55,6 +57,8 @@ function dashboardController($state, $http, userFactory, $cookies) {
             .then(function(response) {
               console.log('SAVED DUDE: ', response);
             });
+        } else {
+          Materialize.toast('Game not found!', 3000)
         }
       });
   };
@@ -62,6 +66,10 @@ function dashboardController($state, $http, userFactory, $cookies) {
   dCtrl.removeGame = function(game) {
     var index = dCtrl.currentUser.favoriteGames.indexOf(game);
     dCtrl.currentUser.favoriteGames.splice(index, 1);
+    $http.post('/api/me', dCtrl.currentUser)
+      .then(function(response) {
+        console.log('SAVED DUDE: ', response);
+      });
   };
 
   dCtrl.searchForFriends = function() {

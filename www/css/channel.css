@@ -19,8 +19,8 @@
   width: 80%;
 }
 
-.video-container iframe, .video-container object, .video-container embed {
-
+.video-container{
+  min-height: 300px;
 }
 
 #channel-logo {
