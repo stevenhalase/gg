@@ -6,6 +6,11 @@
   color: #FF8A00;
 }
 
+.back-wrapper {
+  height: 75vh;
+  background-color: rgba(0,0,0,0.5);
+}
+
 #home-wrapper h1 {
   position: absolute;
   left: 62%;
@@ -58,6 +63,9 @@
   #home-wrapper {
     height: 95vh;
   }
+  .back-wrapper {
+    height: 95vh;
+  }
 }
 
 @media (max-width: 700px) {
@@ -67,6 +75,9 @@
   #home-wrapper {
     height: 85vh;
   }
+  .back-wrapper {
+    height: 85vh;
+  }
 }
 
 @media (min-width: 701px) {
@@ -74,6 +85,9 @@
     top: 62%;
   }
   #home-wrapper {
+    height: 80vh;
+  }
+  .back-wrapper {
     height: 80vh;
   }
 }

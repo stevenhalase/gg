@@ -350,7 +350,10 @@ function dashboardController($state, $http, userFactory, $cookies) {
   ///// Local variable referring to 'this'
   var dCtrl = this;
   ///// Setting current user in controller to current user from userFactory
-  dCtrl.currentUser = userFactory.currentUser;
+  $http.get('/api/me')
+    .then(function(response) {
+      dCtrl.currentUser = response.data
+    })
   ///// Change channel by placing channel info in $cookie
   dCtrl.changeChannel = function(streamObj) {
     $cookies.putObject("currentChannel", streamObj);

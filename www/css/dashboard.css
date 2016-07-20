@@ -90,3 +90,19 @@
 #friend-image {
   width: 50px;
 }
+
+#stream-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 75%;
+}
+
+@media (max-width: 992px) {
+  #recent-streams-container {
+    width: 100%;
+  }
+  #stream-status {
+    width: 50%;
+  }
+}
