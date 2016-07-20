@@ -578,6 +578,9 @@ function indexController($scope, $location, $http, $state, userFactory) {
     $('.button-collapse').sideNav('show');
   };
 
+  $('div[id^=sidenav-overlay]').on('tap', iCtrl.closeOverlay)
+  $('div[id^=sidenav-overlay]').on('swipe', iCtrl.closeOverlay)
+
   iCtrl.closeOverlay = function() {
     $('div[id^=sidenav-overlay]').remove();
     if (iCtrl.loggedIn === false) {
