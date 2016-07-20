@@ -15,12 +15,32 @@ function indexController($scope, $location, $http, $state, userFactory) {
     $('.button-collapse').sideNav('show');
   };
 
-  $('div[id^=sidenav-overlay]').on('tap', function() {
-    $('div[id^=sidenav-overlay]').remove();
-  })
-  $('div[id^=sidenav-overlay]').on('swipe', function() {
-    $('div[id^=sidenav-overlay]').remove();
-  })
+  var length = 0;
+  setInterval(function() {
+    // console.log('1')
+    var sideNavOverlay = document.getElementsByClassName('drag-target')
+    if (sideNavOverlay !== null) {
+      // console.log('1')
+      if(sideNavOverlay.length !== length) {
+        length = sideNavOverlay.length
+        // console.log(length)
+      }
+      for (var i = 0; i < sideNavOverlay.length; i++) {
+        sideNavOverlay[i].addEventListener("touchstart", handlerFunction, false);
+      }
+
+      function handlerFunction(event) {
+        // console.log('some shit happened')
+        for (var i = 0; i < sideNavOverlay.length; i++) {
+          $(sideNavOverlay[i]).remove();
+          // console.log($(sideNavOverlay[i]))
+        }
+      }
+    }
+
+  },10)
+
+
 
   iCtrl.closeOverlay = function() {
     $('div[id^=sidenav-overlay]').remove();
