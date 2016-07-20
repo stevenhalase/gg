@@ -15,8 +15,12 @@ function indexController($scope, $location, $http, $state, userFactory) {
     $('.button-collapse').sideNav('show');
   };
 
-  $('div[id^=sidenav-overlay]').on('tap', iCtrl.closeOverlay)
-  $('div[id^=sidenav-overlay]').on('swipe', iCtrl.closeOverlay)
+  $('div[id^=sidenav-overlay]').on('tap', function() {
+    $('div[id^=sidenav-overlay]').remove();
+  })
+  $('div[id^=sidenav-overlay]').on('swipe', function() {
+    $('div[id^=sidenav-overlay]').remove();
+  })
 
   iCtrl.closeOverlay = function() {
     $('div[id^=sidenav-overlay]').remove();
