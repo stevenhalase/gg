@@ -15,6 +15,7 @@
     "bower": "^1.7.9",
     "casperjs": "^1.1.1",
     "cheerio": "^0.20.0",
+    "connect-mongodb-session": "^1.1.1",
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-alpha.1",
     "csgolounge-api": "0.0.8",
@@ -41,7 +42,8 @@
     "passport-twitch": "^1.0.3",
     "passport-twitch-token": "^2.1.0",
     "request": "^2.72.0",
-    "spooky": "^0.2.5"
+    "spooky": "^0.2.5",
+    "xml2js": "^0.4.17"
   },
   "devDependencies": {
     "chai": "^3.5.0",

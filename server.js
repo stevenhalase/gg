@@ -2,6 +2,7 @@
 var express         = require('express');
 var logger          = require('morgan');
 var bodyParser      = require('body-parser');
+var parseString     = require('xml2js').parseString;
 var path            = require('path');
 var mongoose        = require('mongoose');
 var app             = express();
@@ -11,11 +12,11 @@ var csgoMatch       = require('./csgo-match-model')
 var request         = require('request');
 var passport        = require('passport');
 var expose          = require('express-expose');
-var SteamStrategy = require('passport-steam').Strategy;
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
-var User = require('./user-model');
-var config = require('./config');
-var port = process.env.PORT || 3000;
+var SteamStrategy   = require('passport-steam').Strategy;
+var GoogleStrategy  = require('passport-google-oauth20').Strategy;
+var User            = require('./user-model');
+var config          = require('./config');
+var port            = process.env.PORT || 3000;
 var uristring =
     process.env.MONGODB_URI ||
     'mongodb://localhost/gg';
@@ -23,10 +24,22 @@ var uristring =
 var session = require('express-session')
 var newsScraper = require('./news-scraper')
 
+var MongoDBStore    = require('connect-mongodb-session')(session);
+
+var store = new MongoDBStore(
+      {
+        uri: 'mongodb://localhost/connect_mongodb_session',
+        collection: 'ggSessions'
+      });
+
 app.sessionMiddleware = session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
+  cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+      },
+  store: store
 })
 app.use(app.sessionMiddleware)
 ///// Connecting to MONGODB
@@ -108,6 +121,7 @@ passport.use(new GoogleStrategy({
     clientID: config.gClientID,
     clientSecret: config.gSecret,
     callbackURL: "https://gaming-central.herokuapp.com/auth/google/callback"
+    // callbackURL: 'http://localhost:3000/auth/google/callback'
   },
   function(accessToken, refreshToken, profile, cb) {
     ///// If user has cover photo in Google profile
@@ -190,10 +204,69 @@ app.get('/api/news/game/:game', function(req, res) {
   console.log(req.params.game)
   newsScraper.scrape(req.params.game, passNews)
   function passNews(articles) {
-    console.log(articles)
+    // console.log(articles)
     res.send(articles)
   }
 })
+
+
+app.get('/api/admin/sessions', function(req, res) {
+  var activeUsers = [];
+  var MongoClient = require('mongodb').MongoClient;
+  var url = 'mongodb://localhost/connect_mongodb_session';
+  MongoClient.connect(url, function(err, db) {
+    var cursor = db.collection('ggSessions').find();
+    // console.log('cursor: ', cursor)
+    cursor.each(function(err, doc) {
+        if (doc != null) {
+          // console.log('Damn session: ', doc.session.passport.user)
+          if(doc.session.passport) {
+            if (doc.session.passport.user !== undefined) {
+              User.findOne({_id: doc.session.passport.user}, function(err, user) {
+                if (err) { console.log(err) }
+                // console.log('USER: ', user.displayName)
+                user = {
+                  displayName : user.displayName,
+                  imageUrl : user.imageUrl
+                }
+                // console.log(activeUsers.includes(user))
+
+                var unique = true;
+                for (var i = 0; i < activeUsers.length; i++) {
+                  if (activeUsers[i].displayName === user.displayName) {
+                    unique = false;
+                  }
+                }
+                // console.log('Unique? : ', unique)
+                if (unique == true) {
+                  // console.log('Current user: ', user)
+                  activeUsers.push(user);
+                  // console.log(activeUsers)
+                }
+
+              });
+            }
+          }
+
+        }
+     });
+     setTimeout(function() {
+       console.log('USERS: ', activeUsers)
+       res.send(activeUsers)
+     },50)
+  });
+})
+
+
+// app.get('/api/ads/video-cards', function(req, res) {
+//   request(url, function(error, response, xmlReturn) {
+//     console.log(error)
+//     var xml = xmlReturn;
+//     parseString(xml, function(err, result) {
+//       res.send(result)
+//     })
+//   })
+// })
 ///// Route to logout user
 app.get('/logout', function(req, res){
   ///// Logout user

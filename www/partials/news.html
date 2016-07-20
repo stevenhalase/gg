@@ -12,7 +12,6 @@
         <li class="collection-item" ng-repeat="article in nCtrl.pcNews | orderBy: 'timeAgo'">
           <span id="article-date" class="secondary-content">{{article.timeAgo}}</span>
           <a href="{{article.link}}" target="_blank"><p id="article-title">{{article.title}} </p></a>
-          <p class="article-content">{{article.contents}}</p>
         </li>
       </ul>
     </div>
@@ -26,7 +25,6 @@
         <li class="collection-item" ng-repeat="article in nCtrl.ps4News | orderBy: 'timeAgo'">
           <span id="article-date" class="secondary-content">{{article.timeAgo}}</span>
           <a href="{{article.link}}" target="_blank"><p id="article-title">{{article.title}} </p></a>
-          <p class="article-content">{{article.contents}}</p>
         </li>
       </ul>
     </div>
@@ -40,7 +38,6 @@
         <li class="collection-item" ng-repeat="article in nCtrl.xboxOneNews | orderBy: 'timeAgo'">
           <span id="article-date" class="secondary-content">{{article.timeAgo}}</span>
           <a href="{{article.link}}" target="_blank"><p id="article-title">{{article.title}} </p></a>
-          <p class="article-content">{{article.contents}}</p>
         </li>
       </ul>
     </div>

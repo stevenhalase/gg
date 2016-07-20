@@ -45,3 +45,7 @@
   background-color: #555;
   border-radius: 4px;
 }
+
+.collection-item a:hover {
+  text-decoration: none;
+}

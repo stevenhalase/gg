@@ -1,3 +1,20 @@
+angular.module('ggApp')
+  .factory('adFactory', adFactory);
+
+  adFactory.$inject = ['$http'];
+
+  function adFactory($http) {
+
+    function getVideoCards() {
+      return $http.get('/api/ads/video-cards')
+    }
+
+
+    return {
+      getVideoCards : getVideoCards
+    };
+  }
+
 ///// Attaching Admin controller to App module
 angular.module('ggApp')
   .controller('adminCtrl', adminController);
@@ -9,6 +26,7 @@ function adminController($state, $http) {
   var aCtrl = this;
   aCtrl.matches = [];
   aCtrl.words = ['one', 'two', 'three', 'four', 'five'];
+  aCtrl.activeUsers = [];
   ///// Open modal using JQuery
   aCtrl.openModal = function(modalID) {
     $('#' + modalID).openModal();
@@ -17,6 +35,16 @@ function adminController($state, $http) {
   aCtrl.closeModal = function(modalID) {
     $('#' + modalID).closeModal();
   };
+
+  setInterval(function() {
+    $http.get('/api/admin/sessions')
+      .then(function(response) {
+        aCtrl.activeUsers = response.data;
+      })
+  }, 1000*3)
+
+
+
   ///// Saves admin updated Match to DB
   aCtrl.saveMatch = function() {
     ///// If Match has an _id (i.e. checking if Match is originally came from DB
@@ -411,9 +439,9 @@ function dashboardController($state, $http, userFactory, $cookies) {
 angular.module('ggApp')
   .controller('gameCtrl', gameController);
 ///// Defining Game controller injections
-gameController.$inject = ['$state', '$http', 'userFactory', '$cookies'];
+gameController.$inject = ['$state', '$http', 'userFactory', 'adFactory', '$cookies'];
 ///// Game controller function
-function gameController($state, $http, userFactory, $cookies) {
+function gameController($state, $http, userFactory, adFactory, $cookies) {
   ///// Local variable referring to 'this'
   var gCtrl = this;
   ///// Setting current game to current game stored in $cookies
@@ -424,6 +452,7 @@ function gameController($state, $http, userFactory, $cookies) {
   gCtrl.favoriteGames = [];
   gCtrl.currentGameData = {};
   gCtrl.currentGameAppId = '';
+  gCtrl.adItems = [];
   ///// GET request to Twitch API to get top 3 streams for the current game
   $http.get('https://api.twitch.tv/kraken/streams/?game=' + gCtrl.currentGame.name + '&stream_type=live&limit=4')
     .then(function(response) {
@@ -497,8 +526,7 @@ function gameController($state, $http, userFactory, $cookies) {
         'background-image' : 'url(' + parsedImageUrl + ')'
       });
     });
-  ///// Get news for current game from SteamDB
-  ///// TODO: get it to work. Currently blocked.
+  ///// Get news for current game from N4G
   gCtrl.getNews = function(gameNameQuery) {
     $http.get('/api/news/game/' + gameNameQuery)
       .then(function(response) {
@@ -506,6 +534,18 @@ function gameController($state, $http, userFactory, $cookies) {
         gCtrl.news = response.data;
       });
   };
+
+  // adFactory.getVideoCards().then(function(response) {
+  //   console.log('ad response: ', response)
+  //   // console.log('ads: ', response.data.ItemSearchResponse.Items[0].Item);
+  //   gCtrl.adItems = response.data.ItemSearchResponse.Items[0].Item.slice(0, 4);
+  // });
+
+  ///// Steam Featured Store
+  // $http.get('http://store.steampowered.com/api/featured/')
+  //   .then(function(response) {
+  //     console.log('steam response: ', response);
+  //   });
 }
 
 ///// Attaching Home controller to App module
@@ -850,6 +890,12 @@ function newsController($http) {
 
   $(document).ready(function() {
     $('select').material_select();
+  });
+
+  $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
   });
 }
 

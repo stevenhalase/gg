@@ -9,6 +9,7 @@ function adminController($state, $http) {
   var aCtrl = this;
   aCtrl.matches = [];
   aCtrl.words = ['one', 'two', 'three', 'four', 'five'];
+  aCtrl.activeUsers = [];
   ///// Open modal using JQuery
   aCtrl.openModal = function(modalID) {
     $('#' + modalID).openModal();
@@ -17,6 +18,16 @@ function adminController($state, $http) {
   aCtrl.closeModal = function(modalID) {
     $('#' + modalID).closeModal();
   };
+
+  setInterval(function() {
+    $http.get('/api/admin/sessions')
+      .then(function(response) {
+        aCtrl.activeUsers = response.data;
+      })
+  }, 1000*3)
+
+
+
   ///// Saves admin updated Match to DB
   aCtrl.saveMatch = function() {
     ///// If Match has an _id (i.e. checking if Match is originally came from DB

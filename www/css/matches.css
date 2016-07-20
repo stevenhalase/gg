@@ -85,7 +85,6 @@
 }
 
 #player-card-wrapper:first-of-type {
-  margin-left: 8%;
 }
 
 .back-arrow {
@@ -140,6 +139,7 @@
 
 .stats-table {
   text-align: center;
+  padding: 15px 0px 0px 0px;
 }
 
 .higher {

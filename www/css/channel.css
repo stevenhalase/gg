@@ -8,20 +8,15 @@
 }
 
 #channel-stream {
-  max-width: 60%;
-  width: 60%;
-  position: absolute;
-  left:3%;
-  top: 2%;
-  overflow: hidden;
+  margin-left: 10%;
+  max-width: 80%;
+  width: 80%;
 }
 
 #chat_embed {
-  max-width: 30%;
-  width: 30%;
-  position: absolute;
-  left:65%;
-  top: 1%;
+  margin-left: 10%;
+  max-width: 80%;
+  width: 80%;
 }
 
 .video-container iframe, .video-container object, .video-container embed {

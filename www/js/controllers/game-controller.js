@@ -2,9 +2,9 @@
 angular.module('ggApp')
   .controller('gameCtrl', gameController);
 ///// Defining Game controller injections
-gameController.$inject = ['$state', '$http', 'userFactory', '$cookies'];
+gameController.$inject = ['$state', '$http', 'userFactory', 'adFactory', '$cookies'];
 ///// Game controller function
-function gameController($state, $http, userFactory, $cookies) {
+function gameController($state, $http, userFactory, adFactory, $cookies) {
   ///// Local variable referring to 'this'
   var gCtrl = this;
   ///// Setting current game to current game stored in $cookies
@@ -15,6 +15,7 @@ function gameController($state, $http, userFactory, $cookies) {
   gCtrl.favoriteGames = [];
   gCtrl.currentGameData = {};
   gCtrl.currentGameAppId = '';
+  gCtrl.adItems = [];
   ///// GET request to Twitch API to get top 3 streams for the current game
   $http.get('https://api.twitch.tv/kraken/streams/?game=' + gCtrl.currentGame.name + '&stream_type=live&limit=4')
     .then(function(response) {
@@ -88,8 +89,7 @@ function gameController($state, $http, userFactory, $cookies) {
         'background-image' : 'url(' + parsedImageUrl + ')'
       });
     });
-  ///// Get news for current game from SteamDB
-  ///// TODO: get it to work. Currently blocked.
+  ///// Get news for current game from N4G
   gCtrl.getNews = function(gameNameQuery) {
     $http.get('/api/news/game/' + gameNameQuery)
       .then(function(response) {
@@ -97,4 +97,16 @@ function gameController($state, $http, userFactory, $cookies) {
         gCtrl.news = response.data;
       });
   };
+
+  // adFactory.getVideoCards().then(function(response) {
+  //   console.log('ad response: ', response)
+  //   // console.log('ads: ', response.data.ItemSearchResponse.Items[0].Item);
+  //   gCtrl.adItems = response.data.ItemSearchResponse.Items[0].Item.slice(0, 4);
+  // });
+
+  ///// Steam Featured Store
+  // $http.get('http://store.steampowered.com/api/featured/')
+  //   .then(function(response) {
+  //     console.log('steam response: ', response);
+  //   });
 }

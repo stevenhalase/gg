@@ -58,12 +58,13 @@
              <li ng-show="iCtrl.loggedIn === true" ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu"><a class="collapsible-header"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}<i class="material-icons right">arrow_drop_down</i></a></li>
              <div ng-show="iCtrl.showUserMenu">
                <ul class="grey darken-4">
-                 <li ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu"><a ui-sref="dashboard">View Dashboard</a></li>
-                 <li ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu"><a href="/logout">Logout</a></li>
+                 <li ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu;iCtrl.closeOverlay()"><a ui-sref="dashboard">View Dashboard</a></li>
+                 <li ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu;iCtrl.closeOverlay()"><a href="/logout">Logout</a></li>
                </ul>
              </div>
              <li ng-class="{'active': location===''}" ng-click="iCtrl.closeOverlay()"><a ui-sref="home">Home</a></li>
              <li ng-class="{'active': location==='streams'}" ng-click="iCtrl.closeOverlay()"><a ui-sref="streams">Games</a></li>
+             <li ng-class="{'active': location==='news'}" ng-click="iCtrl.closeOverlay()"><a ui-sref="news">News</a></li>
              <li ng-class="{'active': location==='matches'}" ng-click="iCtrl.closeOverlay()"><a ui-sref="matches">Matches</a></li>
              <li ng-class="{'active': location==='statistics'}" ng-click="iCtrl.closeOverlay()"><a ui-sref="statistics">Statistics</a></li>
            </ul>
