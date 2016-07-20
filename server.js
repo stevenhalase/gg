@@ -24,15 +24,6 @@ var uristring =
 var session = require('express-session')
 var newsScraper = require('./news-scraper')
 
-var MongoDBStore    = require('connect-mongodb-session')(session);
-//
-var store = new MongoDBStore(
-      {
-        // uri: 'mongodb://localhost/connect_mongodb_session',
-        uri: process.env.MONGODB_URI,
-        collection: 'ggSessions'
-      });
-
 app.sessionMiddleware = session({
   secret: 'keyboard cat',
   resave: false,
@@ -209,55 +200,6 @@ app.get('/api/news/game/:game', function(req, res) {
     res.send(articles)
   }
 })
-
-
-app.get('/api/admin/sessions', function(req, res) {
-  var activeUsers = [];
-  var MongoClient = require('mongodb').MongoClient;
-  var url = 'mongodb://localhost/connect_mongodb_session';
-  MongoClient.connect(url, function(err, db) {
-    var cursor = db.collection('ggSessions').find();
-    // console.log('cursor: ', cursor)
-    cursor.each(function(err, doc) {
-        if (doc != null) {
-          // console.log('Damn session: ', doc.session.passport.user)
-          if(doc.session.passport) {
-            if (doc.session.passport.user !== undefined) {
-              User.findOne({_id: doc.session.passport.user}, function(err, user) {
-                if (err) { console.log(err) }
-                // console.log('USER: ', user.displayName)
-                user = {
-                  displayName : user.displayName,
-                  imageUrl : user.imageUrl
-                }
-                // console.log(activeUsers.includes(user))
-
-                var unique = true;
-                for (var i = 0; i < activeUsers.length; i++) {
-                  if (activeUsers[i].displayName === user.displayName) {
-                    unique = false;
-                  }
-                }
-                // console.log('Unique? : ', unique)
-                if (unique == true) {
-                  // console.log('Current user: ', user)
-                  activeUsers.push(user);
-                  // console.log(activeUsers)
-                }
-
-              });
-            }
-          }
-
-        }
-     });
-     setTimeout(function() {
-       console.log('USERS: ', activeUsers)
-       res.send(activeUsers)
-     },50)
-  });
-})
-
 
 // app.get('/api/ads/video-cards', function(req, res) {
 //   request(url, function(error, response, xmlReturn) {

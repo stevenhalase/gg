@@ -36,15 +36,6 @@ function adminController($state, $http) {
     $('#' + modalID).closeModal();
   };
 
-  setInterval(function() {
-    $http.get('/api/admin/sessions')
-      .then(function(response) {
-        aCtrl.activeUsers = response.data;
-      })
-  }, 1000*3)
-
-
-
   ///// Saves admin updated Match to DB
   aCtrl.saveMatch = function() {
     ///// If Match has an _id (i.e. checking if Match is originally came from DB
