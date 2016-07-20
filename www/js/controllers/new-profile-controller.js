@@ -23,6 +23,7 @@ function newProfileController($state, $http, userFactory) {
           console.log(npCtrl.currentUser.favoriteGames[0]);
           $http.post('/api/me', npCtrl.currentUser)
             .then(function(response) {
+              //
               console.log('SAVED DUDE: ', response);
             });
         } else {
