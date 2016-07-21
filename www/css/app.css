@@ -7,7 +7,7 @@ body {
 
 main {
   flex: 1 0 auto;
-  background-color: #ecf0f1;
+  background-color: black;
 }
 
 #nav-logo-icon {

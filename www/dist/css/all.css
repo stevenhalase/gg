@@ -74,7 +74,7 @@ body {
 
 main {
   flex: 1 0 auto;
-  background-color: #ecf0f1;
+  background-color: black;
 }
 
 #nav-logo-icon {
@@ -536,6 +536,7 @@ footer.page-footer {
   background-image: url('../../images/bg.jpg');
   background-position: center;
   background-size: cover;
+  min-height: 70vh;
   color: #FF8A00;
 }
 

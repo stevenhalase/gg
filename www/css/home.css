@@ -2,6 +2,7 @@
   background-image: url('../../images/bg.jpg');
   background-position: center;
   background-size: cover;
+  min-height: 70vh;
   color: #FF8A00;
 }
 
