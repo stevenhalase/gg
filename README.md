@@ -1,4 +1,4 @@
-![Alt text](/ggpreview3.png?raw=true "gg preview screenshot")
+![Alt text](/ggpreview4.png?raw=true "gg preview screenshot")
 
 [![GitHub version](https://badge.fury.io/gh/stevenhalase%2Fgg.svg)](https://badge.fury.io/gh/stevenhalase%2Fgg)
 
