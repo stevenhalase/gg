@@ -5,29 +5,29 @@
         <div class="col s12 m12 l3 profile-image-container">
           <img id="user-image" ng-src="{{npCtrl.currentUser.imageUrl || '../images/defaultavatar.png'}}" ng-model="npCtrl.currentUser.imageUrl">
         </div>
-        <div class="input-field col s12 m12 l9">
+        <div id="favorite-game-search-input" class="input-field col s12 m12 l9">
           <input id="displayName" type="text" class="validate" value="{{npCtrl.currentUser.displayName}}" ng-model="npCtrl.currentUser.displayName">
           <label id="displayNameLbl" class="active" for="displayName">Display Name</label>
         </div>
       </div>
       <div class="row first-row">
-        <div class="input-field col s12 m12 l9 offset-l3">
+        <div id="favorite-game-search-input" class="input-field col s12 m12 l9 offset-l3">
           <input id="email" type="text" class="validate" value="{{npCtrl.currentUser.email}}" ng-model="npCtrl.currentUser.email">
           <label id="emailLbl" class="" for="email">Email Address</label>
         </div>
       </div>
       <div class="row first-row">
-        <div class="input-field col s12 m12 l3 offset-l3">
+        <div id="favorite-game-search-input" class="input-field col s12 m12 l3 offset-l3">
           <input id="age" type="text" class="validate" value="{{npCtrl.currentUser.age}}" ng-model="npCtrl.currentUser.age">
           <label id="ageLbl" class="" for="age">Age</label>
         </div>
-        <div class="input-field col s12 m12 l6">
+        <div id="favorite-game-search-input" class="input-field col s12 m12 l6">
           <input id="location" type="text" class="validate" value="{{npCtrl.currentUser.location}}" ng-model="npCtrl.currentUser.location">
           <label id="locationLbl" class="" for="location">Location</label>
         </div>
       </div>
       <div class="row first-row">
-        <div class="favorite-game-search-input input-field col s12 m12 l9 offset-l3">
+        <div id="favorite-game-search-input" class="favorite-game-search-input input-field col s12 m12 l9 offset-l3">
           <input id="favorite-game-search" type="text" class="validate" ng-model="npCtrl.favoriteGameSearchField">
           <label for="favorite-game-search">Add Favorite Game </label>
           <input type="submit" id="favorite-game-search-button" class="waves-effect waves-light btn amber darken-3" ng-click="npCtrl.searchFavoriteGame()"></input>

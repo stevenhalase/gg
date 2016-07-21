@@ -82,6 +82,11 @@
   padding-left: 15px;
 }
 
+#game-search-field {
+  border-bottom: 1px solid #FF8A00;
+  box-shadow: 0px 1px 0px 0px #FF8A00;
+}
+
 .game-search-field {
   color: white;
 }

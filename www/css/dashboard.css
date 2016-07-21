@@ -1,4 +1,6 @@
 .dash-wrapper {
+  background-color:  #ecf0f1;
+  min-height: 70vh;
 }
 
 #streams-date {
@@ -52,9 +54,33 @@
   font-size: 10px;
 }
 
+#favorite-game-search-input {
+  color: #FF8A00;
+}
+
 #favorite-game-search {
   max-width: 100%;
   margin-bottom: 0px;
+  color: black;
+  border-bottom: 1px solid #FF8A00;
+  box-shadow: 0px 1px 0px 0px #FF8A00;
+}
+
+#favorite-game-search:focus {
+  border-bottom: 1px solid #FF8A00;
+  box-shadow: 0px 1px 0px 0px #FF8A00;
+}
+
+#favorite-game-search-input label {
+ color: #FF8A00;
+}
+
+ #favorite-game-search-input:focus + label {
+  color: #FF8A00;
+ }
+
+#favorite-game-search-input:focus {
+  border-bottom: 1px solid #FF8A00;
 }
 
 #favorite-game-search-button {
