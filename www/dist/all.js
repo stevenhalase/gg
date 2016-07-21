@@ -565,11 +565,16 @@ function homeController($state, $http) {
 angular.module('ggApp')
   .controller('indexCtrl', indexController);
 ///// Defining Index controller injections
-indexController.$inject = ['$scope', '$location', '$http', '$state', 'userFactory'];
+indexController.$inject = ['$rootScope', '$scope', '$location', '$http', '$state', 'userFactory'];
 ///// Index controller function
-function indexController($scope, $location, $http, $state, userFactory) {
+function indexController($rootScope, $scope, $location, $http, $state, userFactory) {
   ///// Local variable referring to 'this'
   var iCtrl = this;
+
+  $rootScope.$on('$stateChangeSuccess', function() {
+     document.body.scrollTop = document.documentElement.scrollTop = 0;
+  });
+
   $(document).ready(function() {
     // Initialize collapse button
     $(".button-collapse").sideNav({menuWidth: 300,closeOnClick: true});
