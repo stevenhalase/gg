@@ -4,7 +4,6 @@
       <div class="game-content">
         <div class="row">
           <div class="col s12 m6 l4">
-            <a href="" ui-sref="streams"><span class="glyphicon glyphicon-arrow-left back-arrow-game"></span></a>
             <img id="game-cover" ng-src="{{gCtrl.fixGiantBombUrl(gCtrl.currentGameData.image.small_url)}}">
             <!-- <div id="ad-card" class="col s8 offset-s2 m5 offset-m7 pull-m4" ng-repeat="item in gCtrl.adItems">
               <div class="card">
@@ -26,7 +25,7 @@
             <p id="game-platform" ng-repeat="platform in gCtrl.currentGameData.platforms">{{platform.name}}</p>
             </div>
             <!-- <h5>Publisher: {{gCtrl.currentGameData.publishers[0].name}}</h5> -->
-            <p>{{gCtrl.currentGameData.deck}}</p>
+            <p id="game-description">{{gCtrl.currentGameData.deck}}</p>
             <div id="game-chip" class="chip" ng-repeat="genre in gCtrl.currentGameData.genres">
               {{genre.name}}
             </div>

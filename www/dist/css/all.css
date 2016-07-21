@@ -501,6 +501,10 @@ footer.page-footer {
   display: inline;
 }
 
+#game-description {
+  margin: 0 10px 10px 0px;
+}
+
 @media (max-width: 992px) {
   .back {
     height: 360vh;
@@ -519,6 +523,9 @@ footer.page-footer {
   }
   .twitch-img {
     margin-left: 20%;
+  }
+  #game-cover {
+    margin: 30px;
   }
 }
 
