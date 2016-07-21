@@ -69,7 +69,7 @@
   width: 150px;
 }
 
-.back-arrow-game {
+#back-arrow-game {
   position: absolute;
   left: 20px;
   top: 84px;
