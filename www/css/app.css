@@ -72,8 +72,12 @@ main {
   text-decoration: none;
 }
 
+#page-footer {
+  margin-top: 0px;
+}
+
 footer.page-footer {
-  margin-top: 0;
+  margin-top: 0px;
   background: rgba(221,109,0,1);
   background: -moz-linear-gradient(45deg, rgba(221,109,0,1) 0%, rgba(221,109,0,1) 52%, rgba(255,143,0,1) 52%, rgba(255,143,0,1) 100%);
   background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(221,109,0,1)), color-stop(52%, rgba(221,109,0,1)), color-stop(52%, rgba(255,143,0,1)), color-stop(100%, rgba(255,143,0,1)));
@@ -142,4 +146,13 @@ footer.page-footer {
 
 #dropdown1 {
   min-width: 220px;
+}
+
+#loading-bar .bar {
+  background: black;
+}
+
+#loading-bar-spinner .spinner-icon {
+  border-top-color: black;
+  border-left-color: black;
 }

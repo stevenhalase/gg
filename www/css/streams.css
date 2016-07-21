@@ -93,3 +93,7 @@
 .game-search-input {
   text-align: center;
 }
+
+#last-streams-row {
+  margin-bottom: 0px;
+}

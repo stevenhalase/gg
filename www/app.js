@@ -1,5 +1,5 @@
 ///// Defining App module
-angular.module('ggApp', ['ui.router', 'ngCookies'])
+angular.module('ggApp', ['ui.router', 'ngCookies', 'angular-loading-bar'])
   .config(ggAppRouter)
 ///// Defining App injections
 ggAppRouter.$inject = ['$stateProvider', '$urlRouterProvider'];

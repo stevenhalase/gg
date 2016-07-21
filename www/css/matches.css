@@ -49,7 +49,7 @@
 #match-modal-content {
   height: 100%;
   padding: 15px 0px 0px 0px;
-  background-image: url('../images/csgoback.jpg');
+  background-image: url('../../images/csgoback.jpg');
   background-position: center;
   background-size: cover;
 }
@@ -84,7 +84,7 @@
   vertical-align: middle;
 }
 
-.back-arrow {
+#back-arrow {
   position: absolute;
   left: 20px;
   top: 20px;

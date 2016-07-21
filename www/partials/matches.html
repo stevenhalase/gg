@@ -20,7 +20,7 @@
 <!-- Modal Structure -->
 <div id="{{match._id}}" class="modal bottom-sheet match-modal-wrapper" ng-repeat="match in mCtrl.matches">
   <div class="match-modal-content" id="match-modal-content">
-    <a href="" ng-click="mCtrl.closeModal(match._id)"><span class="glyphicon glyphicon-resize-small back-arrow"></span></a>
+    <a href="" ng-click="mCtrl.closeModal(match._id)"><span id="back-arrow" class="glyphicon glyphicon-resize-small"></span></a>
     <div class="row match-modal">
       <div>
         <img class="team-logo" ng-src="{{match.teams[0].teamLogoUrl}}"><h3>{{match.teams[0].teamName}}</h3>
