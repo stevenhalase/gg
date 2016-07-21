@@ -51,7 +51,7 @@
                  <li class="center" ng-click="iCtrl.showLogin=!iCtrl.showLogin"><a href="/auth/google"><img src="./images/google-btn.png"></a></li>
                </ul>
              </div>
-             <li ng-show="iCtrl.loggedIn === true" ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu"><a class="collapsible-header"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName}}<i class="material-icons right">arrow_drop_down</i></a></li>
+             <li ng-show="iCtrl.loggedIn === true" ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu"><a class="collapsible-header"><img id="nav-profile" ng-src="{{iCtrl.loggedInUser.imageUrl}}" ng-if="iCtrl.loggedInUser.imageUrl">{{iCtrl.loggedInUser.displayName | limitTo:16}}<i class="material-icons right">arrow_drop_down</i></a></li>
              <div ng-show="iCtrl.showUserMenu">
                <ul class="grey darken-4">
                  <li ng-click="iCtrl.showUserMenu=!iCtrl.showUserMenu;iCtrl.closeOverlay()"><a ui-sref="dashboard">View Dashboard</a></li>
