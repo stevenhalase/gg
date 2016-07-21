@@ -1,5 +1,7 @@
 ![Alt text](/ggpreview3.png?raw=true "gg preview screenshot")
 
+[![GitHub version](https://badge.fury.io/gh/stevenhalase%2Fgg.svg)](https://badge.fury.io/gh/stevenhalase%2Fgg)
+
 # gg
 A gaming hub for streams, news and the competitive scene.
 
